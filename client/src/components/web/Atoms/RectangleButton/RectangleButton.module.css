@@ -1,49 +1,37 @@
 .RectangleButton {
+  width: 100%;
+  padding: 14px 0;
   border: 1px solid transparent;
   border-radius: 6px;
-  background-color: var(--accent);
+  color: var(--primaryColor);
   cursor: pointer;
 }
 
-.large {
-  color: var(--primaryColor);
-  width: 100%;
-  height: 100%;
-  transition: ease-in-out 0.25s;
+.green {
+  background-color: var(--accent);
+}
+.green:hover {
+  color: var(--secondColor);
 }
 
-.large:hover {
-  color: var(--secondaryColor);
-  transition: ease-in-out 0.25s;
-}
-
-.large.darkMode {
+.black {
   background-color: var(--mainBgDark);
 }
-
-.large.darkMode:hover {
+.black:hover {
   color: var(--accent);
 }
 
-.small {
-  background-color: var(--accent);
-  color: var(--primaryColor);
-  width: 100%;
-  height: 100%;
-  transition: ease-in-out 0.25s;
+.gray {
+  background-color: var(--secondBg);
+  color: var(--thirdColor);
+}
+.gray:hover {
+  background-color: transparent;
+  border-color: var(--thirdColor);
 }
 
-.small:hover {
-  background-color: var(--mainBgDark);
-  transition: ease-in-out 0.25s;
-}
-
-.small.darkMode {
-  background-color: var(--chooseOptionBg);
-  color: var(--descriptionText);
-}
-
-.small.darkMode:hover {
-  background-color: var(--primaryColor);
-  border: 1px solid var(--secondaryColor);
+@media screen and (min-width: 768px) {
+  .RectangleButton {
+    padding: 18px 0;
+  }
 }

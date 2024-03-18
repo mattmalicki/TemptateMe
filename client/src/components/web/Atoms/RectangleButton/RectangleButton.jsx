@@ -1,10 +1,9 @@
-import styles from './RectangleButton.module.css';
+import styles from "./RectangleButton.module.css";
 
 const RectangleButton = ({
   title,
-  type = 'button',
-  size,
-  colorScheme,
+  type = "button",
+  colorScheme = "green",
   onClick = () => {},
 }) => {
   const classes = `${styles.RectangleButton} ${styles[`${size}`]} ${
@@ -26,9 +25,6 @@ export { RectangleButton };
 // just add attribute type whith the type you want
 // when decalring component
 
-// size property have a string value and it can be either
-// 'small' or 'large' depending on which one you want
-
-// colorScheme
+// colorScheme by default is green but you can make it black or gray
 
 // onClick is obvious. By default this prop is an empty function so
