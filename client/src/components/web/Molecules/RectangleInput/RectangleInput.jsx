@@ -28,7 +28,8 @@ const RectangleInput = ({
         {isName && <NameIcon />}
       </div>
       <input
-        type="text"
+        type={`${isEmail && "email"} ${isPassword && "password"} ${isName && "text"}`}
+        id={`${isEmail && "email"} ${isPassword && "password"} ${isName && "name"}`}
         className={styles.input}
         placeholder={placeholderText}
         onChange={onChange}

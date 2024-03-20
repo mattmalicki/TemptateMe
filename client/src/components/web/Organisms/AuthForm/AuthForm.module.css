@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.AuthForm {
+  width: 100%;
+  padding: 40px 28px;
+  margin-bottom: 18px;
+  border-radius: 30px;
+  box-shadow: 0 4px 48px 0 rgba(0, 0, 0, 0.1);
+  background-color: var(--paginationBgDark);
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 12px;
+  margin: 18px 0 28px 0;
+}
+
+.link {
+  display: block;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .AuthForm {
+    padding: 44px 50px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .inputContainer {
+    gap: 24px;
+    margin: 50px 0;
+  }
+}

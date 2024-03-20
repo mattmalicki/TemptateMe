@@ -18,7 +18,7 @@
 }
 
 .input::placeholder {
-  color: currentColor;
+  color: #ffffff80;
 }
 
 .RectangleInput:hover {
