@@ -8,16 +8,28 @@ import { ReactComponent as InstagramIcon } from "./icon-instagram.svg";
 const Socials = ({ isBigger = false }) => {
   return (
     <div className={styles.Socials}>
-      <SocialIcon styles={!isBigger ? styles.fbXS : styles.fbS}>
+      <SocialIcon
+        link="https://www.facebook.com/"
+        styles={!isBigger ? styles.fbXS : styles.fbS}
+      >
         <FacebokIcon />
       </SocialIcon>
-      <SocialIcon styles={!isBigger ? styles.ytXS : styles.ytS}>
+      <SocialIcon
+        link="https://www.youtube.com/"
+        styles={!isBigger ? styles.ytXS : styles.ytS}
+      >
         <YoutubeIcon />
       </SocialIcon>
-      <SocialIcon styles={!isBigger ? styles.twitterXS : styles.twitterS}>
+      <SocialIcon
+        link="https://twitter.com"
+        styles={!isBigger ? styles.twitterXS : styles.twitterS}
+      >
         <TwitterIcon />
       </SocialIcon>
-      <SocialIcon styles={!isBigger ? styles.instaXS : styles.instaS}>
+      <SocialIcon
+        link="https://www.instagram.com/"
+        styles={!isBigger ? styles.instaXS : styles.instaS}
+      >
         <InstagramIcon />
       </SocialIcon>
     </div>

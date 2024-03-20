@@ -1,5 +1,9 @@
-const SocialIcon = ({ styles, children }) => {
-  return <div style={styles}>{children}</div>;
+const SocialIcon = ({ link, styles, children }) => {
+  return (
+    <a href={link} style={styles}>
+      {children}
+    </a>
+  );
 };
 
 export { SocialIcon };
