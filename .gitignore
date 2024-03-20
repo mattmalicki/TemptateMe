@@ -131,3 +131,4 @@ dist
 
 .env
 addRecipe
+*storybook.log

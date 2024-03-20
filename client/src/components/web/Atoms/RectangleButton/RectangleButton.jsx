@@ -6,9 +6,7 @@ const RectangleButton = ({
   colorScheme = "green",
   onClick = () => {},
 }) => {
-  const classes = `${styles.RectangleButton} ${styles[`${size}`]} ${
-    styles[`${colorScheme}`]
-  }`;
+  const classes = `${styles.RectangleButton} ${styles[`${colorScheme}`]}`;
   return (
     <button className={classes} type={type} onClick={onClick}>
       {title}
