@@ -1,7 +1,7 @@
 .container {
   width: 285px;
   height: 250px;
-  background-image: url("../../../../images/auth-page-1596.png");
+  background-image: url("../../../images/auth-page-1596.png");
   background-size: contain;
   background-repeat: no-repeat;
   margin-bottom: -32px;
@@ -28,6 +28,6 @@
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .container {
-    background-image: url("../../../../images/auth-page-3192.png");
+    background-image: url("../../../images/auth-page-3192.png");
   }
 }

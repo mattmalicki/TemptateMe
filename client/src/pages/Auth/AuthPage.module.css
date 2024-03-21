@@ -6,7 +6,7 @@
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  background-image: url("../../../images/auth-page-bg.png");
+  background-image: url("../../images/auth-page-bg.png");
   background-size: contain;
   background-position: bottom;
   background-repeat: no-repeat;
@@ -15,14 +15,14 @@
 
 @media screen and (min-width: 768px) {
   .AuthPage {
-    background-image: url("../../../images/auth-page-bg-768.png");
+    background-image: url("../../images/auth-page-bg-768.png");
     padding: 0 134px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .AuthPage {
-    background-image: url("../../../images/auth-page-bg-1024.png");
+    background-image: url("../../images/auth-page-bg-1024.png");
     padding: 0 180px 0 113px;
     flex-direction: row;
     gap: 115px;
@@ -34,17 +34,17 @@
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .AuthPage {
-    background-image: url("../../../images/auth-page-bg@2x.png");
+    background-image: url("../../images/auth-page-bg@2x.png");
   }
 
   @media screen and (min-width: 768px) {
     .AuthPage {
-      background-image: url("../../../images/auth-page-bg-768@2x.png");
+      background-image: url("../../images/auth-page-bg-768@2x.png");
     }
   }
   @media screen and (min-width: 1024px) {
     .AuthPage {
-      background-image: url("../../../images/auth-page-bg-1024@2x.png");
+      background-image: url("../../images/auth-page-bg-1024@2x.png");
     }
   }
 }
