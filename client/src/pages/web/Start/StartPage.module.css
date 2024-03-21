@@ -71,7 +71,7 @@
       background-image: url(../../../images/start-page-768@2x.png);
     }
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1024px) {
     .StartPage {
       background-image: url(../../../images/start-page-1024@2x.png);
     }

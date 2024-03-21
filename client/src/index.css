@@ -41,6 +41,10 @@ input {
   margin: 0;
 }
 
+a {
+  color: currentColor;
+}
+
 h1,
 h2,
 h3,
