@@ -1,0 +1,32 @@
+.container {
+  width: 285px;
+  height: 250px;
+  background-image: url("../../../../images/auth-page-1596.png");
+  background-size: contain;
+  margin-bottom: -32px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 409px;
+    height: 359px;
+    margin-bottom: -11px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    width: 532px;
+    height: 468px;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .container {
+    background-image: url("../../../../images/auth-page-3192.png");
+  }
+}
