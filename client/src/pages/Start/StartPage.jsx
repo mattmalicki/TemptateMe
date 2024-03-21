@@ -1,6 +1,6 @@
 import styles from "./StartPage.module.css";
-import { Logo } from "../../components/web/Atoms/Logo/Logo.jsx";
-import { CurvedButton } from "../../components/web/Atoms/CurvedButton/CurvedButton.jsx";
+import { Logo } from "../../components/Atoms/Logo/Logo.jsx";
+import { CurvedButton } from "../../components/Atoms/CurvedButton/CurvedButton.jsx";
 
 const StartPage = () => {
   return (
