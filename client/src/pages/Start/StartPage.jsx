@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./StartPage.module.css";
 import { Logo } from "../../components/Atoms/Logo/Logo.jsx";
 import { CurvedButton } from "../../components/Atoms/CurvedButton/CurvedButton.jsx";
@@ -15,12 +16,12 @@ const StartPage = () => {
         your own recipes at any time.
       </p>
       <div className={styles.buttons}>
-        <a href="google.com">
+        <Link to="register">
           <CurvedButton title="Registration" greenOrBlack="green" />
-        </a>
-        <a href="google.com">
+        </Link>
+        <Link to="signin">
           <CurvedButton title="Sign in" />
-        </a>
+        </Link>
       </div>
     </section>
   );

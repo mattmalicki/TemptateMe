@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./AuthForm.module.css";
 import { RectangleInput } from "../../Molecules/RectangleInput/RectangleInput";
 import { RectangleButton } from "../../Atoms/RectangleButton/RectangleButton";
@@ -39,14 +40,14 @@ const AuthForm = ({ isRegister }) => {
         )}
       </form>
       {!isRegister && (
-        <a href="/register" className={styles.link}>
+        <Link to="/register" className={styles.link}>
           Registration
-        </a>
+        </Link>
       )}
       {isRegister && (
-        <a href="/login" className={styles.link}>
+        <Link to="/signin" className={styles.link}>
           Sign in
-        </a>
+        </Link>
       )}
     </div>
   );
