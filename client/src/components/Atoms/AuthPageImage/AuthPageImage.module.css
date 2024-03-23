@@ -1,5 +1,5 @@
 .container {
-  width: 285px;
+  min-width: 285px;
   height: 250px;
   background-image: url("../../../images/auth-page-1596.png");
   background-size: contain;
@@ -9,16 +9,16 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    width: 409px;
-    max-height: 359px;
+    min-width: 409px;
+    height: 359px;
     margin-bottom: -11px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .container {
-    width: 532px;
-    max-height: 468px;
+    min-width: 532px;
+    height: 468px;
     margin-bottom: 0;
   }
 }
