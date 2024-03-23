@@ -13,7 +13,7 @@
   padding: 0 20px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 610px) {
   .AuthPage {
     background-image: url("../../images/auth-page-bg-768.png");
     padding: 0 134px;
@@ -37,7 +37,7 @@
     background-image: url("../../images/auth-page-bg@2x.png");
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 610px) {
     .AuthPage {
       background-image: url("../../images/auth-page-bg-768@2x.png");
     }

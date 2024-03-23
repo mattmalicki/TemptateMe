@@ -4,7 +4,6 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 8px;
-  justify-content: center;
   color: #ffffff80;
   border: 1px solid currentColor;
   border-radius: 6px;
