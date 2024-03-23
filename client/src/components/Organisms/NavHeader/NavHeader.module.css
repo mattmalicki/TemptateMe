@@ -1,0 +1,25 @@
+.NavHeader {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .NavHeader {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .NavHeader {
+    flex-direction: row;
+    gap: 30px;
+  }
+  .searchText {
+    visibility: hidden;
+  }
+}

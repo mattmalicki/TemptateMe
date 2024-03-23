@@ -1,5 +1,5 @@
 import styles from "./CurvedInput.module.css";
-import CurvedButton from "../../Atoms/CurvedButton.jsx";
+import { CurvedButton } from "../../Atoms/CurvedButton/CurvedButton.jsx";
 
 const CurvedInput = ({
   placeholderText,
