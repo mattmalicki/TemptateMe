@@ -1,8 +1,8 @@
-import { NavHeader } from "./Navigation.jsx";
+import { Navigation } from "./Navigation.jsx";
 
 export default {
-  title: "organisms/NavHeader",
-  component: NavHeader,
+  title: "organisms/Navigation",
+  component: Navigation,
   parameters: {
     layout: "centered",
   },
@@ -10,5 +10,7 @@ export default {
 };
 
 export const Primary = {
-  args: {},
+  args: {
+    isFooter: false,
+  },
 };

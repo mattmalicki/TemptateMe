@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import styles from "./NavHeader.module.css";
+import styles from "./Navigation.module.css";
 import { ReactComponent as SearchIcon } from "./icon-search.svg";
 
-const NavHeader = ({ isFooter = false }) => {
+const Navigation = ({ isFooter = false }) => {
   return (
     <ul className={`${isFooter ? styles.NavFooter : styles.NavHeader}`}>
       <li>
@@ -70,4 +70,4 @@ const NavHeader = ({ isFooter = false }) => {
   );
 };
 
-export { NavHeader };
+export { Navigation };
