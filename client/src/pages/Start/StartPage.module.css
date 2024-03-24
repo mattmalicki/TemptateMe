@@ -17,6 +17,8 @@
 }
 
 .icon {
+  fill: var(--accent);
+  stroke: var(--primaryColor);
   width: 54px;
   height: 54px;
 }

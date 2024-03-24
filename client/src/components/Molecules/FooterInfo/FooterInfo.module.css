@@ -1,0 +1,42 @@
+.FooterInfo {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  fill: var(--secondAccent);
+  stroke: var(--accent);
+}
+
+.List {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .FooterInfo {
+    font-size: 28px;
+  }
+  .icon {
+    width: 44px;
+    height: 44px;
+  }
+  .List {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 10px;
+    list-style: circle;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 24px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .List {
+    gap: 12px;
+    margin-top: 24px;
+  }
+}
