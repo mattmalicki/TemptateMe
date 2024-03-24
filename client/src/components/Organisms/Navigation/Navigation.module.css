@@ -7,10 +7,24 @@
   gap: 32px;
 }
 
+.NavFooter {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
 @media screen and (min-width: 768px) {
   .NavHeader {
     flex-direction: row;
     gap: 40px;
+  }
+  .NavFooter {
+    gap: 20px;
   }
 }
 
@@ -18,6 +32,9 @@
   .NavHeader {
     flex-direction: row;
     gap: 30px;
+  }
+  .NavFooter {
+    gap: 24px;
   }
   .searchText {
     display: none;

@@ -1,4 +1,4 @@
-import { NavHeader } from "./NavHeader.jsx";
+import { NavHeader } from "./Navigation.jsx";
 
 export default {
   title: "organisms/NavHeader",
