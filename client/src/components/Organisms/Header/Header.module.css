@@ -1,0 +1,19 @@
+.Header {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 18px 32px;
+}
+
+.nav {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .nav {
+    display: block;
+  }
+}

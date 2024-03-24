@@ -6,6 +6,7 @@ const NavHeader = () => {
   return (
     <div className={styles.NavHeader}>
       <NavLink
+        to="/categories"
         className={({ isActive }) =>
           isActive && `${styles.links} ${styles.Active}`
         }
@@ -13,6 +14,7 @@ const NavHeader = () => {
         Categories
       </NavLink>
       <NavLink
+        to="/addRecipe"
         className={({ isActive }) =>
           isActive && `${styles.links} ${styles.Active}`
         }
@@ -20,6 +22,7 @@ const NavHeader = () => {
         Add recipes
       </NavLink>
       <NavLink
+        to="/myRecipes"
         className={({ isActive }) =>
           isActive && `${styles.links} ${styles.Active}`
         }
@@ -27,6 +30,7 @@ const NavHeader = () => {
         My recipes
       </NavLink>
       <NavLink
+        to="/favorites"
         className={({ isActive }) =>
           isActive && `${styles.links} ${styles.Active}`
         }
@@ -34,6 +38,7 @@ const NavHeader = () => {
         Favorites
       </NavLink>
       <NavLink
+        to="/shopping"
         className={({ isActive }) =>
           isActive && `${styles.links} ${styles.Active}`
         }
@@ -41,6 +46,7 @@ const NavHeader = () => {
         Shopping list
       </NavLink>
       <NavLink
+        to="/searchRecipes"
         className={({ isActive }) =>
           isActive && `${styles.links} ${styles.Active}`
         }
