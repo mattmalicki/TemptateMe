@@ -1,0 +1,15 @@
+.FooterTerms {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+  font-size: 14px;
+  color: var(--secondColor);
+}
+
+.rights {
+  font-weight: 500;
+}
+
+.terms {
+  font-weight: 400;
+}
