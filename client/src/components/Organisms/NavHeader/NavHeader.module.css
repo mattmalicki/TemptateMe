@@ -20,6 +20,6 @@
     gap: 30px;
   }
   .searchText {
-    visibility: hidden;
+    display: none;
   }
 }
