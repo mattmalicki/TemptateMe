@@ -1,0 +1,36 @@
+.Newsletter {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.text {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .Newsletter {
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Newsletter {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .text {
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .description {
+    font-weight: 400;
+    font-size: 14px;
+  }
+}
