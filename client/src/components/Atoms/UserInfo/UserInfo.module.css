@@ -1,0 +1,34 @@
+.UserInfo {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 14px;
+}
+
+.UserImage {
+  width: 34px;
+  height: 34px;
+  border-radius: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.UserName {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--secondColor);
+}
+
+@media screen and (min-width: 768px) {
+  .UserImage {
+    width: 44px;
+    height: 44px;
+  }
+  .UserName {
+    font-size: 14px;
+  }
+}
