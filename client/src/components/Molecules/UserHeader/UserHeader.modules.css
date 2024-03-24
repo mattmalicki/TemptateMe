@@ -1,0 +1,23 @@
+.UserHeader {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  color: var(--secondColor);
+}
+
+.menuIcon {
+  display: visible;
+}
+
+.searchIcon {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .menuIcon {
+    display: none;
+  }
+
+  .searchIcon {
+    display: visible;
+  }
+}
