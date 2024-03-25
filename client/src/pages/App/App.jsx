@@ -9,8 +9,9 @@ import { useAuth } from "../../hooks/index";
 import { PrivateRoute } from "../../components/Atoms/PrivateRoute/PrivateRoute";
 import { RestrictedRoute } from "../../components/Atoms/RestrictedRoute/RestrictedRoute";
 
-import { StartPage } from "../Start/StartPage.jsx";
 import { AuthPage } from "../Auth/AuthPage.jsx";
+import { StartPage } from "../Start/StartPage.jsx";
+import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 
 import styles from "./App.css";
 
@@ -21,25 +22,28 @@ function App() {
   return (
     <div className={styles.App}>
       <Routes>
-        <Route path="/" element={<StartPage />}></Route>
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/home"
-              component={<AuthPage isRegister={true} />}
-            />
-          }
-        ></Route>
-        <Route
-          path="/signin"
-          element={
-            <RestrictedRoute
-              redirectTo="/home"
-              component={<AuthPage isRegister={false} />}
-            />
-          }
-        ></Route>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<StartPage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/home"
+                component={<AuthPage isRegister={true} />}
+              />
+            }
+          ></Route>
+          <Route
+            path="/signin"
+            element={
+              <RestrictedRoute
+                redirectTo="/home"
+                component={<AuthPage isRegister={false} />}
+              />
+            }
+          ></Route>
+          <Route path="/testing" element={"testing"} />
+        </Route>
       </Routes>
     </div>
   );
