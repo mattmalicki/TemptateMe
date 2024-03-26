@@ -1,4 +1,4 @@
-import { useEffect, lazy } from "react";
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
@@ -14,9 +14,6 @@ import { StartPage } from "../Start/StartPage.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 
 import styles from "./App.module.css";
-
-// const StartPage = lazy(() => import("../Start/StartPage.jsx"));
-// const AuthPage = lazy(() => import("../Auth/AuthPage.jsx"));
 
 function App() {
   return (
@@ -42,7 +39,31 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/testing" element={"testing"} />
+          <Route path="/testing" element={<Test />} />
+          <Route
+            path="/categories"
+            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+          />
+          <Route
+            path="/addRecipe"
+            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+          />
+          <Route
+            path="/myRecipes"
+            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+          />
+          <Route
+            path="/favorites"
+            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+          />
+          <Route
+            path="/shopping"
+            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+          />
+          <Route
+            path="/searchRecipes"
+            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+          />
         </Route>
       </Routes>
     </div>
@@ -50,3 +71,15 @@ function App() {
 }
 
 export default App;
+
+const style = {
+  width: "100%",
+  height: "100vh",
+  fontSize: "38px",
+  textAlign: "center",
+  color: "black",
+};
+
+const Test = () => {
+  return <div style={style}>Testing</div>;
+};
