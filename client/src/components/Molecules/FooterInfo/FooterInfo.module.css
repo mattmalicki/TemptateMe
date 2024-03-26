@@ -1,6 +1,15 @@
 .FooterInfo {
   font-weight: 700;
   font-size: 18px;
+  margin-bottom: 32px;
+}
+
+.Logo {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon {
@@ -12,11 +21,17 @@
 
 .List {
   display: none;
+  list-style: inside none circle;
 }
 
 @media screen and (min-width: 768px) {
   .FooterInfo {
     font-size: 28px;
+    flex-basis: 50%;
+    margin: 0;
+  }
+  .Logo {
+    justify-content: flex-start;
   }
   .icon {
     width: 44px;
@@ -27,7 +42,6 @@
     flex-direction: column;
     flex-wrap: nowrap;
     gap: 10px;
-    list-style: circle;
     font-weight: 400;
     font-size: 14px;
     margin-top: 24px;
@@ -35,6 +49,10 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .FooterInfo {
+    flex-basis: auto;
+    justify-content: space-between;
+  }
   .List {
     gap: 12px;
     margin-top: 24px;

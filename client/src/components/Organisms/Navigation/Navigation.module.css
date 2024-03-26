@@ -18,6 +18,12 @@
   font-size: 14px;
 }
 
+.links {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
 @media screen and (min-width: 768px) {
   .NavHeader {
     flex-direction: row;

@@ -9,7 +9,7 @@ const Navigation = ({ isFooter = false }) => {
         <NavLink
           to="/categories"
           className={({ isActive }) =>
-            isActive && `${styles.links} ${styles.Active}`
+            isActive ? `${styles.links} ${styles.Active}` : styles.links
           }
         >
           Categories
@@ -19,7 +19,7 @@ const Navigation = ({ isFooter = false }) => {
         <NavLink
           to="/addRecipe"
           className={({ isActive }) =>
-            isActive && `${styles.links} ${styles.Active}`
+            isActive ? `${styles.links} ${styles.Active}` : styles.links
           }
         >
           Add recipes
@@ -29,7 +29,7 @@ const Navigation = ({ isFooter = false }) => {
         <NavLink
           to="/myRecipes"
           className={({ isActive }) =>
-            isActive && `${styles.links} ${styles.Active}`
+            isActive ? `${styles.links} ${styles.Active}` : styles.links
           }
         >
           My recipes
@@ -39,7 +39,7 @@ const Navigation = ({ isFooter = false }) => {
         <NavLink
           to="/favorites"
           className={({ isActive }) =>
-            isActive && `${styles.links} ${styles.Active}`
+            isActive ? `${styles.links} ${styles.Active}` : styles.links
           }
         >
           Favorites
@@ -49,23 +49,25 @@ const Navigation = ({ isFooter = false }) => {
         <NavLink
           to="/shopping"
           className={({ isActive }) =>
-            isActive && `${styles.links} ${styles.Active}`
+            isActive ? `${styles.links} ${styles.Active}` : styles.links
           }
         >
           Shopping list
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/searchRecipes"
-          className={({ isActive }) =>
-            isActive && `${styles.links} ${styles.Active}`
-          }
-        >
-          <SearchIcon />
-          <span className={styles.searchText}>Search</span>
-        </NavLink>
-      </li>
+      {!isFooter && (
+        <li>
+          <NavLink
+            to="/searchRecipes"
+            className={({ isActive }) =>
+              isActive ? `${styles.links} ${styles.Active}` : styles.links
+            }
+          >
+            <SearchIcon />
+            <span className={styles.searchText}>Search</span>
+          </NavLink>
+        </li>
+      )}
     </ul>
   );
 };

@@ -12,7 +12,9 @@ const Footer = () => {
         <FooterInfo />
         <Navigation isFooter={true} />
         <Newsletter />
-        <Socials />
+        <div className={styles.Socials}>
+          <Socials />
+        </div>
       </footer>
       <FooterTerms />
     </div>
