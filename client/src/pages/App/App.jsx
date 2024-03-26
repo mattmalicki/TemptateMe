@@ -17,7 +17,9 @@ import styles from "./App.module.css";
 
 function App() {
   const { isLoggedIn, isRefreshing } = useAuth();
-  return (
+  return isRefreshing ? (
+    <div style={{ color: "black", fontSize: "56px" }}>Refreshing</div>
+  ) : (
     <div className={styles.App}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
