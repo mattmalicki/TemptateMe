@@ -1,7 +1,9 @@
 .FooterTerms {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 28px 0;
   font-size: 14px;
   color: var(--secondColor);
   opacity: 0.5;

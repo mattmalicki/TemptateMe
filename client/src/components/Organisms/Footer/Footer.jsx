@@ -7,17 +7,19 @@ import { FooterInfo } from "../../Molecules/FooterInfo/FooterInfo.jsx";
 
 const Footer = () => {
   return (
-    <div className={styles.container}>
-      <footer className={styles.Footer}>
-        <FooterInfo />
-        <Navigation isFooter={true} />
-        <Newsletter />
-        <div className={styles.Socials}>
-          <Socials />
-        </div>
-      </footer>
+    <>
+      <div className={styles.container}>
+        <footer className={styles.Footer}>
+          <FooterInfo />
+          <Navigation isFooter={true} />
+          <Newsletter />
+          <div className={styles.Socials}>
+            <Socials />
+          </div>
+        </footer>
+      </div>
       <FooterTerms />
-    </div>
+    </>
   );
 };
 
