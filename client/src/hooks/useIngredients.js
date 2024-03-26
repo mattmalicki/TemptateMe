@@ -1,9 +1,9 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import {
   selectIngredientsLoading,
   selectIngredients,
   selectIngredientsError,
-} from '../redux/ingredients/selector';
+} from "../redux/ingredients/selectors.js";
 
 const useShopping = () => {
   const isLoading = useSelector(selectIngredientsLoading);

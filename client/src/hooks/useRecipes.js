@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import {
   selectRecipesIsLoading,
   selectRecipes,
   selectRecipesPageAmount,
   selectRecipesError,
-} from '../redux/recipes/selector';
+} from "../redux/recipes/selectors.js";
 
 const useRecipes = () => {
   const isLoading = useSelector(selectRecipesIsLoading);

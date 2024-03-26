@@ -16,6 +16,7 @@ import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 import styles from "./App.module.css";
 
 function App() {
+  const { isLoggedIn, isRefreshing } = useAuth();
   return (
     <div className={styles.App}>
       <Routes>
