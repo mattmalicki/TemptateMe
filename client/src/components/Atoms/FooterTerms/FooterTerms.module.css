@@ -7,6 +7,9 @@
   font-size: 14px;
   color: var(--secondColor);
   opacity: 0.5;
+  background-image: url("../../../images/background-image.png");
+  background-repeat: no-repeat;
+  background-position: right 0 bottom 0;
 }
 
 .rights {

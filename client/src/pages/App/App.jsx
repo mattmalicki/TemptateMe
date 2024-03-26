@@ -13,7 +13,7 @@ import { AuthPage } from "../Auth/AuthPage.jsx";
 import { StartPage } from "../Start/StartPage.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 
-import styles from "./App.css";
+import styles from "./App.module.css";
 
 // const StartPage = lazy(() => import("../Start/StartPage.jsx"));
 // const AuthPage = lazy(() => import("../Auth/AuthPage.jsx"));
