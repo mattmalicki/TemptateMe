@@ -14,9 +14,15 @@ import { StartPage } from "../Start/StartPage.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 
 import styles from "./App.module.css";
+import { refresh } from "../../redux/auth/operations.js";
 
 function App() {
-  const { isLoggedIn, isRefreshing } = useAuth();
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(refresh());
+  }, [dispatch]);
   return isRefreshing ? (
     <div style={{ color: "black", fontSize: "56px" }}>Refreshing</div>
   ) : (
@@ -42,7 +48,11 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/testing" element={<Test />} />
+          <Route path="/home" element={<Test />} />
+          <Route
+            path="/home"
+            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+          />
           <Route
             path="/categories"
             element={<PrivateRoute redirectTo="/" component={<Test />} />}

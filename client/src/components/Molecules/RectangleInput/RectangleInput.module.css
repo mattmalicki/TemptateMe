@@ -12,7 +12,7 @@
 }
 
 .input {
-  width: max-content;
+  min-width: calc(100% - 60px);
   text-align: left;
   color: inherit;
 }

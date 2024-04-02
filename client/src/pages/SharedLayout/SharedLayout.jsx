@@ -5,15 +5,17 @@ import { Outlet } from "react-router-dom";
 import { Footer } from "../../components/Organisms/Footer/Footer.jsx";
 import { Header } from "../../components/Organisms/Header/Header.jsx";
 
+import { useAuth } from "../../hooks/index.js";
+
 const SharedLayout = () => {
-  const isLogged = true;
+  const { isLoggedIn } = useAuth();
   return (
     <div>
-      {isLogged && <Header />}
+      {isLoggedIn && <Header />}
       <Suspense fallback={"loading"}>
         <Outlet />
       </Suspense>
-      {isLogged && <Footer />}
+      {isLoggedIn && <Footer />}
     </div>
   );
 };
