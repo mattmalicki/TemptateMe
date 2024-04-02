@@ -6,6 +6,7 @@ const CurvedButton = ({
   greenOrBlack,
   size = "big",
   onClick = () => {},
+  children,
 }) => {
   const classes = `${styles.CurvedButton} ${styles[`${greenOrBlack}`]} ${
     styles[size]
@@ -13,6 +14,7 @@ const CurvedButton = ({
   return (
     <button className={classes} type={type} onClick={onClick}>
       {title}
+      {children}
     </button>
   );
 };
