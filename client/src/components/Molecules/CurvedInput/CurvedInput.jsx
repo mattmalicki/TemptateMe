@@ -4,11 +4,12 @@ import { CurvedButton } from "../../Atoms/CurvedButton/CurvedButton.jsx";
 const CurvedInput = ({
   placeholderText,
   buttonText,
+  greenOrBlack,
   onChange = () => {},
   onClick = () => {},
 }) => {
   const isDark = false;
-  const labelClasses = `${styles.CurvedButton} ${isDark && styles.dark}`;
+  const labelClasses = `${styles.CurvedInput} ${isDark ? styles.dark : ""}`;
   return (
     <label className={labelClasses}>
       <input
@@ -20,14 +21,14 @@ const CurvedInput = ({
       {!isDark && (
         <CurvedButton
           title={buttonText}
-          greenOrBlack="black"
+          greenOrBlack={greenOrBlack}
           onClick={onClick}
         />
       )}
       {isDark && (
         <CurvedButton
           title={buttonText}
-          greenOrBlack="green"
+          greenOrBlack={greenOrBlack}
           onClick={onClick}
         />
       )}

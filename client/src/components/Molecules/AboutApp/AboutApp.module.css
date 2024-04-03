@@ -1,3 +1,16 @@
+.AboutApp {
+  width: 100%;
+  justify-content: left;
+}
+
 .info {
   margin-top: 14px;
+  color: var(--secondColor);
+}
+
+@media screen and (min-width: 768px) {
+  .AboutApp {
+    width: 50%;
+    justify-content: left;
+  }
 }
