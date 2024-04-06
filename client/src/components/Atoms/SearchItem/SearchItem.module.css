@@ -1,0 +1,36 @@
+.SearchItem {
+  flex-basis: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.title {
+  width: calc(100% - 36px);
+  position: absolute;
+  padding: 16px;
+  bottom: 26px;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--titlesColor);
+}
+
+image {
+  width: 100%;
+  object-fit: cover;
+}
+
+@media screen and (min-width: 768px) {
+  .SearchItem {
+    flex-basis: calc((100% - 32px) / 2);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .SearchItem {
+    flex-basis: calc((100% - 42px) / 4);
+  }
+}
