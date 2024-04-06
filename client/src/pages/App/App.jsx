@@ -30,7 +30,12 @@ function App() {
     <div className={styles.App}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<StartPage />} />
+          <Route
+            index
+            element={
+              <RestrictedRoute redirectTo="/home" component={<StartPage />} />
+            }
+          />
           <Route
             path="/register"
             element={
