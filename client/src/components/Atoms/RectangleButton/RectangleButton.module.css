@@ -1,6 +1,6 @@
 .RectangleButton {
   width: 100%;
-  padding: 14px 0;
+  padding: 14px 24px;
   border: 1px solid transparent;
   border-radius: 6px;
   color: var(--primaryColor);
@@ -28,10 +28,4 @@
 .gray:hover {
   background-color: transparent;
   border-color: var(--thirdColor);
-}
-
-@media screen and (min-width: 768px) {
-  .RectangleButton {
-    padding: 18px 0;
-  }
 }

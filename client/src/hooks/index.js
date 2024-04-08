@@ -3,3 +3,4 @@ export { default as useCategories } from "./useCategories.js";
 export { default as useIngredients } from "./useIngredients.js";
 export { default as useRecipes } from "./useRecipes.js";
 export { default as useShopping } from "./useShopping.js";
+export { default as useWindowDimensions } from "./useWindowDimentions.js";

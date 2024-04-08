@@ -3,6 +3,7 @@ import { HomeInfo } from "../../components/Organisms/HomeInfo/HomeInfo.jsx";
 import styles from "./HomePage.module.css";
 import { fetchRecipes } from "../../redux/recipes/operations.js";
 import { useEffect } from "react";
+import { HomeRecipes } from "../../components/Organisms/HomeRecipes/HomeRecipes.jsx";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const HomePage = () => {
   return (
     <div className={styles.HomePage}>
       <HomeInfo />
+      <HomeRecipes />
     </div>
   );
 };

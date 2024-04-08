@@ -9,6 +9,7 @@
   position: absolute;
   padding: 16px;
   bottom: 26px;
+  left: 18px;
   overflow: hidden;
   white-space: nowrap;
   background-color: #fff;
@@ -18,9 +19,10 @@
   color: var(--titlesColor);
 }
 
-image {
+.image {
   width: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 @media screen and (min-width: 768px) {
