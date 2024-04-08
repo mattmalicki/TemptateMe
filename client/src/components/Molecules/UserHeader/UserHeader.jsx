@@ -11,6 +11,9 @@ const UserHeader = () => {
   const onClick = () => {
     setOpenUserWindow(true);
   };
+  const onClose = () => {
+    setOpenUserWindow(false);
+  };
   return (
     <div className={styles.UserHeader}>
       <UserInfo onClick={onClick} />
@@ -20,7 +23,7 @@ const UserHeader = () => {
       <div className={styles.switchIcon}>
         <SwitchMode />
       </div>
-      {openUserWindow && <UserWindow />}
+      {openUserWindow && <UserWindow onClose={onClose} />}
     </div>
   );
 };
