@@ -2,13 +2,14 @@ import styles from "./Header.module.css";
 import { Logo } from "../../Atoms/Logo/Logo.jsx";
 import { Navigation } from "../Navigation/Navigation.jsx";
 import { UserHeader } from "../../Molecules/UserHeader/UserHeader.jsx";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <header className={styles.Header}>
-      <div className={styles.icon}>
+      <Link to="/home" className={styles.icon}>
         <Logo />
-      </div>
+      </Link>
       <div className={styles.nav}>
         <Navigation />
       </div>
