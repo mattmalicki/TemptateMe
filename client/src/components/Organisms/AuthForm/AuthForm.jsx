@@ -11,7 +11,11 @@ const AuthForm = ({ isRegister }) => {
     event.preventDefault();
     const form = event.currentTarget;
     dispatch(
-      register({ name: form.name, email: form.email, password: form.password })
+      register({
+        name: form.text.value,
+        email: form.email.value,
+        password: form.password.value,
+      })
     );
   };
   const onSubmitLogin = (event) => {
