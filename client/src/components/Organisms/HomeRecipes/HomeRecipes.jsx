@@ -6,14 +6,16 @@ import { CurvedButton } from "../../Atoms/CurvedButton/CurvedButton.jsx";
 import { RectangleButton } from "../../Atoms/RectangleButton/RectangleButton.jsx";
 
 const HomeRecipes = () => {
-  const { recipes } = useRecipes();
-  return (
+  const { recipes, isLoading } = useRecipes();
+  return isLoading ? (
+    <div>Loading</div>
+  ) : (
     <ul className={styles.HomeRecipes}>
       {recipes.map((item, index) => {
         return (
           <li key={index} className={styles.listItem}>
             <span className={styles.categoryTitle}>{item.category}</span>
-            <HomeRecipesList recipes={item.recipes.recipes} />
+            <HomeRecipesList recipes={item.recipes?.recipes} />
             <Link
               className={styles.button}
               to={`/categories?category=${item.category}`}

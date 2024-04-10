@@ -11,8 +11,8 @@ const HomePage = () => {
     dispatch(fetchRecipes());
   }
   useEffect(() => {
-    onLoad();
-  });
+    dispatch(fetchRecipes());
+  }, [dispatch]);
   return (
     <div className={styles.HomePage}>
       <HomeInfo />
