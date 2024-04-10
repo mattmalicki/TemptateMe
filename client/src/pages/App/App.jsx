@@ -13,6 +13,7 @@ import { HomePage } from "../Home/HomePage.jsx";
 import { AuthPage } from "../Auth/AuthPage.jsx";
 import { StartPage } from "../Start/StartPage.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
+import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
 
 import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
@@ -61,7 +62,9 @@ function App() {
           />
           <Route
             path="/categories"
-            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+            element={
+              <PrivateRoute redirectTo="/" component={<CategoriesPage />} />
+            }
           />
           <Route
             path="/addRecipe"
