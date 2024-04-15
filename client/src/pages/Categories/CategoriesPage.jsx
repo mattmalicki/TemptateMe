@@ -5,6 +5,7 @@ import { fetchAllCategories } from "../../redux/categories/operations.js";
 import { CategoriesList } from "../../components/Molecules/CategoriesList/CategoriesList.jsx";
 import { PageTitle } from "../../components/Atoms/PageTitle/PageTitle.jsx";
 import { RecipesList } from "../../components/Organisms/RecipesList/RecipesList.jsx";
+import { Pagination } from "../../components/Atoms/Pagination/Pagination.jsx";
 
 const CategoriesPage = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const CategoriesPage = () => {
       <PageTitle title="Categories" />
       <CategoriesList />
       <RecipesList />
+      <Pagination />
     </div>
   );
 };

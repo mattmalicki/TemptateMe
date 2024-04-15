@@ -1,11 +1,11 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const fetchRecipes = createAsyncThunk(
-  'recipe/fetchMainPage',
+  "recipe/fetchMainPage",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/recipes/main-page');
+      const response = await axios.get("/recipes/main-page");
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -14,7 +14,7 @@ const fetchRecipes = createAsyncThunk(
 );
 
 const fetchRecipesByQuery = createAsyncThunk(
-  'recipe/fetchByQuery',
+  "recipe/fetchByQuery",
   async (data, thunkAPI) => {
     try {
       const { query, page, limit } = data;
@@ -29,10 +29,10 @@ const fetchRecipesByQuery = createAsyncThunk(
 );
 
 const fetchFavorites = createAsyncThunk(
-  'recipe/fetchFavorites',
+  "recipe/fetchFavorites",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/recipes/favorites');
+      const response = await axios.get("/recipes/favorites");
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -41,7 +41,7 @@ const fetchFavorites = createAsyncThunk(
 );
 
 const fetchRecipeById = createAsyncThunk(
-  'recipe/fetchById',
+  "recipe/fetchById",
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(`/recipes/${id}`);
@@ -53,10 +53,13 @@ const fetchRecipeById = createAsyncThunk(
 );
 
 const fetchRecipesByCategory = createAsyncThunk(
-  'recipe/fetchByCategory',
-  async (category, thunkAPI) => {
+  "recipe/fetchByCategory",
+  async (data, thunkAPI) => {
     try {
-      const response = await axios.get(`/recipes/category/${category}`);
+      const { page, category } = data;
+      const response = await axios.get(
+        `/recipes/category/${category}?page=${page}`
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -65,7 +68,7 @@ const fetchRecipesByCategory = createAsyncThunk(
 );
 
 const fetchRecipesByIngredient = createAsyncThunk(
-  'recipe/fetchByIngredient',
+  "recipe/fetchByIngredient",
   async (ingredientId, thunkAPI) => {
     try {
       const response = await axios.get(`/recipes/ingredients/${ingredientId}`);
@@ -77,19 +80,19 @@ const fetchRecipesByIngredient = createAsyncThunk(
 );
 
 const addRecipe = createAsyncThunk(
-  'recipe/addRecipe',
+  "recipe/addRecipe",
   async ({ recipeImage, recipeInfo }, thunkAPI) => {
     try {
       const formData = new FormData();
       const blobedInfo = new Blob([recipeInfo], {
-        type: 'application/json',
+        type: "application/json",
       });
       const blobedImage = new Blob([recipeImage], {
-        type: 'multipart/form-data',
+        type: "multipart/form-data",
       });
-      formData.append('recipeImage', blobedImage);
-      formData.append('recipe', blobedInfo);
-      const response = await axios.post('/user/ownRecipes', formData);
+      formData.append("recipeImage", blobedImage);
+      formData.append("recipe", blobedInfo);
+      const response = await axios.post("/user/ownRecipes", formData);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -98,7 +101,7 @@ const addRecipe = createAsyncThunk(
 );
 
 const deleteRecipe = createAsyncThunk(
-  'recipe/deleteRecipe',
+  "recipe/deleteRecipe",
   async (recipeId, thunkAPI) => {
     try {
       const response = await axios.delete(`/user/ownRecipes/${recipeId}`);
@@ -110,7 +113,7 @@ const deleteRecipe = createAsyncThunk(
 );
 
 const addToFavorites = createAsyncThunk(
-  'recipe/addToFavorites',
+  "recipe/addToFavorites",
   async (recipeId, thunkAPI) => {
     try {
       const response = await axios.post(`/recipes/favorites/${recipeId}`);
@@ -122,7 +125,7 @@ const addToFavorites = createAsyncThunk(
 );
 
 const deleteFromFavorites = createAsyncThunk(
-  'recipe/deleteFromFavorites',
+  "recipe/deleteFromFavorites",
   async (recipeId, thunkAPI) => {
     try {
       const response = await axios.delete(`/recipes/favorites/${recipeId}`);
@@ -130,6 +133,17 @@ const deleteFromFavorites = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  }
+);
+
+const updatePage = createAsyncThunk(
+  "recipe/updatePage",
+  async (page, thunkAPI) => {
+    if (page < 0) {
+      return thunkAPI.rejectWithValue(new Error("Page can't be below 0"));
+    }
+
+    return page;
   }
 );
 
@@ -144,4 +158,5 @@ export {
   fetchRecipesByIngredient,
   addToFavorites,
   deleteFromFavorites,
+  updatePage,
 };

@@ -1,0 +1,48 @@
+.Pagination {
+  width: fit-content;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 28px;
+  border-radius: 26px;
+  box-shadow: 0 4px 4px 0 rgba(135, 135, 135, 0.2);
+  background: #fafafa;
+  color: var(--popularDescriptionText);
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 18px;
+}
+
+.arrows {
+  width: 8px;
+  height: 15px;
+  color: var(--paginationArrow);
+}
+
+.arrows:hover {
+  color: var(--accent);
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 100%;
+}
+
+.number:hover {
+  background-color: #ebf3d4;
+}
+
+.currrent {
+  background-color: #ebf3d4;
+}

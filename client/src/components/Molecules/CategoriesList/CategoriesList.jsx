@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import styles from "./CategoriesList.module.css";
 import { useDispatch } from "react-redux";
-import { useCategories } from "../../../hooks/index.js";
+import { useCategories, useRecipes } from "../../../hooks/index.js";
 import { fetchRecipesByCategory } from "../../../redux/recipes/operations.js";
 import { useSearchParams } from "react-router-dom";
 
 const CategoriesList = () => {
-  const [category, setCategory] = useState("Breakfast");
+  const [category, setCategory] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const { categoriesTitles } = useCategories();
+  const { page } = useRecipes();
 
   const onClick = (event) => {
     if (categoriesTitles.includes(event.target.id)) {
@@ -19,14 +20,17 @@ const CategoriesList = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchRecipesByCategory(category));
-  }, [category, dispatch]);
-
-  useEffect(() => {
     if (searchParams.get("category")) {
       setCategory(searchParams.get("category"));
+    } else {
+      setCategory("Breakfast");
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    category && dispatch(fetchRecipesByCategory({ category, page }));
+  }, [category, page, dispatch]);
+
   return (
     <ul className={styles.CategoriesList}>
       {categoriesTitles.map((item, index) => {

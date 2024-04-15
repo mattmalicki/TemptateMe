@@ -6,7 +6,7 @@ const RecipesList = () => {
   const { recipes } = useRecipes();
   return (
     <ul className={styles.RecipesList}>
-      {recipes.map((recipe) => (
+      {recipes.map((recipe, index) => (
         <li key={recipe._id} className={styles.RecipesListItem}>
           <SearchItem
             id={recipe._id}
