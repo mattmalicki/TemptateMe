@@ -12,7 +12,7 @@ const AddRecipeInfoInput = ({
 }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const { categoriesTitles } = useCategories();
-  const [value, setValue] = useState("Breakfast");
+  const [value, setValue] = useState("");
   const [timeArray, setTimeArray] = useState([]);
 
   const handleCloseDropdown = (event) => {
@@ -39,8 +39,6 @@ const AddRecipeInfoInput = ({
     setValue(event.target.value);
   };
 
-  // useEffect(() => {}, [openDropdown]);
-
   useEffect(() => {
     if (isTime) {
       const array = [];
@@ -50,6 +48,11 @@ const AddRecipeInfoInput = ({
       setTimeArray(array);
     }
   }, [isTime]);
+
+  useEffect(() => {
+    isCategory && setValue("Breakfast");
+    isTime && setValue("60");
+  }, []);
 
   return (
     <label className={styles.AddCategoryInfo}>
@@ -63,6 +66,7 @@ const AddRecipeInfoInput = ({
           value={value}
           data-scroll=""
         />
+        {isTime && "min"}
         {(isCategory || isTime) && (
           <button
             className={styles.icon}
