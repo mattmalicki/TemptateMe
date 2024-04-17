@@ -3,15 +3,13 @@ import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
 import { useAuth } from "../../hooks/index";
-// import { refresh } from "../../redux/auth/operations";
-
-// import { Layout } from 'pages/Layout/Layout';
 import { PrivateRoute } from "../../components/Atoms/PrivateRoute/PrivateRoute";
 import { RestrictedRoute } from "../../components/Atoms/RestrictedRoute/RestrictedRoute";
 
 import { HomePage } from "../Home/HomePage.jsx";
 import { AuthPage } from "../Auth/AuthPage.jsx";
 import { StartPage } from "../Start/StartPage.jsx";
+import { AddRecipePage } from "../AddRecipe/AddRecipe.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
 
@@ -68,7 +66,9 @@ function App() {
           />
           <Route
             path="/addRecipe"
-            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+            element={
+              <PrivateRoute redirectTo="/" component={<AddRecipePage />} />
+            }
           />
           <Route
             path="/myRecipes"
