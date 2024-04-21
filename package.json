@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "install-all": "cd ./server && npm install && cd ./client && npm install",
     "start-server": "cd ./server && node server",
     "start-client": "cd ./client && npm start",
     "start": "npm run start-server && npm run start-client",
