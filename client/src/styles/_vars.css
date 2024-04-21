@@ -7,6 +7,7 @@
   --font-bold: 700;
 
   --accent: #8baa36;
+  --secondAccent: #ebf3d4;
   --primaryColor: #fafafa;
   --secondColor: #22252a;
   --thirdColor: #23262a;
@@ -20,6 +21,7 @@
   --closeIcon: #333333;
   --mainBgDark: #1e1f28;
   --secondBg: #d9d9d9;
+  --header: #3e4462;
 
   /* input state */
   --correct: #3cbc81;

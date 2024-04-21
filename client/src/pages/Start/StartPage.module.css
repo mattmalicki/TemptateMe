@@ -1,0 +1,90 @@
+.StartPage {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(../../images/start-page.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 0 35px;
+  color: var(--primaryColor);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.icon {
+  fill: var(--accent);
+  stroke: var(--primaryColor);
+  width: 54px;
+  height: 54px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  margin: 28px 0 14px;
+}
+
+.comment {
+  max-width: 544px;
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .StartPage {
+    background-image: url(../../images/start-page-768.png);
+    padding: 0 134px;
+    font-size: 18px;
+  }
+  .icon {
+    width: 68px;
+    height: 68px;
+  }
+  .title {
+    font-size: 28px;
+    margin: 44px 0 14px;
+  }
+  .comment {
+    margin-bottom: 40px;
+  }
+  .buttons {
+    gap: 18px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .StartPage {
+    background-image: url(../../images/start-page-1024.png);
+  }
+}
+
+@media (min-device-pixel-ratio: 2),
+  (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi),
+  (min-resolution: 2dppx) {
+  .StartPage {
+    background-image: url(../../images/start-page@2x.png);
+  }
+
+  @media screen and (min-width: 768px) {
+    .StartPage {
+      background-image: url(../../images/start-page-768@2x.png);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .StartPage {
+      background-image: url(../../images/start-page-1024@2x.png);
+    }
+  }
+}

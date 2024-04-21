@@ -1,0 +1,25 @@
+.UserHeader {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  color: var(--secondColor);
+}
+
+.menuIcon {
+  display: inline-block;
+}
+
+.switchIcon {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .menuIcon {
+    display: none;
+  }
+
+  .switchIcon {
+    display: inline-block;
+  }
+}

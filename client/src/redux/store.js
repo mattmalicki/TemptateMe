@@ -7,20 +7,20 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage/index.js';
-import { configureStore } from '@reduxjs/toolkit';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage/index";
+import { configureStore } from "@reduxjs/toolkit";
 
-import { authReducer } from './auth/slice.js';
-import { recipesReducer } from './recipes/slice.js';
-import { categoriesReducer } from './categories/slice.js';
-import { shoppingListReducer } from './shopping/slice.js';
-import { ingredientsReducer } from './ingredients/slice.js';
+import { authReducer } from "./auth/slice.js";
+import { recipesReducer } from "./recipes/slice.js";
+import { categoriesReducer } from "./categories/slice.js";
+import { shoppingListReducer } from "./shopping/slice.js";
+import { ingredientsReducer } from "./ingredients/slice.js";
 
 const authPersistConfig = {
-  key: 'auth',
+  key: "auth",
   storage,
-  whitelist: ['token'],
+  whitelist: ["token"],
 };
 
 const store = configureStore({
@@ -31,13 +31,13 @@ const store = configureStore({
     ingredients: ingredientsReducer,
     shoppingList: shoppingListReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: process.env.NODE_ENV === 'development',
+  devTools: process.env.NODE_ENV === "development",
 });
 
 const persistor = persistStore(store);

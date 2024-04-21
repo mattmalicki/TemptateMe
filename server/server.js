@@ -1,1 +1,1 @@
-console.log("Test backend");
+import app from "./src/app.js";

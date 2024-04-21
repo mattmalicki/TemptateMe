@@ -1,0 +1,32 @@
+.MyRecipesListItem {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 9px;
+}
+
+.image {
+  border-radius: 8px;
+  flex-basis: 33%;
+}
+
+.info {
+  flex-basis: 66%;
+  position: relative;
+}
+
+.trash {
+  position: absolute;
+  top: 1;
+  right: 1;
+  width: 14px;
+  height: 14px;
+  background-color: var(--accent);
+  stroke: var(--primaryColor);
+}
+
+.favorites {
+  background-color: var(--elementBg);
+  stroke: var(--secondColor);
+}

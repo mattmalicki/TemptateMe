@@ -1,0 +1,26 @@
+.HomeInfo {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  gap: 44px;
+}
+
+.toRecipes {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.input {
+  height: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+  .toRecipes {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  .input {
+    width: 50%;
+  }
+}

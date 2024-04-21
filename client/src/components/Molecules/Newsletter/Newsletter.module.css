@@ -1,0 +1,45 @@
+.Newsletter {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 8px;
+  max-width: 400px;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 32px;
+}
+
+.text {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .Newsletter {
+    flex-direction: row;
+    gap: 12px;
+    margin-top: 72px;
+    flex-basis: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .Newsletter {
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    max-width: 340px;
+  }
+  .text {
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .description {
+    font-weight: 400;
+    font-size: 14px;
+  }
+}

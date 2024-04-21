@@ -1,0 +1,18 @@
+.HomeRecipesList {
+  width: 100%;
+  margin-top: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .HomeRecipesList {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .HomeRecipesList {
+    gap: 14px;
+  }
+}

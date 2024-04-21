@@ -1,18 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { addRecipe, deleteRecipe, deleteFromFavorites } from './operations.js';
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  addRecipe,
+  deleteRecipe,
+  deleteFromFavorites,
+  updatePage,
+} from "./operations.js";
 
-const clearLoadingError = state => {
+const clearLoadingError = (state) => {
   state.isLoading = false;
   state.error = null;
 };
 
-const handlePending = state => {
+const handlePending = (state) => {
   state.isLoading = true;
 };
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
+  state.page = 0;
 };
 
 const handleFulfilled = (state, action) => {
@@ -21,44 +27,49 @@ const handleFulfilled = (state, action) => {
   action.payload.pageAmount && (state.pageAmount = action.payload.pageAmount);
 };
 
-const isPendingAction = action => {
-  return action.type.endsWith('/pending');
+const isPendingAction = (action) => {
+  return action.type.endsWith("/pending");
 };
 
-const isFulfilledAction = action => {
-  return action.type.endsWith('/fulfilled');
+const isFulfilledAction = (action) => {
+  return action.type.endsWith("/fulfilled");
 };
 
-const isRejectAction = action => {
-  return action.type.endsWith('/rejected');
+const isRejectAction = (action) => {
+  return action.type.endsWith("/rejected");
 };
 
 const recipesSlice = createSlice({
-  name: 'recipes',
+  name: "recipes",
   initialState: {
     items: [],
     pageAmount: 0,
+    page: 0,
     isLoading: false,
     error: null,
   },
   reducers: {},
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(addRecipe.fulfilled, (state, action) => {
         clearLoadingError(state);
         state.items.push(action.payload.recipes);
       })
+      .addCase(updatePage.fulfilled, (state, action) => {
+        clearLoadingError(state);
+        state.page = action.payload;
+      })
       .addCase(deleteRecipe.fulfilled, (state, action) => {
         clearLoadingError(state);
         const index = state.items.findIndex(
-          recipe => recipe._id === action.payload.recipeId
+          (recipe) => recipe._id === action.payload.recipeId
         );
         index !== -1 && state.items.splice(index, 1);
       })
       .addCase(deleteFromFavorites.fulfilled, (state, action) => {
         clearLoadingError(state);
         const index = state.items.findIndex(
-          recipe => recipe._id === action.payload.recipeId
+          (recipe) => recipe._id === action.payload.recipeId
         );
         index !== -1 && state.items.splice(index, 1);
       })

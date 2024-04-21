@@ -1,0 +1,31 @@
+.CategoriesList {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 28px;
+  border-bottom: 1px solid var(--secondBg);
+  color: var(--secondBg);
+  overflow: scroll;
+  padding: 10px 0 32px 29px;
+  cursor: pointer;
+}
+
+.listItem {
+  position: relative;
+}
+
+.marked {
+  display: block;
+  color: var(--accent);
+}
+
+.marked::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  bottom: -32px;
+  left: 0;
+  right: 0;
+  width: fit-content;
+  height: 1px;
+  background-color: var(--accent);
+}

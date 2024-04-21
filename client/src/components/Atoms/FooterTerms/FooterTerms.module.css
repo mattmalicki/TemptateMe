@@ -1,0 +1,21 @@
+.FooterTerms {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 0 auto;
+  padding: 28px 0;
+  font-size: 14px;
+  color: var(--secondColor);
+  opacity: 0.5;
+  background-image: url("../../../images/background-image.png");
+  background-repeat: no-repeat;
+  background-position: right 0 bottom 0;
+}
+
+.rights {
+  font-weight: 500;
+}
+
+.terms {
+  font-weight: 400;
+}
