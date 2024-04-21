@@ -9,7 +9,9 @@ import { RestrictedRoute } from "../../components/Atoms/RestrictedRoute/Restrict
 import { HomePage } from "../Home/HomePage.jsx";
 import { AuthPage } from "../Auth/AuthPage.jsx";
 import { StartPage } from "../Start/StartPage.jsx";
+import { FavoritesPage } from "../Favorites/Favorites.jsx";
 import { AddRecipePage } from "../AddRecipe/AddRecipe.jsx";
+import { MyRecipesPage } from "../MyRecipes/MyRecipes.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
 
@@ -72,11 +74,15 @@ function App() {
           />
           <Route
             path="/myRecipes"
-            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+            element={
+              <PrivateRoute redirectTo="/" component={<MyRecipesPage />} />
+            }
           />
           <Route
             path="/favorites"
-            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+            element={
+              <PrivateRoute redirectTo="/" component={<FavoritesPage />} />
+            }
           />
           <Route
             path="/shopping"

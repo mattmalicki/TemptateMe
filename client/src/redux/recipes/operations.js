@@ -42,9 +42,9 @@ const fetchRecipesByQuery = createAsyncThunk(
 
 const fetchFavorites = createAsyncThunk(
   "recipe/fetchFavorites",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const response = await axios.get("/recipes/favorites");
+      const response = await axios.get(`/recipes/favorites?page=${page}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -159,6 +159,18 @@ const updatePage = createAsyncThunk(
   }
 );
 
+const fetchUserRecipes = createAsyncThunk(
+  "recipe/fetchUserRecipes",
+  async (page, thunkAPI) => {
+    try {
+      const response = await axios.get(`/user/ownRecipes?page=${page}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export {
   fetchRecipes,
   addRecipe,
@@ -172,4 +184,5 @@ export {
   deleteFromFavorites,
   updatePage,
   fetchPopularRecipes,
+  fetchUserRecipes,
 };

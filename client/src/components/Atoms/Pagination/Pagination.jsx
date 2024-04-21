@@ -67,17 +67,19 @@ const Pagination = () => {
   }, [pageAmount]);
 
   return (
-    <div className={styles.Pagination}>
-      <button onClick={onSubstrack} className={styles.arrows}>
-        <IconLeftArrow />
-      </button>
-      <ul onClick={onClick} className={styles.list}>
-        {listItems(pageAmount)}
-      </ul>
-      <button onClick={onAdd} className={styles.arrows}>
-        <IconRightArrow />
-      </button>
-    </div>
+    pageAmount && (
+      <div className={styles.Pagination}>
+        <button onClick={onSubstrack} className={styles.arrows}>
+          <IconLeftArrow />
+        </button>
+        <ul onClick={onClick} className={styles.list}>
+          {listItems(pageAmount)}
+        </ul>
+        <button onClick={onAdd} className={styles.arrows}>
+          <IconRightArrow />
+        </button>
+      </div>
+    )
   );
 };
 
