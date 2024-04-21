@@ -1,0 +1,6 @@
+.PageTitle {
+  font-weight: 600;
+  font-size: 44px;
+  color: var(--titlesColor);
+  margin: 100px 0;
+}

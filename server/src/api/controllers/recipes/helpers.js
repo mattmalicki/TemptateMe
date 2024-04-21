@@ -1,18 +1,18 @@
-import { Recipe, Category, Ingredient } from '../../../models/index.js';
-import { Types } from 'mongoose';
+import { Recipe, Category, Ingredient } from "../../../models/index.js";
+import { Types } from "mongoose";
 
-const getRecipeByIdFromDb = async recipeId => {
+const getRecipeByIdFromDb = async (recipeId) => {
   return await Recipe.findById(recipeId);
 };
 
-const getRecipesFromDbQuery = async ({ page = 0, limit = 6, query = '' }) => {
+const getRecipesFromDbQuery = async ({ page = 0, limit = 6, query = "" }) => {
   const recipes = await Recipe.find({
-    title: { $regex: `.*${query}.*`, $options: 'i' },
+    title: { $regex: `.*${query}.*`, $options: "i" },
   })
     .skip(page * limit)
     .limit(limit);
   const docNumbers = await Recipe.find({
-    title: { $regex: `.*${query}.*`, $options: 'i' },
+    title: { $regex: `.*${query}.*`, $options: "i" },
   }).countDocuments();
   return { recipes, pageAmount: Math.ceil(docNumbers / limit) };
 };
@@ -56,15 +56,15 @@ const deleteFromFavoritesInDb = async ({ userId, recipeId }) => {
 const getRecipesFromDbCategory = async ({
   page = 0,
   limit = 8,
-  category = '',
+  category = "",
 }) => {
   const recipes = await Recipe.find({
-    category: { $regex: `.*${category}.*`, $options: 'i' },
+    category: { $regex: `.*${category}.*`, $options: "i" },
   })
     .skip(page * limit)
     .limit(limit);
   const docNumbers = await Recipe.find({
-    category: { $regex: `.*${category}.*`, $options: 'i' },
+    category: { $regex: `.*${category}.*`, $options: "i" },
   }).countDocuments();
   return { recipes, pageAmount: Math.ceil(docNumbers / limit) };
 };
@@ -77,22 +77,22 @@ const getAllIngredientsFromDb = async () => {
   return await Ingredient.find({});
 };
 
-const getIngredientByIdFromDb = async id => {
+const getIngredientByIdFromDb = async (id) => {
   return await Ingredient.findById(id);
 };
 
 const getRecipesFromDbIngredient = async ({
   page = 0,
   limit = 8,
-  ingredientId = '',
+  ingredientId = "",
 }) => {
   const recipes = await Recipe.find({
-    'ingredients.id': new Types.ObjectId(ingredientId),
+    "ingredients.id": new Types.ObjectId(ingredientId),
   })
     .skip(page * limit)
     .limit(limit);
   const docNumbers = await Recipe.find({
-    'ingredients.id': new Types.ObjectId(ingredientId),
+    "ingredients.id": new Types.ObjectId(ingredientId),
   }).countDocuments();
   return { recipes, pageAmount: Math.ceil(docNumbers / limit) };
 };

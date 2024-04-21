@@ -1,0 +1,62 @@
+.RectangleInput {
+  width: 100%;
+  padding: 12px 14px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  color: #ffffff80;
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.input {
+  min-width: calc(100% - 60px);
+  text-align: left;
+  color: inherit;
+}
+
+.input::placeholder {
+  color: #ffffff80;
+}
+
+.RectangleInput:hover {
+  color: #fff;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+}
+
+.iconStatus {
+  width: 20px;
+  height: 20px;
+}
+
+.text {
+  position: absolute;
+  left: 0;
+  bottom: -8;
+}
+
+.error {
+  color: var(--incorrect);
+}
+
+.warning {
+  color: var(--warning);
+}
+
+.correct {
+  color: var(--correct);
+}
+
+@media screen and (min-width: 768px) {
+  .RectangleInput {
+    padding: 16px 18px;
+    font-size: 18px;
+  }
+}

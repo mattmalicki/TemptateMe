@@ -1,0 +1,32 @@
+.UserWindow {
+  position: absolute;
+  top: 80px;
+  right: 200px;
+  width: 161px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 28px;
+  justify-content: center;
+  background-color: var(--primaryColor);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+}
+
+.editButton {
+  width: 100%;
+}
+
+.icon {
+  min-width: 18px;
+  height: 19px;
+  display: inline-block;
+}
+
+@media screen and (min-width: 768px) {
+  .UserWindow {
+    width: 177px;
+    gap: 32px;
+  }
+}

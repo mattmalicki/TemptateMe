@@ -1,0 +1,47 @@
+.Socials {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+}
+
+.fbXS {
+  width: 20px;
+  height: 20px;
+}
+
+.fbS {
+  width: 26px;
+  height: 26px;
+}
+
+.ytXS {
+  width: 20px;
+  height: 15px;
+}
+
+.ytS {
+  width: 28px;
+  height: 22px;
+}
+
+.twitterXS {
+  width: 20px;
+  height: 16px;
+}
+
+.twitterS {
+  width: 25px;
+  height: 22px;
+}
+
+.instaXS {
+  width: 20px;
+  height: 20px;
+}
+
+.instaS {
+  width: 24px;
+  height: 24px;
+}

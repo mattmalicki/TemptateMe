@@ -1,0 +1,9 @@
+.LogoTitle {
+  font-weight: 400;
+  font-size: 60px;
+  color: var(--secondColor);
+}
+
+.LogoMe {
+  color: var(--accent);
+}

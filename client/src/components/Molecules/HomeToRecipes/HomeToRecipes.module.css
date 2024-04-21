@@ -1,0 +1,57 @@
+.HomeToRecipes {
+  width: 100%;
+  min-height: 296px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  background-image: url("../../../images/home-page.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  color: var(--secondColor);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+
+.text {
+  text-align: left;
+}
+
+.greenText {
+  color: var(--accent);
+}
+
+.toRecipes {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  max-width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.link {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: right;
+  gap: 4px;
+}
+
+@media screen and (min-width: 768px) {
+  .HomeToRecipes {
+    width: 50%;
+  }
+  .toRecipes {
+    padding: 12px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .toRecipes {
+    padding: 16px;
+  }
+}

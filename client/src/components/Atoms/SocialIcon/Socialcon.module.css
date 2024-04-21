@@ -1,0 +1,31 @@
+.SocialIcon {
+  color: var(--accent);
+}
+
+.SocialIcon:hover {
+  color: white;
+}
+
+.SocialIconDark {
+  color: white;
+}
+
+.SocialIconDark:hover {
+  color: var(--mainBgDark);
+}
+
+.SocialBigger {
+  color: var(--accent);
+}
+
+.SocialBigger:hover {
+  color: var(--mainBgDark);
+}
+
+.SocialBiggerDark {
+  color: white;
+}
+
+.SocialBiggerDark:hover {
+  color: var(--accent);
+}
