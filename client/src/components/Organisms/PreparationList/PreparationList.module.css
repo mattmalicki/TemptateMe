@@ -1,0 +1,22 @@
+.PreperationList {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 35px;
+}
+
+.header {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--header);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 14px;
+  align-items: center;
+}
