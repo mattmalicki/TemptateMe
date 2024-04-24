@@ -1,0 +1,28 @@
+.IngredientsListItem {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--elementBg);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.name {
+  color: var(--header);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.image {
+  width: 65px;
+  height: 65px;
+}
+
+.measure {
+  font-weight: 600;
+  font-size: 10px;
+  color: var(--primaryColor);
+  background-color: var(--accent);
+  padding: 4px;
+}
