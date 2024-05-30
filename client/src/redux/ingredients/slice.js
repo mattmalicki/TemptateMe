@@ -19,7 +19,6 @@ const handleFulfilled = (state, action) => {
 };
 
 const handleReject = (state, action) => {
-  console.log("TEST");
   state.isLoading = false;
   state.error = action.payload;
 };

@@ -2,8 +2,14 @@ import styles from "./MyRecipesListItem.module.css";
 import { ReactComponent as TrashIcon } from "./icon-trash.svg";
 import { Link } from "react-router-dom";
 import { CurvedButton } from "../../Atoms/CurvedButton/CurvedButton.jsx";
+import { useDispatch } from "react-redux";
+import { fetchRecipeById } from "../../../redux/recipes/operations.js";
 
 const MyRecipesListItem = ({ recipe, isFavorites = false }) => {
+  const dispatch = useDispatch();
+  const onClick = (id) => {
+    dispatch(fetchRecipeById(id));
+  };
   return (
     <li className={styles.MyRecipesListItem}>
       <img alt="Delicious recipe" src={recipe.thumb} className={styles.image} />
@@ -21,6 +27,9 @@ const MyRecipesListItem = ({ recipe, isFavorites = false }) => {
             <CurvedButton
               size="small"
               greenOrBlack={`${isFavorites ? "black" : "green"}`}
+              onClick={() => {
+                onClick(recipe._id);
+              }}
             >
               See recipe
             </CurvedButton>
