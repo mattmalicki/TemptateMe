@@ -14,7 +14,7 @@ const fetchRecipes = createAsyncThunk(
 );
 
 const fetchPopularRecipes = createAsyncThunk(
-  "recipe/fetchMainPage",
+  "recipe/fetchPopularRecipes",
   async (_, thunkAPI) => {
     try {
       const response = await axios.get("/recipes/popular-recipe");

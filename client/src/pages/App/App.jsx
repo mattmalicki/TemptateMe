@@ -14,6 +14,7 @@ import { AddRecipePage } from "../AddRecipe/AddRecipe.jsx";
 import { MyRecipesPage } from "../MyRecipes/MyRecipes.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
+import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
 
 import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
@@ -89,8 +90,10 @@ function App() {
             element={<PrivateRoute redirectTo="/" component={<Test />} />}
           />
           <Route
-            path="/searchRecipes"
-            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+            path="/searchRecipes/*"
+            element={
+              <PrivateRoute redirectTo="/" component={<SearchRecipePage />} />
+            }
           />
         </Route>
       </Routes>

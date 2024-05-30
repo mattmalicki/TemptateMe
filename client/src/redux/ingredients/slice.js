@@ -1,15 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const isPendingAction = action => {
-  return action.type.endsWith('/pending');
+const isPendingAction = (action) => {
+  return action.type.endsWith("/pending");
 };
 
-const isRejectAction = action => {
-  return action.type.endsWith('/rejected');
+const isRejectAction = (action) => {
+  return action.type.endsWith("/rejected");
 };
 
-const isFulfilledAction = action => {
-  return action.type.endsWith('/fulfilled');
+const isFulfilledAction = (action) => {
+  return action.type.endsWith("/fulfilled");
 };
 
 const handleFulfilled = (state, action) => {
@@ -19,22 +19,23 @@ const handleFulfilled = (state, action) => {
 };
 
 const handleReject = (state, action) => {
+  console.log("TEST");
   state.isLoading = false;
   state.error = action.payload;
 };
 
-const handlePending = state => {
+const handlePending = (state) => {
   state.isLoading = true;
 };
 
 const ingredientsSlice = createSlice({
-  name: 'ingredients',
+  name: "ingredients",
   initialState: {
     items: [],
     isLoading: false,
     error: null,
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addMatcher(isFulfilledAction, handleFulfilled)
       .addMatcher(isPendingAction, handlePending)

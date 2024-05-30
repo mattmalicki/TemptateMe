@@ -7,9 +7,6 @@ import { HomeRecipes } from "../../components/Organisms/HomeRecipes/HomeRecipes.
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  function onLoad() {
-    dispatch(fetchRecipes());
-  }
   useEffect(() => {
     dispatch(fetchRecipes());
   }, [dispatch]);
