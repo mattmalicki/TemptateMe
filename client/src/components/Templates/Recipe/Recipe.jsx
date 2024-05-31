@@ -9,15 +9,17 @@ const Recipe = () => {
   return isLoading ? (
     <div>TEST</div>
   ) : (
-    <div className={styles.Recipe}>
+    <>
       <RecipeDetails recipe={recipes} />
-      <IngredientsList ingredientsList={recipes.ingredients} />
-      <PreparationList
-        preparation={recipes.instructions}
-        alt={recipes.title}
-        src={recipes.thumb}
-      />
-    </div>
+      <div className={styles.Recipe}>
+        <IngredientsList ingredientsList={recipes.ingredients} />
+        <PreparationList
+          preparation={recipes.instructions}
+          alt={recipes.title}
+          src={recipes.thumb}
+        />
+      </div>
+    </>
   );
 };
 
