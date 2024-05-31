@@ -8,7 +8,7 @@
   background-image: url("../../../images/recipeBackground.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-x: -80px;
+  background-position: bottom;
   text-align: center;
   padding: 80px 36px;
 }
@@ -20,7 +20,7 @@
   color: var(--accent);
 }
 
-.description {
+.info {
   font-weight: 400;
   font-size: 12px;
   margin-bottom: 24px;
@@ -28,6 +28,8 @@
 }
 
 .time {
+  display: flex;
+  align-items: center;
   margin-top: 42px;
   font-weight: 500;
   font-size: 10px;
@@ -38,6 +40,7 @@
   width: 20px;
   height: 20px;
   stroke: var(--thirdColor);
+  margin-right: 10px;
 }
 
 @media screen and (min-width: 768px) {

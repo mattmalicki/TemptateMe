@@ -14,7 +14,11 @@ const RecipeDetails = ({ recipe }) => {
     <div className={styles.RecipeDetails}>
       <h2 className={styles.title}>{recipe.title}</h2>
       <p className={styles.info}>{recipe.description}</p>
-      <CurvedButton onClick={onClick} title="Add to favorites recipes" />
+      <CurvedButton
+        onClick={onClick}
+        title="Add to favorites recipes"
+        isTransparent={true}
+      />
       <div className={styles.time}>
         <div className={styles.icon}>
           <IconClock />

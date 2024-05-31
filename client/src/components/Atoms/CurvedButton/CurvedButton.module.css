@@ -32,6 +32,16 @@
   background-color: var(--accent);
 }
 
+.transparent {
+  border-color: var(--accent);
+  color: var(--secondColor);
+}
+
+.transparent:hover {
+  border-color: var(--secondColor);
+  color: var(--accent);
+}
+
 .big {
   padding: 12px 24px;
 }
