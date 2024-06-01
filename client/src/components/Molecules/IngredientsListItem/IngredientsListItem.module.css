@@ -15,7 +15,7 @@
   gap: 8px;
   color: var(--header);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .image {
@@ -31,7 +31,7 @@
 
 .measure {
   font-weight: 600;
-  font-size: 12px;
+  font-size: 10px;
   color: var(--primaryColor);
   background-color: var(--accent);
   padding: 4px;
@@ -43,5 +43,56 @@
   height: 18px;
   background: none;
   border: 1px solid #7e7e7e80;
-  border-radius: 4px;
+  border-radius: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .IngredientsListItem {
+    padding: 33px 58px 33px 40px;
+  }
+  .image {
+    width: 112px;
+    height: 112px;
+  }
+  .name {
+    font-size: 24px;
+    gap: 40px;
+  }
+  .numberList {
+    gap: 78px;
+  }
+  .measure {
+    font-size: 18px;
+    padding: 6px;
+  }
+  .list {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .IngredientsListItem {
+    padding: 27px 70px 27px 58px;
+  }
+  .image {
+    width: 128px;
+    height: 128px;
+  }
+  .name {
+    font-size: 24px;
+    gap: 66px;
+  }
+  .numberList {
+    gap: 151px;
+  }
+  .measure {
+    text-align: center;
+    min-width: 68px;
+    padding: 8px;
+  }
+  .list {
+    width: 35px;
+    height: 35px;
+  }
 }

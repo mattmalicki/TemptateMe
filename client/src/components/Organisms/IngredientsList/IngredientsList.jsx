@@ -23,18 +23,27 @@ const IngredientsList = ({ ingredientsList }) => {
   };
 
   return (
-    ingredients && (
-      <ul className={styles.IngredientsList}>
-        {ingredientsList.map((item) => (
-          <IngredientsListItem
-            key={item.id}
-            ingredient={ingredients.filter((ing) => ing._id === item.id)[0]}
-            measure={item.measure}
-            isChecked={isChecked(item.id)}
-          />
-        ))}
-      </ul>
-    )
+    <>
+      <div className={styles.head}>
+        <span>Ingredients</span>
+        <div className={styles.numberList}>
+          <span>Number</span>
+          <span>Add to list</span>
+        </div>
+      </div>
+      {ingredients && (
+        <ul className={styles.IngredientsList}>
+          {ingredientsList.map((item) => (
+            <IngredientsListItem
+              key={item.id}
+              ingredient={ingredients.filter((ing) => ing._id === item.id)[0]}
+              measure={item.measure}
+              isChecked={isChecked(item.id)}
+            />
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 

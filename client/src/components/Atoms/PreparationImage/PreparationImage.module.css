@@ -1,5 +1,7 @@
 .PreparationImage {
   width: 100%;
+  max-width: 433px;
   object-fit: contain;
   border-radius: 8px;
+  height: fit-content;
 }
