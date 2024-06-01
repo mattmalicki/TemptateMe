@@ -1,6 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-import { updateUser, logout, refresh, deleteUser } from './operations.js';
+import { updateUser, logout, refresh, deleteUser } from "./operations.js";
 
 const initialState = {
   user: { name: null, email: null },
@@ -10,19 +10,19 @@ const initialState = {
   error: null,
 };
 
-const isPendingAction = action => {
-  return action.type.startsWith('auth') && action.type.endsWith('/pending');
+const isPendingAction = (action) => {
+  return action.type.startsWith("auth") && action.type.endsWith("/pending");
 };
 
-const isRejectAction = action => {
-  return action.type.endsWith('/rejected');
+const isRejectAction = (action) => {
+  return action.type.startsWith("auth") && action.type.endsWith("/rejected");
 };
 
-const isLoginOrSignupAction = action => {
+const isLoginOrSignupAction = (action) => {
   return (
-    (action.type.startsWith('auth/register') ||
-      action.type.startsWith('auth/login')) &&
-    action.type.endsWith('/fulfilled')
+    (action.type.startsWith("auth/register") ||
+      action.type.startsWith("auth/login")) &&
+    action.type.endsWith("/fulfilled")
   );
 };
 
@@ -35,7 +35,7 @@ const handleLogin = (state, action) => {
   state.error = false;
 };
 
-const handlePending = state => {
+const handlePending = (state) => {
   state.isRefreshing = true;
   state.error = null;
 };
@@ -49,9 +49,9 @@ const handleRejected = (state, action) => {
 };
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(logout.fulfilled, handleRejected)
       .addCase(refresh.fulfilled, (state, action) => {

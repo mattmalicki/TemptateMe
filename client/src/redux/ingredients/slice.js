@@ -1,15 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const isPendingAction = (action) => {
-  return action.type.endsWith("/pending");
+  return (
+    action.type.startsWith("ingredients/") && action.type.endsWith("/pending")
+  );
 };
 
 const isRejectAction = (action) => {
-  return action.type.endsWith("/rejected");
+  return (
+    action.type.startsWith("ingredients/") && action.type.endsWith("/rejected")
+  );
 };
 
 const isFulfilledAction = (action) => {
-  return action.type.endsWith("/fulfilled");
+  return (
+    action.type.startsWith("ingredients/") && action.type.endsWith("/fulfilled")
+  );
 };
 
 const handleFulfilled = (state, action) => {

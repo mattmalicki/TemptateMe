@@ -21,11 +21,11 @@ async function addProduct(req, res, next) {
     const newProduct = {
       _id: new Types.ObjectId(product.id),
       measure: product.measure,
-      recipeId: new Types.ObjectId(product.recipeId),
+      recipeId: product.recipeId,
     };
     user.shoppingList.push(newProduct);
     await user.save();
-    return res.status(204).json({
+    return res.status(200).json({
       resultMassage: { en: getText("en", "00098") },
       resultCode: "00098",
       newProduct,

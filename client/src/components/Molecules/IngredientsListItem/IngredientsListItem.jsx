@@ -5,37 +5,49 @@ import {
   deleteProduct,
 } from "../../../redux/shopping/operations.js";
 import { useRecipes } from "../../../hooks/index.js";
+import { useState } from "react";
 
-const IngredientsListItem = ({ ingredient, measure }) => {
+const IngredientsListItem = ({ ingredient, measure, isChecked = false }) => {
   const dispatch = useDispatch();
   const { recipes } = useRecipes();
+  const [check, setCheck] = useState(isChecked);
 
   const onChange = (event) => {
     if (event.target.checked) {
       dispatch(
-        addProduct({ id: ingredient.id, measure, recipeId: recipes._id })
+        addProduct({ id: ingredient._id, measure, recipeId: recipes._id })
       );
+      setCheck(true);
     } else {
       dispatch(
-        deleteProduct({ id: ingredient.id, measure, recipeId: recipes._id })
+        deleteProduct({ id: ingredient._id, measure, recipeId: recipes._id })
       );
+      setCheck(false);
     }
   };
+
   return (
-    <li className={styles.IngredientsListItem}>
-      <div className={styles.name}>
-        <img
-          alt={ingredient.ttl}
-          src={ingredient.thb}
-          className={styles.image}
-        />
-        <span>{ingredient.ttl}</span>
-      </div>
-      <div className={styles.numberList}>
-        <div className={styles.measure}>{measure}</div>
-        <input type="checkbox" className={styles.list} onChange={onChange} />
-      </div>
-    </li>
+    ingredient && (
+      <li className={styles.IngredientsListItem}>
+        <div className={styles.name}>
+          <img
+            alt={ingredient.ttl}
+            src={ingredient.thb}
+            className={styles.image}
+          />
+          <span>{ingredient.ttl}</span>
+        </div>
+        <div className={styles.numberList}>
+          <div className={styles.measure}>{measure}</div>
+          <input
+            type="checkbox"
+            checked={check}
+            className={styles.list}
+            onChange={onChange}
+          />
+        </div>
+      </li>
+    )
   );
 };
 
