@@ -10,7 +10,8 @@ const IngredientsList = ({ ingredientsList }) => {
         {ingredientsList.map((item) => (
           <IngredientsListItem
             key={item.id}
-            ingredient={ingredients.filter((ing) => ing._id === item.id)}
+            ingredient={ingredients.filter((ing) => ing._id === item.id)[0]}
+            measure={item.measure}
           />
         ))}
       </ul>

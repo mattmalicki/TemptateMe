@@ -4,15 +4,21 @@ import {
   addProduct,
   deleteProduct,
 } from "../../../redux/shopping/operations.js";
+import { useRecipes } from "../../../hooks/index.js";
 
 const IngredientsListItem = ({ ingredient, measure }) => {
   const dispatch = useDispatch();
+  const { recipes } = useRecipes();
 
   const onChange = (event) => {
     if (event.target.checked) {
-      dispatch(addProduct({ id: ingredient.id, measure }));
+      dispatch(
+        addProduct({ id: ingredient.id, measure, recipeId: recipes._id })
+      );
     } else {
-      dispatch(deleteProduct({ id: ingredient.id, measure }));
+      dispatch(
+        deleteProduct({ id: ingredient.id, measure, recipeId: recipes._id })
+      );
     }
   };
   return (
