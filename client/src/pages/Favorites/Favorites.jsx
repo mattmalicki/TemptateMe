@@ -18,7 +18,7 @@ const FavoritesPage = () => {
   return (
     <div className={styles.Favorites}>
       <PageTitle title="Favorites" />
-      <MyRecipesList />
+      <MyRecipesList isFavorites={true} />
       <Pagination />
     </div>
   );

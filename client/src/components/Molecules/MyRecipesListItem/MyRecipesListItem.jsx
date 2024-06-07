@@ -4,25 +4,38 @@ import { Link } from "react-router-dom";
 import { CurvedButton } from "../../Atoms/CurvedButton/CurvedButton.jsx";
 import { useDispatch } from "react-redux";
 import { fetchRecipeById } from "../../../redux/recipes/operations.js";
+import { deleteFromFavorites } from "../../../redux/recipes/operations.js";
+import { deleteRecipe } from "../../../redux/recipes/operations.js";
 
-const MyRecipesListItem = ({ recipe, isFavorites = false }) => {
+const MyRecipesListItem = ({ recipe, isFavorites }) => {
   const dispatch = useDispatch();
   const onClick = (id) => {
     dispatch(fetchRecipeById(id));
+  };
+  const removeFromFavorites = (id) => {
+    dispatch(deleteFromFavorites(id));
+  };
+  const removeRecipe = (id) => {
+    dispatch(deleteRecipe(id));
   };
   return (
     <li className={styles.MyRecipesListItem}>
       <img alt="Delicious recipe" src={recipe.thumb} className={styles.image} />
       <div className={styles.info}>
         <div
+          onClick={() => {
+            isFavorites
+              ? removeFromFavorites(recipe._id)
+              : removeRecipe(recipe._id);
+          }}
           className={`${styles.trash} ${isFavorites ? styles.favorites : ""}`}
         >
           <TrashIcon />
         </div>
         <p className={styles.title}>{recipe.title}</p>
         <span className={styles.description}>{recipe.description}</span>
-        <div className={recipe.timeButton}>
-          <span>{recipe.time}</span>
+        <div className={styles.timeButton}>
+          <span className={styles.time}>{recipe.time} min</span>
           <Link to={`/searchRecipes/${recipe._id}`} className={styles.button}>
             <CurvedButton
               size="small"
