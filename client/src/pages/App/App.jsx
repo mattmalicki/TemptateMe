@@ -12,6 +12,7 @@ import { StartPage } from "../Start/StartPage.jsx";
 import { FavoritesPage } from "../Favorites/Favorites.jsx";
 import { AddRecipePage } from "../AddRecipe/AddRecipe.jsx";
 import { MyRecipesPage } from "../MyRecipes/MyRecipes.jsx";
+import { ShoppingPage } from "../Shopping/Shopping.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
 import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
@@ -87,7 +88,9 @@ function App() {
           />
           <Route
             path="/shopping"
-            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+            element={
+              <PrivateRoute redirectTo="/" component={<ShoppingPage />} />
+            }
           />
           <Route
             path="/searchRecipes/*"
