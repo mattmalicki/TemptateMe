@@ -6,14 +6,13 @@ import { useDispatch } from "react-redux";
 import { PageTitle } from "../../components/Atoms/PageTitle/PageTitle.jsx";
 import { CurvedInput } from "../../components/Molecules/CurvedInput/CurvedInput.jsx";
 import { RecipesList } from "../../components/Organisms/RecipesList/RecipesList.jsx";
+import useRecipes from "../../hooks/useRecipes.js";
+import { NotFound } from "../../components/Atoms/NotFound/NotFound.jsx";
 
 const SearchRecipePage = () => {
   const dispatch = useDispatch();
-  const [text, setText] = useState("Beef");
-
-  useEffect(() => {
-    dispatch(fetchRecipesByQuery({ query: "Beef" }));
-  }, []);
+  const [text, setText] = useState("");
+  const { recipes } = useRecipes();
 
   useEffect(() => {
     dispatch(fetchIngredients());
@@ -22,10 +21,11 @@ const SearchRecipePage = () => {
   const onChange = (event) => {
     const text = event.currentTarget.value;
     text && setText(text);
-    !text && setText("Beef");
+    !text && setText("");
   };
 
-  const onClick = () => {
+  const onClick = (event) => {
+    event.preventDefault();
     dispatch(fetchRecipesByQuery({ query: text }));
   };
 
@@ -38,8 +38,9 @@ const SearchRecipePage = () => {
         placeholderText="Beef"
         onChange={onChange}
         onClick={onClick}
+        onSubmit={onClick}
       />
-      <RecipesList />
+      {recipes.length > 0 ? <RecipesList /> : <NotFound />}
     </div>
   );
 };

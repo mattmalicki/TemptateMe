@@ -1,0 +1,10 @@
+.NotFound {
+  color: black;
+  margin: 28px auto;
+  width: fit-content;
+}
+
+.image {
+  max-width: 350px;
+  max-height: 225px;
+}
