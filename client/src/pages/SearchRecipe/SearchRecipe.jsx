@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { Recipe } from "../../components/Templates/Recipe/Recipe";
 import { fetchIngredients } from "../../redux/ingredients/operations.js";
 import { useDispatch } from "react-redux";
+import { PageTitle } from "../../components/Atoms/PageTitle/PageTitle.jsx";
+import { CurvedInput } from "../../components/Molecules/CurvedInput/CurvedInput.jsx";
 
 const SearchRecipePage = () => {
   const dispatch = useDispatch();
@@ -21,10 +23,11 @@ const SearchRecipePage = () => {
     }
   }, [location]);
 
-  return !id ? (
-    <div className={styles.Recipe}>THIS IS A TEST!</div>
-  ) : (
-    <Recipe id={id} />
+  return (
+    <div className={styles.SearchRecipe}>
+      <PageTitle title="Search" />
+      <CurvedInput greenOrBlack="green" buttonText="Search" />
+    </div>
   );
 };
 

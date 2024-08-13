@@ -36,7 +36,7 @@ const MyRecipesListItem = ({ recipe, isFavorites }) => {
         <span className={styles.description}>{recipe.description}</span>
         <div className={styles.timeButton}>
           <span className={styles.time}>{recipe.time} min</span>
-          <Link to={`/searchRecipes/${recipe._id}`} className={styles.button}>
+          <Link to={`/recipe/${recipe._id}`} className={styles.button}>
             <CurvedButton
               size="small"
               greenOrBlack={`${isFavorites ? "black" : "green"}`}

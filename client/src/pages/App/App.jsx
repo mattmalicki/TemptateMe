@@ -19,6 +19,7 @@ import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
 
 import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
+import { Recipe } from "../../components/Templates/Recipe/Recipe.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -97,6 +98,10 @@ function App() {
             element={
               <PrivateRoute redirectTo="/" component={<SearchRecipePage />} />
             }
+          />
+          <Route
+            path="/recipe/*"
+            element={<PrivateRoute redirectTo="/" component={<Recipe />} />}
           />
         </Route>
       </Routes>
