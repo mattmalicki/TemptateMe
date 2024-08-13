@@ -110,15 +110,3 @@ function App() {
 }
 
 export default App;
-
-const style = {
-  width: "100%",
-  height: "100vh",
-  fontSize: "38px",
-  textAlign: "center",
-  color: "black",
-};
-
-const Test = () => {
-  return <div style={style}>Testing</div>;
-};

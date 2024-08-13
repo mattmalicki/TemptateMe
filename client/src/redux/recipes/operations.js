@@ -30,9 +30,7 @@ const fetchRecipesByQuery = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const { query, page, limit } = data;
-      const response = await axios.get(
-        `/recipea/search/?query=${query}page=${page}&limit=${limit}`
-      );
+      const response = await axios.get(`/recipes/search/?query=${query}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

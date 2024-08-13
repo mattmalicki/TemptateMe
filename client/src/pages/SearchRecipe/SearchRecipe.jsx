@@ -1,32 +1,45 @@
 import { useEffect, useState } from "react";
 import styles from "./SearchRecipe.module.css";
-import { useLocation } from "react-router-dom";
-import { Recipe } from "../../components/Templates/Recipe/Recipe";
 import { fetchIngredients } from "../../redux/ingredients/operations.js";
+import { fetchRecipesByQuery } from "../../redux/recipes/operations.js";
 import { useDispatch } from "react-redux";
 import { PageTitle } from "../../components/Atoms/PageTitle/PageTitle.jsx";
 import { CurvedInput } from "../../components/Molecules/CurvedInput/CurvedInput.jsx";
+import { RecipesList } from "../../components/Organisms/RecipesList/RecipesList.jsx";
 
 const SearchRecipePage = () => {
   const dispatch = useDispatch();
-  const [id, setId] = useState();
-  const location = useLocation();
+  const [text, setText] = useState("Beef");
+
+  useEffect(() => {
+    dispatch(fetchRecipesByQuery({ query: "Beef" }));
+  }, []);
 
   useEffect(() => {
     dispatch(fetchIngredients());
   }, [dispatch]);
 
-  useEffect(() => {
-    const urlId = location.pathname.split("/")[2];
-    if (urlId) {
-      setId(urlId);
-    }
-  }, [location]);
+  const onChange = (event) => {
+    const text = event.currentTarget.value;
+    text && setText(text);
+    !text && setText("Beef");
+  };
+
+  const onClick = () => {
+    dispatch(fetchRecipesByQuery({ query: text }));
+  };
 
   return (
     <div className={styles.SearchRecipe}>
       <PageTitle title="Search" />
-      <CurvedInput greenOrBlack="green" buttonText="Search" />
+      <CurvedInput
+        greenOrBlack="green"
+        buttonText="Search"
+        placeholderText="Beef"
+        onChange={onChange}
+        onClick={onClick}
+      />
+      <RecipesList />
     </div>
   );
 };
