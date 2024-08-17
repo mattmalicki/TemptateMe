@@ -14,7 +14,7 @@
   font-size: 14px;
   letter-spacing: -0.02em;
 
-  color: var(--secondaryColor);
+  color: var(--secondColor);
   opacity: 0.5;
 }
 
@@ -25,7 +25,6 @@
   border-radius: 6px;
   background-color: #d9d9d9;
 }
-
 
 @media screen and (min-width: 768px) {
   .AddRecipeDescriptionTextarea {
