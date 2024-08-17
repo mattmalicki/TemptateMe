@@ -7,8 +7,11 @@ import { Modal } from "../../Templates/Modal/Modal";
 import { RectangleButton } from "../../Atoms/RectangleButton/RectangleButton";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../hooks";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../../redux/auth/operations";
 
 const ModalEditUser = ({ closeModal }) => {
+  const dispatch = useDispatch();
   const { user } = useAuth();
   const [file, setFile] = useState();
   const [name, setName] = useState(user.name ? user.name : "");
@@ -40,9 +43,9 @@ const ModalEditUser = ({ closeModal }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    console.log(event.target);
-    console.log(event.currentTarget);
-    console.log(form.name.value);
+    dispatch(
+      updateUser({ avatar: form.image, info: { name: form.name.value } })
+    );
   };
 
   return (
