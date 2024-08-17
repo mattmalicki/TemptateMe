@@ -2,6 +2,7 @@
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 32px;
+  margin-bottom: 40px;
 }
 
 .AddRecipe {
@@ -28,6 +29,7 @@
   .AddRecipe {
     width: 704px;
     gap: 80px;
+    margin-bottom: 90px;
   }
 }
 
@@ -36,5 +38,6 @@
     width: 1240px;
     flex-direction: row;
     gap: 120px;
+    margin-bottom: 200px;
   }
 }

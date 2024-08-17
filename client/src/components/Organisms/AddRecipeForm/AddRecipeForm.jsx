@@ -47,7 +47,7 @@ const AddRecipeForm = () => {
         <div className={styles.Image}>
           <AddRecipeImage />
         </div>
-        <div className={styles.ImageAndInfo}>
+        <div className={styles.Info}>
           <AddRecipeInfo />
         </div>
       </div>

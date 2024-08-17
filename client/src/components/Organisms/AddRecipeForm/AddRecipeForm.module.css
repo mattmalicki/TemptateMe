@@ -16,6 +16,10 @@
   gap: 32px;
 }
 
+.Info {
+  width: 100%;
+}
+
 .AddRecipeButton {
   width: 100%;
 }
@@ -31,5 +35,8 @@
 @media screen and (min-width: 1024px) {
   .ImageAndInfo {
     gap: 50px;
+  }
+  .Info {
+    width: calc(100% - 800px);
   }
 }
