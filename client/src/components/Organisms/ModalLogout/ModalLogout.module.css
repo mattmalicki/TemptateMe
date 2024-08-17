@@ -1,0 +1,14 @@
+.ModalLogout {
+  width: 100%;
+  color: var(--thirdColor);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  margin-top: 32px;
+}
