@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { addProduct, fetchShoppingList, deleteProduct } from './operations.js';
+import { createSlice } from "@reduxjs/toolkit";
+import { addProduct, fetchShoppingList, deleteProduct } from "./operations.js";
 
-const handlePending = state => {
+const handlePending = (state) => {
   state.isLoading = true;
 };
 
@@ -10,27 +10,31 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const clearLoadingError = state => {
+const clearLoadingError = (state) => {
   state.isLoading = false;
   state.error = null;
 };
 
-const isPendingAction = action => {
-  return action.type.endsWith('/pending');
+const isPendingAction = (action) => {
+  return (
+    action.type.startsWith("shoppingList/") && action.type.endsWith("/pending")
+  );
 };
 
-const isRejectAction = action => {
-  return action.type.endsWith('/rejected');
+const isRejectAction = (action) => {
+  return (
+    action.type.startsWith("shoppingList/") && action.type.endsWith("/rejected")
+  );
 };
 
 const shoppingList = createSlice({
-  name: 'shoppingList',
+  name: "shoppingList",
   initialState: {
     items: [],
     isLoading: false,
     error: null,
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchShoppingList.fulfilled, (state, action) => {
         clearLoadingError(state);
@@ -43,8 +47,9 @@ const shoppingList = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action) => {
         clearLoadingError(state);
         const index = state.items.findIndex(
-          item => item.id === action.payload.idProduct
+          (item) => item.id === action.payload.idProduct
         );
+        console.log(index);
         state.items.splice(index, 1);
       })
       .addMatcher(isPendingAction, handlePending)

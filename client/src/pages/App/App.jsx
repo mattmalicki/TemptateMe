@@ -12,11 +12,14 @@ import { StartPage } from "../Start/StartPage.jsx";
 import { FavoritesPage } from "../Favorites/Favorites.jsx";
 import { AddRecipePage } from "../AddRecipe/AddRecipe.jsx";
 import { MyRecipesPage } from "../MyRecipes/MyRecipes.jsx";
+import { ShoppingPage } from "../Shopping/Shopping.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
+import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
 
 import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
+import { Recipe } from "../../components/Templates/Recipe/Recipe.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -86,11 +89,19 @@ function App() {
           />
           <Route
             path="/shopping"
-            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+            element={
+              <PrivateRoute redirectTo="/" component={<ShoppingPage />} />
+            }
           />
           <Route
-            path="/searchRecipes"
-            element={<PrivateRoute redirectTo="/" component={<Test />} />}
+            path="/searchRecipes/*"
+            element={
+              <PrivateRoute redirectTo="/" component={<SearchRecipePage />} />
+            }
+          />
+          <Route
+            path="/recipe/*"
+            element={<PrivateRoute redirectTo="/" component={<Recipe />} />}
           />
         </Route>
       </Routes>
@@ -99,15 +110,3 @@ function App() {
 }
 
 export default App;
-
-const style = {
-  width: "100%",
-  height: "100vh",
-  fontSize: "38px",
-  textAlign: "center",
-  color: "black",
-};
-
-const Test = () => {
-  return <div style={style}>Testing</div>;
-};

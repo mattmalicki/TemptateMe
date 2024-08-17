@@ -5,12 +5,13 @@ const CurvedButton = ({
   type = "button",
   greenOrBlack,
   size = "big",
+  isTransparent = false,
   onClick = () => {},
   children,
 }) => {
   const classes = `${styles.CurvedButton} ${styles[`${greenOrBlack}`]} ${
     styles[size]
-  }`;
+  } ${isTransparent && styles.transparent}`;
   return (
     <button className={classes} type={type} onClick={onClick}>
       {title}

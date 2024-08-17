@@ -14,7 +14,7 @@ const fetchRecipes = createAsyncThunk(
 );
 
 const fetchPopularRecipes = createAsyncThunk(
-  "recipe/fetchMainPage",
+  "recipe/fetchPopularRecipes",
   async (_, thunkAPI) => {
     try {
       const response = await axios.get("/recipes/popular-recipe");
@@ -30,9 +30,7 @@ const fetchRecipesByQuery = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const { query, page, limit } = data;
-      const response = await axios.get(
-        `/recipea/search/?query=${query}page=${page}&limit=${limit}`
-      );
+      const response = await axios.get(`/recipes/search/?query=${query}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

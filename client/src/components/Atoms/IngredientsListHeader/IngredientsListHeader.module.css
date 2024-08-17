@@ -1,0 +1,15 @@
+.IngredientsListHeader {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--accent);
+  border-radius: 8px;
+  color: var(--primaryColor);
+}
+
+.numberList {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 18px;
+}

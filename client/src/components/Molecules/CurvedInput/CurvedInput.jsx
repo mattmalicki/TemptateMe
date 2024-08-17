@@ -7,11 +7,14 @@ const CurvedInput = ({
   greenOrBlack,
   onChange = () => {},
   onClick = () => {},
+  onSubmit = (event) => {
+    event.preventDefault();
+  },
 }) => {
   const isDark = false;
   const labelClasses = `${styles.CurvedInput} ${isDark ? styles.dark : ""}`;
   return (
-    <label className={labelClasses}>
+    <form className={labelClasses} onSubmit={onSubmit}>
       <input
         type="text"
         className={styles.input}
@@ -32,7 +35,7 @@ const CurvedInput = ({
           onClick={onClick}
         />
       )}
-    </label>
+    </form>
   );
 };
 
