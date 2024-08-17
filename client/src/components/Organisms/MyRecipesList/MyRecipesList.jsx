@@ -1,10 +1,11 @@
 import styles from "./MyRecipesList.module.css";
 import { MyRecipesListItem } from "../../Molecules/MyRecipesListItem/MyRecipesListItem";
 import { useRecipes } from "../../../hooks/index.js";
+import { NotFound } from "../../Atoms/NotFound/NotFound.jsx";
 
 const MyRecipesList = ({ isFavorites = false }) => {
   const { recipes } = useRecipes();
-  return (
+  return recipes.length < 0 ? (
     Array.isArray(recipes) && (
       <ul className={styles.MyRecipesList}>
         {recipes.map((recipe) => {
@@ -18,6 +19,8 @@ const MyRecipesList = ({ isFavorites = false }) => {
         })}
       </ul>
     )
+  ) : (
+    <NotFound title="There are no recipes." />
   );
 };
 

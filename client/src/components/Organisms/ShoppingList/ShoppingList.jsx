@@ -1,11 +1,12 @@
 import styles from "./ShoppingList.module.css";
 import { ShoppingListItem } from "../../Molecules/ShoppingListItem/ShoppingListItem";
 import { useIngredients, useShopping } from "../../../hooks/index.js";
+import { NotFound } from "../../Atoms/NotFound/NotFound.jsx";
 
 const ShoppingList = () => {
   const { shoppingList } = useShopping();
   const { ingredients } = useIngredients();
-  return (
+  return shoppingList.length > 0 ? (
     <>
       <div className={styles.head}>
         <span>Product</span>
@@ -27,6 +28,8 @@ const ShoppingList = () => {
         </ul>
       )}
     </>
+  ) : (
+    <NotFound title="Your cart is empty!" />
   );
 };
 

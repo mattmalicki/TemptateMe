@@ -40,7 +40,11 @@ const SearchRecipePage = () => {
         onClick={onClick}
         onSubmit={onClick}
       />
-      {recipes.length > 0 ? <RecipesList /> : <NotFound />}
+      {recipes.length > 0 ? (
+        <RecipesList />
+      ) : (
+        <NotFound title="Try looking for something else..." />
+      )}
     </div>
   );
 };
