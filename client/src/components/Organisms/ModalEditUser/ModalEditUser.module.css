@@ -1,0 +1,107 @@
+.ModalEditUser {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 32px;
+  align-items: center;
+}
+
+.user {
+  position: relative;
+  width: 103px;
+  height: 103px;
+  border-radius: 100%;
+  background-color: var(--secondBg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iconUser {
+  width: 47px;
+  height: 47px;
+  transition: transform 500ms;
+}
+
+.iconPlus {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  transition: transform 500ms;
+}
+
+.user:hover .iconPlus {
+  transform: scale(1.2);
+  transition: transform 500ms;
+}
+
+.user:hover .iconUser {
+  transform: scale(1.1);
+  transition: transform 500ms;
+}
+
+.inputContainer {
+  position: relative;
+  align-items: center;
+
+  width: 100%;
+  padding: 12px 14px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  color: var(--secondColor);
+  border: 1px solid currentColor;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.iconEdit {
+  width: 19px;
+  height: 19px;
+  position: absolute;
+  right: 18px;
+}
+
+.iconName {
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+}
+
+.image {
+  overflow: hidden;
+
+  min-height: 100%;
+  min-width: 100%;
+
+  text-align: right;
+
+  position: absolute;
+  opacity: 0;
+  right: 0;
+  top: 0;
+
+  z-index: 2;
+
+  cursor: pointer;
+}
+
+.imageBackground {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.inputName {
+  min-width: calc(100% - 60px);
+  text-align: left;
+  color: inherit;
+}
+
+.inputName::placeholder {
+  color: #ffffff80;
+}

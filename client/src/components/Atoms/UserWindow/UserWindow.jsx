@@ -4,16 +4,22 @@ import { ReactComponent as LogoutIcon } from "./icon-logout.svg";
 import { ReactComponent as EditIcon } from "./icon-edit.svg";
 import { useEffect, useState } from "react";
 import { ModalLogout } from "../../Organisms/ModalLogout/ModalLogout.jsx";
+import { ModalEditUser } from "../../Organisms/ModalEditUser/ModalEditUser.jsx";
 
 const UserWindow = ({ onClose }) => {
-  const [modal, setModal] = useState(false);
+  const [modalLogout, setModalLogout] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
   const close = (event) => {
-    console.log(event.target);
     if (event.target.id === "backdrop") {
-      setModal(false);
+      setModalLogout(false);
+      setModalEdit(false);
       return;
     }
-    if (event.target.dataset.modal) {
+    if (
+      event.target.dataset.modal ||
+      event.target.nodeName === "INPUT" ||
+      event.target.nodeName === "BUTTON"
+    ) {
       return;
     }
     if (!event.target.dataset.userWindow) {
@@ -29,25 +35,33 @@ const UserWindow = ({ onClose }) => {
     };
   });
 
-  const openModal = () => {
-    setModal(true);
+  const openModalLogout = () => {
+    setModalLogout(true);
   };
 
-  const closeModal = () => {
-    setModal(false);
+  const closeModalLogout = () => {
+    setModalLogout(false);
+  };
+  const openModalEdit = () => {
+    setModalEdit(true);
+  };
+
+  const closeModalEdit = () => {
+    setModalEdit(false);
   };
   return (
     <div className={styles.UserWindow} data-user-window="true">
-      <button className={styles.editButton}>
+      <button className={styles.editButton} onClick={openModalEdit}>
         Edit profile <EditIcon />
       </button>
-      <CurvedButton greenOrBlack="green" size="small" onClick={openModal}>
+      <CurvedButton greenOrBlack="green" size="small" onClick={openModalLogout}>
         <span>Logout</span>{" "}
         <div className={styles.icon}>
           <LogoutIcon />
         </div>
       </CurvedButton>
-      {modal && <ModalLogout closeModal={closeModal} />}
+      {modalLogout && <ModalLogout closeModal={closeModalLogout} />}
+      {modalEdit && <ModalEditUser closeModal={closeModalEdit} />}
     </div>
   );
 };
