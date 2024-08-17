@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { AddRecipeForm } from "../../components/Organisms/AddRecipeForm/AddRecipeForm.jsx";
 import { PopularRecipes } from "../../components/Organisms/PopularRecipes/PopularRecipes.jsx";
 import { Socials } from "../../components/Molecules/Socials/Socials.jsx";
+import { AddRecipeHeader } from "../../components/Atoms/AddRecipeHeader/AddRecipeHeader.jsx";
 
 const AddRecipePage = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,10 @@ const AddRecipePage = () => {
           <AddRecipeForm />
         </div>
         <div className={styles.Addon}>
-          <Socials />
+          <div>
+            <AddRecipeHeader>Follow us</AddRecipeHeader>
+            <Socials />
+          </div>
           <PopularRecipes />
         </div>
       </div>
