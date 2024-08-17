@@ -26,7 +26,7 @@ const AddRecipePage = () => {
           <AddRecipeForm />
         </div>
         <div className={styles.Addon}>
-          <div>
+          <div className={styles.socials}>
             <AddRecipeHeader>Follow us</AddRecipeHeader>
             <Socials />
           </div>
