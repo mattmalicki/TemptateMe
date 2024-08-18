@@ -10,7 +10,7 @@
   box-shadow: 0 4px 4px 0 rgba(135, 135, 135, 0.2);
   background: #fafafa;
   color: var(--popularDescriptionText);
-  margin: 0 auto;
+  margin: 10 auto;
 }
 
 .list {

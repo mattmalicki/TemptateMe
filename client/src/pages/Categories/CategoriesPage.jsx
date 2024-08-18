@@ -6,9 +6,11 @@ import { CategoriesList } from "../../components/Molecules/CategoriesList/Catego
 import { PageTitle } from "../../components/Atoms/PageTitle/PageTitle.jsx";
 import { RecipesList } from "../../components/Organisms/RecipesList/RecipesList.jsx";
 import { Pagination } from "../../components/Atoms/Pagination/Pagination.jsx";
+import useRecipes from "../../hooks/useRecipes.js";
 
 const CategoriesPage = () => {
   const dispatch = useDispatch();
+  const { pageAmount } = useRecipes();
 
   useEffect(() => {
     dispatch(fetchAllCategories());
@@ -18,7 +20,7 @@ const CategoriesPage = () => {
       <PageTitle title="Categories" />
       <CategoriesList />
       <RecipesList />
-      <Pagination />
+      {pageAmount > 1 && <Pagination />}
     </div>
   );
 };
