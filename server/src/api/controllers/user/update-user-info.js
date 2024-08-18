@@ -1,14 +1,9 @@
 import { getText, errorHelper } from "../../../utils/index.js";
-import { imageApiKey } from "../../../config/index.js";
-import fs from "fs/promises";
-import { tmpDir } from "../../middlewares/index.js";
-import imgbbUploader from "imgbb-uploader";
 import { User } from "../../../models/index.js";
 import { getUserById } from "./helpers.js";
 
-async function updateUser(req, res, next) {
+async function updateUsersAvatar(req, res, next) {
   try {
-    console.log("test");
     const id = req.user._id;
     if (!id)
       return res.status(401).json({
@@ -23,26 +18,8 @@ async function updateUser(req, res, next) {
         resultCode: "00052",
       });
     }
-
     let body = req.body;
     console.log(body);
-
-    if (req.file) {
-      const fileName = req.file.originalname;
-
-      const image = await imgbbUploader(
-        imageApiKey,
-        `${tmpDir}${fileName}`
-      ).catch((error) =>
-        res.status(400).json({
-          resultMassage: "Something went wrong",
-          resultCode: "00000",
-          error: error.message,
-        })
-      );
-      user.photoUrl = image.url;
-      if (req.body.update) body = JSON.parse(req.body.update);
-    }
 
     if (body.name) user.name = body.name;
     if (body.gender) user.gender = body.gender;
@@ -66,12 +43,10 @@ async function updateUser(req, res, next) {
     });
   } catch (error) {
     return next(error);
-  } finally {
-    fs.unlink(`${req.file.path}`);
   }
 }
 
-export default updateUser;
+export default updateUsersAvatar;
 
 /**
  * @swagger

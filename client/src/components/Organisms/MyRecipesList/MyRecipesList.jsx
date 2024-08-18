@@ -5,7 +5,7 @@ import { NotFound } from "../../Atoms/NotFound/NotFound.jsx";
 
 const MyRecipesList = ({ isFavorites = false }) => {
   const { recipes } = useRecipes();
-  return recipes.length < 0 ? (
+  return recipes.length > 0 ? (
     Array.isArray(recipes) && (
       <ul className={styles.MyRecipesList}>
         {recipes.map((recipe) => {

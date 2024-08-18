@@ -39,7 +39,9 @@ const AddRecipeForm = () => {
       instructions: recipePreparation.value,
       ingredients,
     };
-    dispatch(addRecipe({ recipeImage, recipeInfo: recipe }));
+    dispatch(
+      addRecipe({ recipeImage: recipeImage.files[0], recipeInfo: recipe })
+    );
   };
   return (
     <form className={styles.AddRecipeForm} onSubmit={handleSubmit}>

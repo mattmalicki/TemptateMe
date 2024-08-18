@@ -8,7 +8,10 @@ import { RectangleButton } from "../../Atoms/RectangleButton/RectangleButton";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../../hooks";
 import { useDispatch } from "react-redux";
-import { updateUser } from "../../../redux/auth/operations";
+import {
+  updateUsersAvatar,
+  updateUsersInfo,
+} from "../../../redux/auth/operations";
 
 const ModalEditUser = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -43,9 +46,12 @@ const ModalEditUser = ({ closeModal }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    dispatch(
-      updateUser({ avatar: form.image, info: { name: form.name.value } })
-    );
+    if (form.image.value) {
+      dispatch(updateUsersAvatar(file));
+    }
+    if (form.name.value !== user.name) {
+      dispatch(updateUsersInfo({ name: form.name.value }));
+    }
   };
 
   return (

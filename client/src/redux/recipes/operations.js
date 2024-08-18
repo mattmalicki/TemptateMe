@@ -94,15 +94,11 @@ const addRecipe = createAsyncThunk(
   async ({ recipeImage, recipeInfo }, thunkAPI) => {
     try {
       const formData = new FormData();
-      const blobedInfo = new Blob([recipeInfo], {
-        type: "application/json",
+      formData.append("recipeImage", recipeImage);
+      const recipe = await axios.post("/user/ownRecipes", recipeInfo);
+      const response = await axios.post("/user/ownRecipes/image", formData, {
+        headers: { recipeId: recipe.data.recipes._id },
       });
-      const blobedImage = new Blob([recipeImage], {
-        type: "multipart/form-data",
-      });
-      formData.append("recipeImage", blobedImage);
-      formData.append("recipe", blobedInfo);
-      const response = await axios.post("/user/ownRecipes", formData);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
