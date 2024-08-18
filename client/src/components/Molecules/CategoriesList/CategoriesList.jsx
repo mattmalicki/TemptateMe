@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import styles from "./CategoriesList.module.css";
 import { useDispatch } from "react-redux";
 import { useCategories, useRecipes } from "../../../hooks/index.js";
-import { fetchRecipesByCategory } from "../../../redux/recipes/operations.js";
+import {
+  fetchRecipesByCategory,
+  updatePage,
+} from "../../../redux/recipes/operations.js";
 import { useSearchParams } from "react-router-dom";
-import { updatePage } from "../../../redux/recipes/operations.js";
 
 const CategoriesList = () => {
   const [category, setCategory] = useState("");
