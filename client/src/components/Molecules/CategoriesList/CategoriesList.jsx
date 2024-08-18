@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useCategories, useRecipes } from "../../../hooks/index.js";
 import { fetchRecipesByCategory } from "../../../redux/recipes/operations.js";
 import { useSearchParams } from "react-router-dom";
+import { updatePage } from "../../../redux/recipes/operations.js";
 
 const CategoriesList = () => {
   const [category, setCategory] = useState("");
@@ -13,6 +14,7 @@ const CategoriesList = () => {
   const { page } = useRecipes();
 
   const onClick = (event) => {
+    dispatch(updatePage(0));
     if (categoriesTitles.includes(event.target.id)) {
       setCategory(event.target.id);
       setSearchParams({ category: event.target.id });
