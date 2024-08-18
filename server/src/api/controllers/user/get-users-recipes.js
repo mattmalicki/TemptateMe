@@ -26,6 +26,7 @@ async function getUsersRecipes(req, res, next) {
       resultMassage: { en: getText("en", "00094") },
       resultCode: "00094",
       recipes,
+      pageAmount: 0,
     });
   } catch (error) {
     return next(error);

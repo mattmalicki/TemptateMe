@@ -14,7 +14,7 @@ const getRecipesFromDbQuery = async ({ page = 0, limit = 6, query = "" }) => {
   const docNumbers = await Recipe.find({
     title: { $regex: `.*${query}.*`, $options: "i" },
   }).countDocuments();
-  return { recipes, pageAmount: Math.ceil(docNumbers / limit) };
+  return { recipes, pageAmount: Math.ceil(Number(docNumbers) / limit) };
 };
 
 const getFavoritesRecipes = async ({ userId, page = 0, limit = 4 }) => {
@@ -27,7 +27,7 @@ const getFavoritesRecipes = async ({ userId, page = 0, limit = 4 }) => {
   const docNumbers = await Recipe.find({
     favorites: new Types.ObjectId(userId),
   }).countDocuments();
-  return { recipes, pageAmount: Math.ceil(docNumbers / limit) };
+  return { recipes, pageAmount: Math.ceil(Number(docNumbers) / limit) };
 };
 
 const getPopularRecipesFromDb = async ({ page = 0, limit = 5 }) => {
@@ -36,7 +36,7 @@ const getPopularRecipesFromDb = async ({ page = 0, limit = 5 }) => {
     .skip(page * limit)
     .limit(limit);
   const docNumbers = await Recipe.find({}).countDocuments();
-  return { recipes, pageAmount: Math.ceil(docNumbers / limit) };
+  return { recipes, pageAmount: Math.ceil(Number(docNumbers) / limit) };
 };
 
 const addToFavoritesInDb = async ({ userId, recipeId }) => {
@@ -65,8 +65,8 @@ const getRecipesFromDbCategory = async ({
     .limit(limit);
   const docNumbers = await Recipe.find({
     category: { $regex: `.*${category}.*`, $options: "i" },
-  }).countDocuments();
-  return { recipes, pageAmount: Math.ceil(docNumbers / limit) };
+  }).count();
+  return { recipes, pageAmount: Math.ceil(Number(docNumbers) / limit) };
 };
 
 const getCategoriesFromDb = async () => {
@@ -94,7 +94,7 @@ const getRecipesFromDbIngredient = async ({
   const docNumbers = await Recipe.find({
     "ingredients.id": new Types.ObjectId(ingredientId),
   }).countDocuments();
-  return { recipes, pageAmount: Math.ceil(docNumbers / limit) };
+  return { recipes, pageAmount: Math.ceil(Number(docNumbers) / limit) };
 };
 
 export {

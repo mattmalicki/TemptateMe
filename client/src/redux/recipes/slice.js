@@ -24,9 +24,7 @@ const handleRejected = (state, action) => {
 const handleFulfilled = (state, action) => {
   clearLoadingError(state);
   action.payload.recipes && (state.items = action.payload.recipes);
-  action.payload.pageAmount
-    ? (state.pageAmount = action.payload.pageAmount)
-    : (state.pageAmount = 0);
+  action.payload.pageAmount && (state.pageAmount = action.payload.pageAmount);
 };
 
 const isPendingAction = (action) => {
