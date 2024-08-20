@@ -10,7 +10,7 @@ const HomeToRecipes = () => {
           <span className={styles.greenText}>Delicious and healthy way</span> to
           enjoy a variety of fresh ingredients in one satisfying meal
         </span>
-        <Link to="/recipes" className={styles.link}>
+        <Link to="/searchRecipes" className={styles.link}>
           See recipes{" "}
           <div className={styles.icon}>
             <ArrowIcon />

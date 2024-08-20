@@ -1,5 +1,6 @@
 import styles from "./CurvedInput.module.css";
 import { CurvedButton } from "../../Atoms/CurvedButton/CurvedButton.jsx";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const CurvedInput = ({
   placeholderText,
@@ -11,8 +12,8 @@ const CurvedInput = ({
     event.preventDefault();
   },
 }) => {
-  const isDark = false;
-  const labelClasses = `${styles.CurvedInput} ${isDark ? styles.dark : ""}`;
+  const { isDark } = useDarkMode();
+  const labelClasses = `${styles.CurvedInput} ${isDark ? styles.isDark : ""}`;
   return (
     <form className={labelClasses} onSubmit={onSubmit}>
       <input

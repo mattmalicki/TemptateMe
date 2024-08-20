@@ -7,7 +7,6 @@
   align-items: center;
   gap: 32px;
   margin: 100px 0;
-  color: var(--titlesColor);
   font-weight: 600;
   font-size: 28px;
 }
@@ -32,4 +31,9 @@
 .categoryTitle {
   margin-bottom: 32px;
   align-self: flex-start;
+  color: var(--titlesColor);
+}
+
+.categoryTitle.isDark {
+  color: var(--primaryColor);
 }

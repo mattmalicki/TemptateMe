@@ -4,13 +4,14 @@
 }
 
 .info {
+  max-width: 400px;
   margin-top: 14px;
-  color: var(--secondColor);
 }
 
 @media screen and (min-width: 768px) {
   .AboutApp {
     width: 50%;
     justify-content: left;
+    margin-top: 100px;
   }
 }

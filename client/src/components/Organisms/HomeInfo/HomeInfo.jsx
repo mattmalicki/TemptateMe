@@ -6,11 +6,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchRecipesByQuery } from "../../../redux/recipes/operations.js";
 import { useNavigate } from "react-router-dom";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const HomeInfo = () => {
   const [text, setText] = useState();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { isDark } = useDarkMode();
 
   const onChange = (event) => {
     const text = event.currentTarget.value;
@@ -29,14 +31,26 @@ const HomeInfo = () => {
       <div className={styles.toRecipes}>
         <HomeToRecipes />
         <div className={styles.input}>
-          <CurvedInput
-            onSubmit={onClick}
-            onClick={onClick}
-            onChange={onChange}
-            greenOrBlack="black"
-            placeholderText="Search by title"
-            buttonText="Search"
-          />
+          {!isDark && (
+            <CurvedInput
+              onSubmit={onClick}
+              onClick={onClick}
+              onChange={onChange}
+              greenOrBlack="black"
+              placeholderText="Search by title"
+              buttonText="Search"
+            />
+          )}
+          {isDark && (
+            <CurvedInput
+              onSubmit={onClick}
+              onClick={onClick}
+              onChange={onChange}
+              greenOrBlack="green"
+              placeholderText="Search by title"
+              buttonText="Search"
+            />
+          )}
         </div>
       </div>
     </div>
