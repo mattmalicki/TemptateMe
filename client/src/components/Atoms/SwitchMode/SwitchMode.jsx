@@ -1,17 +1,15 @@
 import styles from "./SwitchMode.module.css";
+import { useDarkMode } from "../../../context/DarkModeContext";
 
 const SwitchMode = () => {
-  let dark = false;
-  const onChange = () => {
-    dark = !dark;
-  };
+  const { isDark, setDarkMode } = useDarkMode();
   return (
     <label className={styles.SwitchMode}>
       <input
         type="checkbox"
         className={styles.input}
-        checked={dark}
-        onChange={onChange}
+        checked={isDark}
+        onChange={setDarkMode}
       />
       <span className={styles.slider}></span>
     </label>
