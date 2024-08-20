@@ -9,13 +9,19 @@
   flex-wrap: nowrap;
   gap: 28px;
   justify-content: center;
-  background-color: var(--primaryColor);
+  background-color: inherit;
   border: 1px solid var(--accent);
   border-radius: 8px;
 }
 
 .editButton {
   width: 100%;
+  cursor: pointer;
+  color: currentColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .icon {

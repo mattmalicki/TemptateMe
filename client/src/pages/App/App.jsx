@@ -20,10 +20,13 @@ import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
 import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
 import { Recipe } from "../../components/Templates/Recipe/Recipe.jsx";
+import { useDarkMode } from "../../context/DarkModeContext.js";
 
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+  const { isDark } = useDarkMode();
+  const classes = `${styles.App} ${isDark && styles.isDark}`;
 
   useEffect(() => {
     dispatch(refresh());
@@ -31,7 +34,7 @@ function App() {
   return isRefreshing ? (
     <div style={{ color: "black", fontSize: "56px" }}>Refreshing</div>
   ) : (
-    <div className={styles.App}>
+    <div className={classes}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route

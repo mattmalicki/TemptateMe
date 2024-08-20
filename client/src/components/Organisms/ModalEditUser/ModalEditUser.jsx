@@ -12,6 +12,7 @@ import {
   updateUsersAvatar,
   updateUsersInfo,
 } from "../../../redux/auth/operations";
+import { useDarkMode } from "../../../context/DarkModeContext";
 
 const ModalEditUser = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const ModalEditUser = ({ closeModal }) => {
   const [file, setFile] = useState();
   const [name, setName] = useState(user.name ? user.name : "");
   const [imagePath, setImageUrl] = useState(user.photoUrl ? user.photoUrl : "");
+  const { isDark } = useDarkMode();
 
   useEffect(() => {
     if (!file) {
@@ -83,7 +85,10 @@ const ModalEditUser = ({ closeModal }) => {
             <IconPlus />
           </div>
         </div>
-        <div className={styles.inputContainer} data-modal>
+        <div
+          className={[styles.inputContainer, isDark && styles.isDark].join(" ")}
+          data-modal
+        >
           <div className={styles.iconName}>
             <IconName />
           </div>
