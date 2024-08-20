@@ -1,8 +1,10 @@
 import styles from "./Newsletter.module.css";
 import { RectangleInput } from "../RectangleInput/RectangleInput.jsx";
 import { RectangleButton } from "../../Atoms/RectangleButton/RectangleButton.jsx";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const Newsletter = () => {
+  const { isDark } = useDarkMode();
   const onSubmit = (event) => {
     event.preventDefault();
     console.log("test");
@@ -20,7 +22,10 @@ const Newsletter = () => {
         isEmail={true}
         placeholderText="Enter your email adress"
       />
-      <RectangleButton title="Subscribe" type="submit" />
+      {!isDark && <RectangleButton title="Subscribe" type="submit" />}
+      {isDark && (
+        <RectangleButton title="Subscribe" type="submit" colorScheme="black" />
+      )}
     </form>
   );
 };
