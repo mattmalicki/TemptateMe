@@ -1,7 +1,13 @@
+import { useDarkMode } from "../../../context/DarkModeContext";
 import styles from "./PageTitle.module.css";
 
 const PageTitle = ({ title }) => {
-  return <h1 className={styles.PageTitle}>{title}</h1>;
+  const { isDark } = useDarkMode();
+  return (
+    <h1 className={[styles.PageTitle, isDark && styles.isDark].join(" ")}>
+      {title}
+    </h1>
+  );
 };
 
 export { PageTitle };

@@ -6,6 +6,7 @@ import { ReactComponent as Icon } from "./iconAddIngredientName.svg";
 import { useIngredients } from "../../../hooks/index.js";
 
 import styles from "./AddIngredientName.module.css";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const AddIngredientName = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -13,6 +14,7 @@ const AddIngredientName = () => {
   const [id, setId] = useState("");
   const [filter, setFilter] = useState("");
   const { ingredients } = useIngredients();
+  const { isDark } = useDarkMode();
 
   const handleDataFromChild = (id) => {
     setId(id);
@@ -45,10 +47,12 @@ const AddIngredientName = () => {
 
   useEffect(() => {}, [openDropdown]);
   return (
-    <label className={styles.AddIngredientName}>
+    <label
+      className={[styles.AddIngredientName, isDark && styles.isDark].join(" ")}
+    >
       <input
         name="ingredientName"
-        className={styles.input}
+        className={[styles.input, isDark && styles.isDark].join(" ")}
         onChange={onChange}
         value={value}
         data-scroll=""

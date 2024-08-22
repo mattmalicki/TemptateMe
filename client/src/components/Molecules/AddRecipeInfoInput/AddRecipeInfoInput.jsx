@@ -3,6 +3,7 @@ import styles from "./AddRecipeInfoInput.module.css";
 import { ReactComponent as IconDropdown } from "./icon-dropdown.svg";
 import { useCategories } from "../../../hooks/index.js";
 import { AddDropdownList } from "../../Atoms/AddDropdownList/AddDropdownList.jsx";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const AddRecipeInfoInput = ({
   placeholder,
@@ -14,6 +15,7 @@ const AddRecipeInfoInput = ({
   const { categoriesTitles } = useCategories();
   const [value, setValue] = useState("");
   const [timeArray, setTimeArray] = useState([]);
+  const { isDark } = useDarkMode();
 
   const handleCloseDropdown = (event) => {
     if (!event.target.dataset.scroll) {
@@ -55,9 +57,13 @@ const AddRecipeInfoInput = ({
   }, []);
 
   return (
-    <label className={styles.AddCategoryInfo}>
+    <label
+      className={[styles.AddCategoryInfo, isDark && styles.isDark].join(" ")}
+    >
       {placeholder}
-      <div className={styles.inputContainer}>
+      <div
+        className={[styles.inputContainer, isDark && styles.isDark].join(" ")}
+      >
         <input
           id={idName}
           className={styles.input}

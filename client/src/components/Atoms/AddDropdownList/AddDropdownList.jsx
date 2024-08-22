@@ -1,28 +1,36 @@
-import styles from './AddDropdownList.module.css';
+import { useDarkMode } from "../../../context/DarkModeContext";
+import styles from "./AddDropdownList.module.css";
 
 const AddDropdownList = ({
   array,
-  filter = '',
+  filter = "",
   isCentered = false,
   onItemClick,
   sendDataToParent = () => {},
 }) => {
-  const classes = isCentered
-    ? `${styles.listItem} ${styles.isCentered}`
-    : `${styles.listItem}`;
+  const { isDark } = useDarkMode();
   return (
-    <div className={styles.AddDropdownList} data-scroll="">
+    <div
+      className={[styles.AddDropdownList, isDark && styles.isDark].join(" ")}
+      data-scroll=""
+    >
       <ul className={styles.list} data-scroll="">
         {array &&
           array
-            .filter(item =>
-              item.ttl ? item.ttl.toLowerCase().includes(filter) : item
+            .filter((item) =>
+              item.ttl
+                ? item.ttl.toLowerCase().includes(filter.toLowerCase())
+                : item
             )
             .map((item, index) => (
               <li
                 key={index}
-                className={classes}
-                onClick={event => {
+                className={[
+                  styles.listItem,
+                  isCentered && styles.isCentered,
+                  isDark && styles.isDark,
+                ].join(" ")}
+                onClick={(event) => {
                   onItemClick(event);
                   sendDataToParent(
                     item._id ? item._id : item.title ? item.title : item

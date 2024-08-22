@@ -12,7 +12,7 @@
 
   gap: 50px;
 
-  width: 343px;
+  width: 100%;
 }
 
 .Recipe {
@@ -27,7 +27,7 @@
 
 @media screen and (min-width: 768px) {
   .AddRecipe {
-    width: 704px;
+    /* width: 704px; */
     gap: 80px;
     margin-bottom: 90px;
   }
@@ -35,7 +35,7 @@
 
 @media screen and (min-width: 1024px) {
   .AddRecipe {
-    width: 1240px;
+    /* width: 1240px; */
     flex-direction: row;
     gap: 120px;
     margin-bottom: 200px;

@@ -2,7 +2,7 @@
   width: 100%;
   max-height: 154px;
 
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-size: 0.75rem;
   letter-spacing: -0.02em;
@@ -17,6 +17,11 @@
 
   z-index: 1;
   overflow-y: scroll;
+}
+
+.AddDropdownList.isDark {
+  background-color: var(--accent);
+  color: var(--primaryColor);
 }
 
 .list {
@@ -35,6 +40,10 @@
 
 .listItem:hover {
   color: var(--accent);
+}
+
+.listItem.isDark:hover {
+  color: #000;
 }
 
 .isCentered {

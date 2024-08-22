@@ -7,9 +7,11 @@ import { useDispatch } from "react-redux";
 import { addRecipe } from "../../../redux/recipes/operations.js";
 
 import styles from "./AddRecipeForm.module.css";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
+  const { isDark } = useDarkMode();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,6 +27,7 @@ const AddRecipeForm = () => {
     const ingredientNameEls = document.getElementsByName("ingredientName");
     const ingredientUnitEls = document.getElementsByName("ingredientUnit");
     const ingredients = [];
+
     for (let i = 0; i < ingredientNameEls.length; i++) {
       ingredients.push({
         _id: ingredientNameEls[i].dataset.id,
@@ -56,11 +59,20 @@ const AddRecipeForm = () => {
       <AddIngredients />
       <AddPreparation />
       <div className={styles.AddRecipeButton}>
-        <CurvedButton
-          greenOrBlack={"black"}
-          type="submit"
-          title={"Add recipe"}
-        />
+        {!isDark && (
+          <CurvedButton
+            greenOrBlack={"black"}
+            type="submit"
+            title={"Add recipe"}
+          />
+        )}
+        {isDark && (
+          <CurvedButton
+            greenOrBlack={"green"}
+            type="submit"
+            title={"Add recipe"}
+          />
+        )}
       </div>
     </form>
   );

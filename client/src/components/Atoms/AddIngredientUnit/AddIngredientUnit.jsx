@@ -1,39 +1,43 @@
-import { ReactComponent as Icon } from './iconAddIngredientUnit.svg';
-import { useState } from 'react';
+import { ReactComponent as Icon } from "./iconAddIngredientUnit.svg";
+import { useState } from "react";
 
-import { AddDropdownList } from '../../Atoms/AddDropdownList/AddDropdownList.jsx';
+import { AddDropdownList } from "../../Atoms/AddDropdownList/AddDropdownList.jsx";
 
-import styles from './AddIngredientUnit.module.css';
+import styles from "./AddIngredientUnit.module.css";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const AddIngredientUnit = () => {
   const [openDropdown, setOpenDropdown] = useState(false);
-  const [unit, setUnit] = useState('g');
-  const unitTypes = ['tbs', 'tsp', 'kg', 'g', 'ml', 'l'];
+  const [unit, setUnit] = useState("g");
+  const unitTypes = ["tbs", "tsp", "kg", "g", "ml", "l"];
+  const { isDark } = useDarkMode();
 
-  const handleCloseDropdown = event => {
+  const handleCloseDropdown = (event) => {
     if (!event.target.dataset.scroll) {
       setOpenDropdown(false);
-      window.removeEventListener('click', handleCloseDropdown);
+      window.removeEventListener("click", handleCloseDropdown);
     }
   };
 
-  const handleOpenDropdown = event => {
+  const handleOpenDropdown = (event) => {
     setOpenDropdown(true);
     setTimeout(() => {
-      window.addEventListener('click', handleCloseDropdown);
+      window.addEventListener("click", handleCloseDropdown);
     }, 100);
   };
 
-  const changeAmount = event => {
+  const changeAmount = (event) => {
     event.target.dataset.id = event.target.value;
   };
 
-  const changeUnit = event => {
+  const changeUnit = (event) => {
     setUnit(event.target.dataset.value);
   };
 
   return (
-    <label className={styles.AddIngredientUnit}>
+    <label
+      className={[styles.AddIngredientUnit, isDark && styles.isDark].join(" ")}
+    >
       <input
         name="ingredientAmount"
         className={styles.inputAmount}

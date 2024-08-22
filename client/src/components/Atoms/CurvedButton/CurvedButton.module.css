@@ -2,7 +2,6 @@
   border-radius: 24px 44px;
   border: 1px solid var(--primaryColor);
   background-color: transparent;
-  color: currentColor;
   cursor: pointer;
   transition: ease-in-out 0.25s;
 }
@@ -25,10 +24,11 @@
 .black {
   border: none;
   background-color: var(--secondColor);
+  color: var(--primaryColor);
 }
 
 .black:hover {
-  color: var(--primaryColor);
+  color: var(--secondColor);
   background-color: var(--accent);
 }
 
