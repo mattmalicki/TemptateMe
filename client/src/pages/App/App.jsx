@@ -27,7 +27,6 @@ function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
   const { isDark } = useDarkMode();
-  const classes = `${styles.App} ${isDark && styles.isDark}`;
 
   useEffect(() => {
     dispatch(refresh());
@@ -35,7 +34,7 @@ function App() {
   return isRefreshing ? (
     <div style={{ color: "black", fontSize: "56px" }}>Refreshing</div>
   ) : (
-    <div className={classes}>
+    <div className={[styles.App, isDark && styles.isDark].join(" ")}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route
@@ -107,7 +106,7 @@ function App() {
             element={<PrivateRoute redirectTo="/" component={<Recipe />} />}
           />
           <Route
-            path="/notfound"
+            path="*"
             element={
               <PrivateRoute redirectTo="/" component={<NotFoundPage />} />
             }
