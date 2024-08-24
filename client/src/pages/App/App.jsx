@@ -21,6 +21,7 @@ import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
 import { Recipe } from "../../components/Templates/Recipe/Recipe.jsx";
 import { useDarkMode } from "../../context/DarkModeContext.js";
+import { NotFoundPage } from "../NotFound/NotFound.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -61,7 +62,6 @@ function App() {
               />
             }
           ></Route>
-          {/* <Route path="/home" element={<Test />} /> */}
           <Route
             path="/home"
             element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
@@ -105,6 +105,12 @@ function App() {
           <Route
             path="/recipe/*"
             element={<PrivateRoute redirectTo="/" component={<Recipe />} />}
+          />
+          <Route
+            path="/notfound"
+            element={
+              <PrivateRoute redirectTo="/" component={<NotFoundPage />} />
+            }
           />
         </Route>
       </Routes>

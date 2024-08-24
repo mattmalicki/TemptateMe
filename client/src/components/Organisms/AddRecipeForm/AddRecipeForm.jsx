@@ -8,9 +8,11 @@ import { addRecipe } from "../../../redux/recipes/operations.js";
 
 import styles from "./AddRecipeForm.module.css";
 import { useDarkMode } from "../../../context/DarkModeContext.js";
+import { useNavigate } from "react-router-dom";
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { isDark } = useDarkMode();
 
   const handleSubmit = (event) => {
@@ -45,6 +47,7 @@ const AddRecipeForm = () => {
     dispatch(
       addRecipe({ recipeImage: recipeImage.files[0], recipeInfo: recipe })
     );
+    navigate("/recipe");
   };
   return (
     <form className={styles.AddRecipeForm} onSubmit={handleSubmit}>
