@@ -6,6 +6,7 @@ import { useRecipes } from "../../../hooks";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchShoppingList } from "../../../redux/shopping/operations.js";
+import { fetchIngredients } from "../../../redux/ingredients/operations.js";
 
 const Recipe = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Recipe = () => {
 
   useEffect(() => {
     dispatch(fetchShoppingList());
+    dispatch(fetchIngredients());
   }, [dispatch]);
 
   return isLoading ? (

@@ -9,11 +9,14 @@
   padding: 10px 29px 10px 10px;
 }
 
+.IngredientsListItem.isDark {
+  background-color: var(--paginationBgDark);
+}
+
 .name {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--header);
   font-weight: 500;
   font-size: 12px;
 }

@@ -6,11 +6,13 @@ import {
 } from "../../../redux/shopping/operations.js";
 import { useRecipes } from "../../../hooks/index.js";
 import { useState } from "react";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const IngredientsListItem = ({ ingredient, measure, isChecked = false }) => {
   const dispatch = useDispatch();
   const { recipes } = useRecipes();
   const [check, setCheck] = useState(isChecked);
+  const { isDark } = useDarkMode();
 
   const onChange = (event) => {
     if (event.target.checked) {
@@ -28,7 +30,11 @@ const IngredientsListItem = ({ ingredient, measure, isChecked = false }) => {
 
   return (
     ingredient && (
-      <li className={styles.IngredientsListItem}>
+      <li
+        className={[styles.IngredientsListItem, isDark && styles.isDark].join(
+          " "
+        )}
+      >
         <div className={styles.name}>
           <img
             alt={ingredient.ttl}

@@ -6,8 +6,10 @@ import { useDispatch } from "react-redux";
 import { fetchRecipeById } from "../../../redux/recipes/operations.js";
 import { deleteFromFavorites } from "../../../redux/recipes/operations.js";
 import { deleteRecipe } from "../../../redux/recipes/operations.js";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const MyRecipesListItem = ({ recipe, isFavorites }) => {
+  const { isDark } = useDarkMode();
   const dispatch = useDispatch();
   const onClick = (id) => {
     dispatch(fetchRecipeById(id));
@@ -19,7 +21,9 @@ const MyRecipesListItem = ({ recipe, isFavorites }) => {
     dispatch(deleteRecipe(id));
   };
   return (
-    <li className={styles.MyRecipesListItem}>
+    <li
+      className={[styles.MyRecipesListItem, isDark && styles.isDark].join(" ")}
+    >
       <img alt="Delicious recipe" src={recipe.thumb} className={styles.image} />
       <div className={styles.info}>
         <div
@@ -28,7 +32,7 @@ const MyRecipesListItem = ({ recipe, isFavorites }) => {
               ? removeFromFavorites(recipe._id)
               : removeRecipe(recipe._id);
           }}
-          className={`${styles.trash} ${isFavorites ? styles.favorites : ""}`}
+          className={[styles.trash, isFavorites && styles.favorites].join(" ")}
         >
           <TrashIcon />
         </div>
@@ -37,15 +41,28 @@ const MyRecipesListItem = ({ recipe, isFavorites }) => {
         <div className={styles.timeButton}>
           <span className={styles.time}>{recipe.time} min</span>
           <Link to={`/recipe/${recipe._id}`} className={styles.button}>
-            <CurvedButton
-              size="small"
-              greenOrBlack={`${isFavorites ? "black" : "green"}`}
-              onClick={() => {
-                onClick(recipe._id);
-              }}
-            >
-              See recipe
-            </CurvedButton>
+            {!isDark && (
+              <CurvedButton
+                size="small"
+                greenOrBlack={`${isFavorites ? "black" : "green"}`}
+                onClick={() => {
+                  onClick(recipe._id);
+                }}
+              >
+                See recipe
+              </CurvedButton>
+            )}
+            {isDark && (
+              <CurvedButton
+                size="small"
+                greenOrBlack={`green`}
+                onClick={() => {
+                  onClick(recipe._id);
+                }}
+              >
+                See recipe
+              </CurvedButton>
+            )}
           </Link>
         </div>
       </div>
