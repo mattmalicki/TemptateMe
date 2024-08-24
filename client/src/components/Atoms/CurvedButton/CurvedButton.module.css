@@ -4,6 +4,7 @@
   background-color: transparent;
   cursor: pointer;
   transition: ease-in-out 0.25s;
+  color: currentColor;
 }
 
 .CurvedButton:hover {

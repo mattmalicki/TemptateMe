@@ -12,7 +12,6 @@
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  color: var(--header);
   font-weight: 500;
   font-size: 12px;
 }
@@ -44,7 +43,8 @@
   width: 18px;
   height: 18px;
   background: none;
-  color: black;
+  color: currentColor;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {

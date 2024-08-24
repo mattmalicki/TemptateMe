@@ -2,12 +2,11 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
   margin-top: 32px;
-  margin-bottom: 100px;
   gap: 28px;
+  margin-bottom: 50px;
 }
 
 .RecipesListItem {
@@ -20,7 +19,6 @@
     flex-wrap: wrap;
     gap: 32px;
     margin-top: 50px;
-    margin-bottom: 200px;
   }
   .RecipesListItem {
     flex-basis: calc((100% - 32px) / 2);

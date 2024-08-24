@@ -6,11 +6,13 @@ import { ReactComponent as IconRightArrow } from "./icon-right-arrow.svg";
 import { useDispatch } from "react-redux";
 import { updatePage } from "../../../redux/recipes/operations.js";
 import { useEffect } from "react";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const Pagination = () => {
   const dispatch = useDispatch();
   const { pageAmount, page } = useRecipes();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { isDark } = useDarkMode();
 
   const onClick = (event) => {
     if (event.target.nodeName === "LI") {
@@ -25,11 +27,16 @@ const Pagination = () => {
   const listItems = (pageAmount) => {
     const array = [];
     for (let i = 0; i <= pageAmount - 1; i++) {
+      i === page && console.log("Jestem numerem");
       array.push(
         <li
           id={i}
           key={i}
-          className={`${styles.number} ${i === page ? styles.current : null}`}
+          className={[
+            styles.number,
+            i === page && styles.current,
+            isDark && styles.isDark,
+          ].join(" ")}
         >
           {i + 1}
         </li>
@@ -68,7 +75,7 @@ const Pagination = () => {
 
   return (
     pageAmount && (
-      <div className={styles.Pagination}>
+      <div className={[styles.Pagination, isDark && styles.isDark].join(" ")}>
         <button onClick={onSubstrack} className={styles.arrows}>
           <IconLeftArrow />
         </button>
