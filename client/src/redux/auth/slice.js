@@ -21,7 +21,7 @@ const isPendingAction = (action) => {
 };
 
 const isRejectAction = (action) => {
-  return action.type.startsWith("auth") && action.type.endsWith("/rejected");
+  return action.type.endsWith("/rejected");
 };
 
 const isLoginOrSignupAction = (action) => {

@@ -28,11 +28,15 @@
   width: 100%;
   object-fit: cover;
   border-radius: 8px;
+  aspect-ratio: 1;
 }
 
 @media screen and (min-width: 768px) {
   .SearchItem {
     flex-basis: calc((100% - 32px) / 2);
+  }
+  .image {
+    max-height: 323px;
   }
 }
 

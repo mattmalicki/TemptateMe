@@ -3,9 +3,11 @@ import { ReactComponent as TrashIcon } from "./icon-trash.svg";
 import { Link } from "react-router-dom";
 import { CurvedButton } from "../../Atoms/CurvedButton/CurvedButton.jsx";
 import { useDispatch } from "react-redux";
-import { fetchRecipeById } from "../../../redux/recipes/operations.js";
-import { deleteFromFavorites } from "../../../redux/recipes/operations.js";
-import { deleteRecipe } from "../../../redux/recipes/operations.js";
+import {
+  fetchRecipeById,
+  deleteFromFavorites,
+  deleteRecipe,
+} from "../../../redux/recipes/operations.js";
 import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const MyRecipesListItem = ({ recipe, isFavorites }) => {

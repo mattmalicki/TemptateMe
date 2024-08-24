@@ -5,10 +5,13 @@ import { ReactComponent as EditIcon } from "./icon-edit.svg";
 import { useEffect, useState } from "react";
 import { ModalLogout } from "../../Organisms/ModalLogout/ModalLogout.jsx";
 import { ModalEditUser } from "../../Organisms/ModalEditUser/ModalEditUser.jsx";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const UserWindow = ({ onClose }) => {
   const [modalLogout, setModalLogout] = useState(false);
   const [modalEdit, setModalEdit] = useState(false);
+  const { isDark } = useDarkMode();
+
   const close = (event) => {
     if (event.target.id === "backdrop") {
       setModalLogout(false);
@@ -50,7 +53,10 @@ const UserWindow = ({ onClose }) => {
     setModalEdit(false);
   };
   return (
-    <div className={styles.UserWindow} data-user-window="true">
+    <div
+      className={[styles.UserWindow, isDark && styles.isDark].join(" ")}
+      data-user-window="true"
+    >
       <button className={styles.editButton} onClick={openModalEdit}>
         Edit profile <EditIcon />
       </button>

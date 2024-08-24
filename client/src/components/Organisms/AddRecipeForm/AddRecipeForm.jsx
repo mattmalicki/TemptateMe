@@ -30,7 +30,7 @@ const AddRecipeForm = () => {
 
     for (let i = 0; i < ingredientNameEls.length; i++) {
       ingredients.push({
-        _id: ingredientNameEls[i].dataset.id,
+        id: ingredientNameEls[i].dataset.id,
         measure: ingredientUnitEls[i].dataset.id,
       });
     }

@@ -49,7 +49,6 @@ const shoppingList = createSlice({
         const index = state.items.findIndex(
           (item) => item.id === action.payload.idProduct
         );
-        console.log(index);
         state.items.splice(index, 1);
       })
       .addMatcher(isPendingAction, handlePending)

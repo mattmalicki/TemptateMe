@@ -27,7 +27,6 @@ const Pagination = () => {
   const listItems = (pageAmount) => {
     const array = [];
     for (let i = 0; i <= pageAmount - 1; i++) {
-      i === page && console.log("Jestem numerem");
       array.push(
         <li
           id={i}

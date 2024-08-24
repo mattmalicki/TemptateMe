@@ -9,9 +9,13 @@
   flex-wrap: nowrap;
   gap: 28px;
   justify-content: center;
-  background-color: inherit;
+  background-color: var(--primaryColor);
   border: 1px solid var(--accent);
   border-radius: 8px;
+}
+
+.UserWindow.isDark {
+  background-color: var(--mainBgDark);
 }
 
 .editButton {
