@@ -9,6 +9,11 @@ export const DarkModeProvider = ({ children }) => {
 
   const setDarkMode = () => {
     setIsDark(!isDark);
+    try {
+      localStorage.setItem("isDark-theme", !isDark);
+    } catch {
+      console.log("Saving theme faild.");
+    }
   };
 
   return (
