@@ -12,9 +12,7 @@ const MobileMenu = ({ onClose }) => {
   const { isDark } = useDarkMode();
   function close() {
     setShouldClose(true);
-    setTimeout(() => {
-      onClose();
-    }, 1000);
+    onClose();
   }
 
   const handleNav = (event) => {

@@ -25,12 +25,6 @@ const UserHeader = () => {
     }, 1000);
   };
 
-  useEffect(() => {
-    window.onload = () => {
-      console.log("test");
-      handleCloseMenu();
-    };
-  });
   return (
     <div className={styles.UserHeader}>
       <UserInfo onClick={handleOpenUserWindow} />
