@@ -5,28 +5,42 @@ import { useDarkMode } from "../../../context/DarkModeContext";
 import { Logo } from "../../Atoms/Logo/Logo";
 import { Link } from "react-router-dom";
 import { ReactComponent as IconClose } from "./icon-close.svg";
+import { useState } from "react";
 
 const MobileMenu = ({ onClose }) => {
+  const [shouldClose, setShouldClose] = useState(false);
   const { isDark } = useDarkMode();
-  const closeMobile = (event) => {
-    const target = event.target;
-    if (target.nodeName === "A") {
+  function close() {
+    setShouldClose(true);
+    setTimeout(() => {
       onClose();
+    }, 1000);
+  }
+
+  const handleNav = (event) => {
+    const target = event.target;
+    if (target.closest("a")) {
+      close();
     }
     return;
   };
 
   return (
     <div
-      className={[styles.MobileMenu, isDark && styles.isDark].join(" ")}
-      onClick={closeMobile}
+      className={[
+        styles.MobileMenu,
+        shouldClose && styles.onClose,
+        isDark && styles.isDark,
+      ].join(" ")}
+      onClick={handleNav}
+      data-container
     >
       <div className={styles.logo}>
-        <Link to="/home" className={styles.icon} onClick={onClose}>
+        <Link to="/home" className={styles.icon} onClick={close}>
           <Logo />
         </Link>
 
-        <button className={styles.close} type="button" onClick={onClose}>
+        <button className={styles.close} type="button" onClick={close}>
           <IconClose />
         </button>
       </div>

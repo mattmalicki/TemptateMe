@@ -20,7 +20,9 @@ const UserHeader = () => {
     setOpenMenu(true);
   };
   const handleCloseMenu = () => {
-    setOpenMenu(false);
+    setTimeout(() => {
+      setOpenMenu(false);
+    }, 1000);
   };
 
   useEffect(() => {
