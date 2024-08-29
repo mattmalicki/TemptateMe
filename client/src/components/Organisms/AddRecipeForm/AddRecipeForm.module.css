@@ -24,6 +24,10 @@
   width: 100%;
 }
 
+.reset {
+  color: currentColor;
+}
+
 @media screen and (min-width: 768px) {
   .ImageAndInfo {
     flex-direction: row;

@@ -102,7 +102,7 @@ const AddRecipeForm = () => {
           />
         )}
       </div>
-      <button type="button" onClick={handleReset}>
+      <button className={styles.reset} type="button" onClick={handleReset}>
         Reset recipe
       </button>
     </form>
