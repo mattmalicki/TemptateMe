@@ -1,8 +1,19 @@
+import { useEffect, useState } from "react";
 import { useDarkMode } from "../../../context/DarkModeContext";
 import styles from "./AddRecipeTextarea.module.css";
 
 const AddRecipeTextarea = () => {
+  const [value, setValue] = useState();
   const { isDark } = useDarkMode();
+  function checkLocalStorage() {
+    if (localStorage.getItem("recipeInfo")) {
+      const { instructions } = JSON.parse(localStorage.getItem("recipeInfo"));
+      setValue(instructions);
+    }
+  }
+  useEffect(() => {
+    checkLocalStorage();
+  });
   return (
     <div
       className={[
@@ -16,6 +27,7 @@ const AddRecipeTextarea = () => {
           styles.AddRecipeDescriptionInput,
           isDark && styles.isDark,
         ].join(" ")}
+        value={value}
         placeholder="Enter recipe. Use enter to add steps."
         type="textarea"
       ></textarea>

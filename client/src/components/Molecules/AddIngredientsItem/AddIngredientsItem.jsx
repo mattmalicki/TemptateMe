@@ -8,10 +8,10 @@ const AddIngredientsItem = ({ id, onClose }) => {
   return (
     <li className={styles.AddIngredientsItem}>
       <div className={styles.Input}>
-        <AddIngredientName />
+        <AddIngredientName index={id} />
       </div>
       <div>
-        <AddIngredientUnit />
+        <AddIngredientUnit index={id} />
       </div>
       <div className={styles.CloseButton}>
         <AddIngredientCloseButton onClick={onClose} id={id} />

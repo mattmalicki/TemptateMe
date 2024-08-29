@@ -17,6 +17,25 @@ const AddRecipeInfoInput = ({
   const [timeArray, setTimeArray] = useState([]);
   const { isDark } = useDarkMode();
 
+  useEffect(() => {
+    checkLocalStorage();
+  });
+
+  function checkLocalStorage() {
+    if (localStorage.getItem("recipeInfo")) {
+      const recipeInfo = JSON.parse(localStorage.getItem("recipeInfo"));
+      idName === "recipeName" && recipeInfo.title && setValue(recipeInfo.title);
+      idName === "recipeAbout" &&
+        recipeInfo.description &&
+        setValue(recipeInfo.description);
+      isCategory && recipeInfo.category && setValue(recipeInfo.category);
+      isTime && recipeInfo.time && setValue(recipeInfo.time);
+      return;
+    }
+    isCategory && setValue("Breakfast");
+    isTime && setValue("60");
+  }
+
   const handleCloseDropdown = (event) => {
     if (!event.target.dataset.scroll) {
       setOpenDropdown(false);
@@ -26,7 +45,7 @@ const AddRecipeInfoInput = ({
     return;
   };
 
-  const handleOpenDropdown = (event) => {
+  const handleOpenDropdown = () => {
     setOpenDropdown(true);
     setTimeout(() => {
       window.addEventListener("click", handleCloseDropdown);
@@ -34,6 +53,16 @@ const AddRecipeInfoInput = ({
   };
 
   const changeValue = (event) => {
+    if (isCategory) {
+      const recipeInfo = JSON.parse(localStorage.getItem("recipeInfo"));
+      recipeInfo.category = event.target.dataset.value;
+      localStorage.setItem("recipeInfo", JSON.stringify(recipeInfo));
+    }
+    if (isTime) {
+      const recipeInfo = JSON.parse(localStorage.getItem("recipeInfo"));
+      recipeInfo.time = event.target.dataset.value;
+      localStorage.setItem("recipeInfo", JSON.stringify(recipeInfo));
+    }
     setValue(event.target.dataset.value);
   };
 
@@ -50,11 +79,6 @@ const AddRecipeInfoInput = ({
       setTimeArray(array);
     }
   }, [isTime]);
-
-  useEffect(() => {
-    isCategory && setValue("Breakfast");
-    isTime && setValue("60");
-  }, []);
 
   return (
     <label

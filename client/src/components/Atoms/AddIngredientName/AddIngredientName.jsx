@@ -8,7 +8,7 @@ import { useIngredients } from "../../../hooks/index.js";
 import styles from "./AddIngredientName.module.css";
 import { useDarkMode } from "../../../context/DarkModeContext.js";
 
-const AddIngredientName = () => {
+const AddIngredientName = ({ index }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [value, setValue] = useState("");
   const [id, setId] = useState("");
@@ -16,7 +16,26 @@ const AddIngredientName = () => {
   const { ingredients } = useIngredients();
   const { isDark } = useDarkMode();
 
+  function checkLocalStorage() {
+    if (localStorage.getItem("recipeInfo")) {
+      const ingredientsArray = JSON.parse(
+        localStorage.getItem("recipeInfo")
+      ).ingredients;
+      const id = ingredientsArray[index - 1].id;
+      const test = ingredients.filter((item) => item._id === id)[0];
+      setId(test._id);
+      setValue(test.ttl);
+    }
+  }
+
+  function updateLocalStorage(id) {
+    const recipe = JSON.parse(localStorage.getItem("recipeInfo"));
+    recipe.ingredients[index - 1].id = id;
+    localStorage.setItem("recipeInfo", JSON.stringify(recipe));
+  }
+
   const handleDataFromChild = (id) => {
+    updateLocalStorage(id);
     setId(id);
   };
 
@@ -44,7 +63,9 @@ const AddIngredientName = () => {
     setValue(event.target.value);
     window.addEventListener("click", handleCloseDropdown);
   };
-
+  useEffect(() => {
+    checkLocalStorage();
+  });
   useEffect(() => {}, [openDropdown]);
   return (
     <label
