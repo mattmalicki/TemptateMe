@@ -5,7 +5,8 @@ import { useEffect } from "react";
 const SwitchMode = () => {
   const { isDark, setDarkMode } = useDarkMode();
   useEffect(() => {
-    JSON.parse(localStorage.getItem("isDark-theme")) && setDarkMode();
+    JSON.parse(localStorage.getItem("isDark-theme")) !== isDark &&
+      setDarkMode();
   }, []);
   return (
     <label className={styles.SwitchMode}>
