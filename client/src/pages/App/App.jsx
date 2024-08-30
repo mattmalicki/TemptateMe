@@ -16,6 +16,7 @@ import { ShoppingPage } from "../Shopping/Shopping.jsx";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
 import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
+import { Loader } from "../../components/Atoms/Loader/Loader.jsx";
 
 import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
@@ -32,7 +33,7 @@ function App() {
     dispatch(refresh());
   }, [dispatch]);
   return isRefreshing ? (
-    <div style={{ color: "black", fontSize: "56px" }}>Refreshing</div>
+    <Loader />
   ) : (
     <div className={[styles.App, isDark && styles.isDark].join(" ")}>
       <Routes>
