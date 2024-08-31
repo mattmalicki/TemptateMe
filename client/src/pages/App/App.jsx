@@ -23,6 +23,7 @@ import { refresh } from "../../redux/auth/operations.js";
 import { Recipe } from "../../components/Templates/Recipe/Recipe.jsx";
 import { useDarkMode } from "../../context/DarkModeContext.js";
 import { NotFoundPage } from "../NotFound/NotFound.jsx";
+import { Helmet } from "react-helmet";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,9 @@ function App() {
     <Loader />
   ) : (
     <div className={[styles.App, isDark && styles.isDark].join(" ")}>
+      <Helmet>
+        <title>Temptate Me</title>
+      </Helmet>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route

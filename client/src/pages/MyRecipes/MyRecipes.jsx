@@ -5,6 +5,7 @@ import { useRecipes } from "../../hooks/index.js";
 import { useDispatch } from "react-redux";
 import { fetchUserRecipes } from "../../redux/recipes/operations.js";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const MyRecipesPage = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ const MyRecipesPage = () => {
 
   return (
     <div className={styles.MyRecipes}>
+      <Helmet>
+        <title>My recipes</title>
+      </Helmet>
       <PageTitle title="My recipes" />
       <MyRecipesList />
     </div>

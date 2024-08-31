@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { PageTitle } from "../../components/Atoms/PageTitle/PageTitle";
 import { ShoppingList } from "../../components/Organisms/ShoppingList/ShoppingList";
 import { fetchIngredients } from "../../redux/ingredients/operations";
+import { Helmet } from "react-helmet";
 
 const ShoppingPage = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,9 @@ const ShoppingPage = () => {
 
   return (
     <div className={styles.Shopping}>
+      <Helmet>
+        <title>Shopping list</title>
+      </Helmet>
       <PageTitle title={"Shopping list"} />
       <ShoppingList />
     </div>
