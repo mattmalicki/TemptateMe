@@ -6,7 +6,6 @@ const getRecipesByCategory = async (req, res, next) => {
     const { page, limit } = req.query;
     const { category } = req.params;
     const response = await getRecipesFromDbCategory({ page, limit, category });
-    console.log(response);
     return res.status(200).json({
       resultMassage: { en: getText("en", "00094") },
       resultCode: "00094",
