@@ -2,11 +2,14 @@ import styles from "./ShoppingList.module.css";
 import { ShoppingListItem } from "../../Molecules/ShoppingListItem/ShoppingListItem";
 import { useIngredients, useShopping } from "../../../hooks/index.js";
 import { NotFound } from "../../Atoms/NotFound/NotFound.jsx";
+import { Loader } from "../../Atoms/Loader/Loader.jsx";
 
 const ShoppingList = () => {
-  const { shoppingList } = useShopping();
+  const { shoppingList, isLoading } = useShopping();
   const { ingredients } = useIngredients();
-  return shoppingList.length > 0 ? (
+  return isLoading ? (
+    <Loader />
+  ) : shoppingList.length > 0 ? (
     <>
       <div className={styles.head}>
         <span>Product</span>

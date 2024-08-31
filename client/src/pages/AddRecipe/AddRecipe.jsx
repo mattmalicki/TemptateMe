@@ -6,9 +6,7 @@ import { fetchPopularRecipes } from "../../redux/recipes/operations.js";
 import { fetchAllCategories } from "../../redux/categories/operations.js";
 import { useEffect } from "react";
 import { AddRecipeForm } from "../../components/Organisms/AddRecipeForm/AddRecipeForm.jsx";
-// import { PopularRecipes } from "../../components/Organisms/PopularRecipes/PopularRecipes.jsx";
-// import { Socials } from "../../components/Molecules/Socials/Socials.jsx";
-// import { AddRecipeHeader } from "../../components/Atoms/AddRecipeHeader/AddRecipeHeader.jsx";
+import { Helmet } from "react-helmet";
 
 const AddRecipePage = () => {
   const dispatch = useDispatch();
@@ -20,6 +18,9 @@ const AddRecipePage = () => {
   }, [dispatch]);
   return (
     <div className={styles.AddRecipePage}>
+      <Helmet>
+        <title>Add recipe</title>
+      </Helmet>
       <PageTitle title="Add recipe" />
       <div className={styles.AddRecipe}>
         <div className={styles.Recipe}>

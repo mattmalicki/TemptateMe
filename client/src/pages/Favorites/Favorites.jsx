@@ -6,6 +6,7 @@ import { useRecipes } from "../../hooks/index.js";
 import { useDispatch } from "react-redux";
 import { fetchFavorites } from "../../redux/recipes/operations";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ const FavoritesPage = () => {
 
   return (
     <div className={styles.Favorites}>
+      <Helmet>
+        <title>Favorites</title>
+      </Helmet>
       <PageTitle title="Favorites" />
       <MyRecipesList isFavorites={true} />
       {pageAmount > 1 && <Pagination />}

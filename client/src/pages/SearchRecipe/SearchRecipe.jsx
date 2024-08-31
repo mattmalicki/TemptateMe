@@ -8,6 +8,7 @@ import { CurvedInput } from "../../components/Molecules/CurvedInput/CurvedInput.
 import { RecipesList } from "../../components/Organisms/RecipesList/RecipesList.jsx";
 import useRecipes from "../../hooks/useRecipes.js";
 import { NotFound } from "../../components/Atoms/NotFound/NotFound.jsx";
+import { Helmet } from "react-helmet";
 
 const SearchRecipePage = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ const SearchRecipePage = () => {
 
   return (
     <div className={styles.SearchRecipe}>
+      <Helmet>
+        <title>Search recipe</title>
+      </Helmet>
       <PageTitle title="Search" />
       <CurvedInput
         greenOrBlack="green"
