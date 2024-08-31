@@ -1,29 +1,85 @@
-import { useEffect } from "react";
+import { useEffect, lazy } from "react";
 import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
 import { useAuth } from "../../hooks/index";
 import { PrivateRoute } from "../../components/Atoms/PrivateRoute/PrivateRoute";
 import { RestrictedRoute } from "../../components/Atoms/RestrictedRoute/RestrictedRoute";
-
-import { HomePage } from "../Home/HomePage.jsx";
-import { AuthPage } from "../Auth/AuthPage.jsx";
-import { StartPage } from "../Start/StartPage.jsx";
-import { FavoritesPage } from "../Favorites/Favorites.jsx";
-import { AddRecipePage } from "../AddRecipe/AddRecipe.jsx";
-import { MyRecipesPage } from "../MyRecipes/MyRecipes.jsx";
-import { ShoppingPage } from "../Shopping/Shopping.jsx";
-import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
-import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
-import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
 import { Loader } from "../../components/Atoms/Loader/Loader.jsx";
+import { Helmet } from "react-helmet";
+import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 
 import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
-import { Recipe } from "../../components/Templates/Recipe/Recipe.jsx";
 import { useDarkMode } from "../../context/DarkModeContext.js";
-import { NotFoundPage } from "../NotFound/NotFound.jsx";
-import { Helmet } from "react-helmet";
+
+// import { HomePage } from "../Home/HomePage.jsx";
+// import { AuthPage } from "../Auth/AuthPage.jsx";
+// import { StartPage } from "../Start/StartPage.jsx";
+// import { FavoritesPage } from "../Favorites/Favorites.jsx";
+// import { AddRecipePage } from "../AddRecipe/AddRecipe.jsx";
+// import { MyRecipesPage } from "../MyRecipes/MyRecipes.jsx";
+// import { ShoppingPage } from "../Shopping/Shopping.jsx";
+// import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
+// import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
+// import { Recipe } from "../../components/Templates/Recipe/Recipe.jsx";
+// import { NotFoundPage } from "../NotFound/NotFound.jsx";
+
+const HomePage = lazy(() =>
+  import("../Home/HomePage.jsx").then((module) => ({
+    default: module.HomePage,
+  }))
+);
+const AuthPage = lazy(() =>
+  import("../Auth/AuthPage.jsx").then((module) => ({
+    default: module.AuthPage,
+  }))
+);
+const StartPage = lazy(() =>
+  import("../Start/StartPage.jsx").then((module) => ({
+    default: module.StartPage,
+  }))
+);
+const FavoritesPage = lazy(() =>
+  import("../Favorites/Favorites.jsx").then((module) => ({
+    default: module.FavoritesPage,
+  }))
+);
+const AddRecipePage = lazy(() =>
+  import("../AddRecipe/AddRecipe.jsx").then((module) => ({
+    default: module.AddRecipePage,
+  }))
+);
+const MyRecipesPage = lazy(() =>
+  import("../MyRecipes/MyRecipes.jsx").then((module) => ({
+    default: module.MyRecipesPage,
+  }))
+);
+const ShoppingPage = lazy(() =>
+  import("../Shopping/Shopping.jsx").then((module) => ({
+    default: module.ShoppingPage,
+  }))
+);
+const CategoriesPage = lazy(() =>
+  import("../Categories/CategoriesPage.jsx").then((module) => ({
+    default: module.CategoriesPage,
+  }))
+);
+const SearchRecipePage = lazy(() =>
+  import("../SearchRecipe/SearchRecipe.jsx").then((module) => ({
+    default: module.SearchRecipePage,
+  }))
+);
+const Recipe = lazy(() =>
+  import("../../components/Templates/Recipe/Recipe.jsx").then((module) => ({
+    default: module.Recipe,
+  }))
+);
+const NotFoundPage = lazy(() =>
+  import("../NotFound/NotFound.jsx").then((module) => ({
+    default: module.NotFoundPage,
+  }))
+);
 
 function App() {
   const dispatch = useDispatch();
