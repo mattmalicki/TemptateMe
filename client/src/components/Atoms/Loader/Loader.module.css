@@ -4,12 +4,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 100px 0;
   /* background-color: #00000080; */
 }
 .loader {
   width: 75px;
   aspect-ratio: 1;
   display: grid;
+  transform: scale(3);
 }
 .loader:before,
 .loader:after {

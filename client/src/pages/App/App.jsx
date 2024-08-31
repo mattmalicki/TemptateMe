@@ -34,7 +34,11 @@ function App() {
     dispatch(refresh());
   }, [dispatch]);
   return isRefreshing ? (
-    <Loader />
+    <div
+      style={{ width: "100vw", height: "100vh", backgroundColor: "#00000080" }}
+    >
+      <Loader />
+    </div>
   ) : (
     <div className={[styles.App, isDark && styles.isDark].join(" ")}>
       <Helmet>

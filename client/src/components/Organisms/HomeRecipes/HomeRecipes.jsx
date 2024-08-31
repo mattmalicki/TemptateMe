@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import { CurvedButton } from "../../Atoms/CurvedButton/CurvedButton.jsx";
 import { RectangleButton } from "../../Atoms/RectangleButton/RectangleButton.jsx";
 import { useDarkMode } from "../../../context/DarkModeContext.js";
+import { Loader } from "../../Atoms/Loader/Loader.jsx";
 
 const HomeRecipes = () => {
   const { recipes, isLoading } = useRecipes();
   const { isDark } = useDarkMode();
   return isLoading ? (
-    <div>Loading</div>
+    <Loader />
   ) : (
     Array.isArray(recipes) && (
       <ul className={styles.HomeRecipes}>

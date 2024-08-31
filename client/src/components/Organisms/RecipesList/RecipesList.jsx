@@ -3,14 +3,17 @@ import { SearchItem } from "../../Atoms/SearchItem/SearchItem.jsx";
 import { useRecipes } from "../../../hooks/index.js";
 import { fetchRecipeById } from "../../../redux/recipes/operations.js";
 import { useDispatch } from "react-redux";
+import { Loader } from "../../Atoms/Loader/Loader.jsx";
 
 const RecipesList = () => {
   const dispatch = useDispatch();
-  const { recipes } = useRecipes();
+  const { recipes, isLoading } = useRecipes();
   const onClick = (id) => {
     dispatch(fetchRecipeById(id));
   };
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     Array.isArray(recipes) && (
       <ul className={styles.RecipesList}>
         {recipes.map((recipe, index) => (
