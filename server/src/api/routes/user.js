@@ -1,34 +1,43 @@
-import { Router } from 'express';
+import { Router } from "express";
 import {
   addProduct,
   addRecipe,
+  addRecipeImage,
   getShoppingList,
   getUsersRecipes,
   removeProduct,
   removeRecipe,
   newsletter,
   stopNewsletter,
-  updateUser,
-} from '../controllers/user/index.js';
-import { auth, fileMiddleware } from '../middlewares/index.js';
+  updateUsersAvatar,
+  updateUsersInfo,
+} from "../controllers/user/index.js";
+import { auth, fileMiddleware } from "../middlewares/index.js";
 
 const router = Router();
 
-router.put('/edit', auth, fileMiddleware.single('avatar'), updateUser);
+router.put(
+  "/edit/avatar",
+  auth,
+  fileMiddleware.single("avatar"),
+  updateUsersAvatar
+);
+router.put("/edit/info", auth, updateUsersInfo);
 
 // FUNCTIONALITY
-router.post('/subscribe', auth, newsletter);
-router.delete('/subscribe', auth, stopNewsletter);
-router.get('/shopping', auth, getShoppingList);
-router.post('/shopping', auth, addProduct);
-router.delete('/shopping/', auth, removeProduct);
-router.get('/ownRecipes', auth, getUsersRecipes);
+router.post("/subscribe", auth, newsletter);
+router.delete("/subscribe", auth, stopNewsletter);
+router.get("/shopping", auth, getShoppingList);
+router.post("/shopping", auth, addProduct);
+router.delete("/shopping/", auth, removeProduct);
+router.get("/ownRecipes", auth, getUsersRecipes);
+router.post("/ownRecipes", auth, addRecipe);
 router.post(
-  '/ownRecipes',
+  "/ownRecipes/image",
   auth,
-  fileMiddleware.single('recipeImage'),
-  addRecipe
+  fileMiddleware.single("recipeImage"),
+  addRecipeImage
 );
-router.delete('/ownRecipes/:recipeId', auth, removeRecipe);
+router.delete("/ownRecipes/:recipeId", auth, removeRecipe);
 
 export default router;

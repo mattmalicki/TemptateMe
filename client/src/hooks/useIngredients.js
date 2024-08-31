@@ -5,7 +5,7 @@ import {
   selectIngredientsError,
 } from "../redux/ingredients/selectors.js";
 
-const useShopping = () => {
+const useIngredients = () => {
   const isLoading = useSelector(selectIngredientsLoading);
   const ingredients = useSelector(selectIngredients);
   const error = useSelector(selectIngredientsError);
@@ -17,4 +17,4 @@ const useShopping = () => {
   };
 };
 
-export default useShopping;
+export default useIngredients;

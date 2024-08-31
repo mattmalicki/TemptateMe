@@ -75,20 +75,17 @@ const deleteUser = createAsyncThunk("auth/delete", async (_, thunkAPI) => {
   }
 });
 
-const updateUser = createAsyncThunk(
-  "auth/update",
-  async ({ avatar = "", info = "" }, thunkAPI) => {
+const updateUsersAvatar = createAsyncThunk(
+  "auth/updateAvatar",
+  async (avatar, thunkAPI) => {
     try {
       const formData = new FormData();
-      const blobedInfo = new Blob([info], {
-        type: "application/json",
+      formData.append("avatar", avatar);
+      const response = await axios.put("user/edit/avatar", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
-      const blobedImage = new Blob([avatar], {
-        type: "multipart/form-data",
-      });
-      formData.append("avatar", blobedImage);
-      formData.append("update", blobedInfo);
-      const response = await axios.put("user/edit", formData);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -96,4 +93,24 @@ const updateUser = createAsyncThunk(
   }
 );
 
-export { deleteUser, register, login, logout, refresh, updateUser };
+const updateUsersInfo = createAsyncThunk(
+  "auth/updateInfo",
+  async (info, thunkAPI) => {
+    try {
+      const response = await axios.put("user/edit/info", info);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export {
+  deleteUser,
+  register,
+  login,
+  logout,
+  refresh,
+  updateUsersAvatar,
+  updateUsersInfo,
+};

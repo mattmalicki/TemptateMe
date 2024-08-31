@@ -8,9 +8,13 @@
   padding: 12px 28px;
   border-radius: 26px;
   box-shadow: 0 4px 4px 0 rgba(135, 135, 135, 0.2);
-  background: #fafafa;
-  color: var(--popularDescriptionText);
+  background-color: #fafafa;
+  /* color: var(--popularDescriptionText); */
   margin: 0 auto;
+}
+
+.Pagination.isDark {
+  background-color: var(--paginationBgDark);
 }
 
 .list {
@@ -40,9 +44,17 @@
 }
 
 .number:hover {
-  background-color: #ebf3d4;
+  background-color: var(--elementBg);
 }
 
-.currrent {
-  background-color: #ebf3d4;
+.number.isDark:hover {
+  background-color: var(--accent);
+}
+
+.current {
+  background-color: var(--elementBg);
+}
+
+.current.isDark {
+  background-color: var(--accent);
 }

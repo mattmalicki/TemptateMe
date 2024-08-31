@@ -1,11 +1,11 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const fetchShoppingList = createAsyncThunk(
-  'shoppingList/fetchAll',
+  "shoppingList/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('user/shopping');
+      const response = await axios.get("user/shopping");
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -14,10 +14,10 @@ const fetchShoppingList = createAsyncThunk(
 );
 
 const addProduct = createAsyncThunk(
-  'shoppingList/addProduct',
+  "shoppingList/addProduct",
   async (product, thunkAPI) => {
     try {
-      const response = await axios.post('user/shopping', product);
+      const response = await axios.post("user/shopping", product);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -26,10 +26,10 @@ const addProduct = createAsyncThunk(
 );
 
 const deleteProduct = createAsyncThunk(
-  'shoppingList/deleteProduct',
-  async (productId, thunkAPI) => {
+  "shoppingList/deleteProduct",
+  async (product, thunkAPI) => {
     try {
-      const response = await axios.delete(`user/shopping/${productId}`);
+      const response = await axios.delete(`user/shopping/`, product);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

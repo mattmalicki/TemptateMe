@@ -15,6 +15,11 @@
   color: #00000050;
 }
 
+.AddCategoryInfo.isDark {
+  color: var(--primaryColor);
+  border-color: var(--primaryColor);
+}
+
 .inputContainer {
   display: flex;
   flex-wrap: nowrap;
@@ -25,13 +30,19 @@
   width: 123px;
   padding-right: 25px;
 
-  color: var(--accent);
+  color: #000;
 }
+
+.inputContainer.isDark {
+  color: var(--primaryColor);
+}
+
 .input {
   background: none;
   border: none;
   outline: none;
   text-align: right;
+  color: currentColor;
 }
 
 .icon {
@@ -40,6 +51,7 @@
   position: absolute;
   right: 0;
   padding: 0;
+  color: var(--accent);
 
   background: none;
   outline: none;

@@ -5,7 +5,7 @@ import {
   selectCategoriesError,
 } from "../redux/categories/selectors.js";
 
-const useShopping = () => {
+const useCategories = () => {
   const isLoading = useSelector(selectCategoriesLoading);
   const categories = useSelector(selectCategories);
   const error = useSelector(selectCategoriesError);
@@ -19,4 +19,4 @@ const useShopping = () => {
   };
 };
 
-export default useShopping;
+export default useCategories;

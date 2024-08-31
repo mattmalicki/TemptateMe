@@ -1,0 +1,31 @@
+.PreparationListItem {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.number {
+  border-radius: 100px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 21px;
+  height: 21px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--primaryColor);
+  background-color: var(--accent);
+}
+
+.step {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .step {
+    font-size: 14px;
+  }
+}

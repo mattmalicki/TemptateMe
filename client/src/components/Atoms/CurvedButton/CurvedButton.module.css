@@ -2,9 +2,9 @@
   border-radius: 24px 44px;
   border: 1px solid var(--primaryColor);
   background-color: transparent;
-  color: var(--primaryColor);
-
+  cursor: pointer;
   transition: ease-in-out 0.25s;
+  color: currentColor;
 }
 
 .CurvedButton:hover {
@@ -25,11 +25,22 @@
 .black {
   border: none;
   background-color: var(--secondColor);
+  color: var(--primaryColor);
 }
 
 .black:hover {
-  color: var(--primaryColor);
+  color: var(--secondColor);
   background-color: var(--accent);
+}
+
+.transparent {
+  border-color: var(--accent);
+  /* color: var(--secondColor); */
+}
+
+.transparent:hover {
+  border-color: var(--secondColor);
+  color: var(--accent);
 }
 
 .big {

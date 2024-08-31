@@ -3,27 +3,39 @@ import { UserInfo } from "../../Atoms/UserInfo/UserInfo.jsx";
 import { MenuIcon } from "../../Atoms/MenuIcon/MenuIcon.jsx";
 import { SwitchMode } from "../../Atoms/SwitchMode/SwitchMode.jsx";
 import { UserWindow } from "../../Atoms/UserWindow/UserWindow.jsx";
-import { useState } from "react";
+import { MobileMenu } from "../../Organisms/MobileMenu/MobileMenu.jsx";
+import { useEffect, useState } from "react";
 
 const UserHeader = () => {
   const [openUserWindow, setOpenUserWindow] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
 
-  const onClick = () => {
+  const handleOpenUserWindow = () => {
     setOpenUserWindow(true);
   };
-  const onClose = () => {
+  const handleCloseUserWindow = () => {
     setOpenUserWindow(false);
   };
+  const handleOpenMenu = () => {
+    setOpenMenu(true);
+  };
+  const handleCloseMenu = () => {
+    setTimeout(() => {
+      setOpenMenu(false);
+    }, 1000);
+  };
+
   return (
     <div className={styles.UserHeader}>
-      <UserInfo onClick={onClick} />
-      <div className={styles.menuIcon}>
+      <UserInfo onClick={handleOpenUserWindow} />
+      <button className={styles.menuIcon} onClick={handleOpenMenu}>
         <MenuIcon />
-      </div>
+      </button>
+      {openMenu && <MobileMenu onClose={handleCloseMenu} />}
       <div className={styles.switchIcon}>
         <SwitchMode />
       </div>
-      {openUserWindow && <UserWindow onClose={onClose} />}
+      {openUserWindow && <UserWindow onClose={handleCloseUserWindow} />}
     </div>
   );
 };

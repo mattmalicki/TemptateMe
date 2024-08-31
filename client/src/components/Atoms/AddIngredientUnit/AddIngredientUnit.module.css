@@ -15,11 +15,16 @@
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.03em;
-  color: #00000050;
 
+  border: 1px solid transparent;
   border-radius: 6px;
   background-color: #d9d9d950;
   padding: 16px 12px 16px 1px;
+}
+
+.AddIngredientUnit.isDark {
+  background-color: transparent;
+  border: 1px solid currentColor;
 }
 
 .inputAmount {
@@ -30,7 +35,7 @@
   outline: none;
 
   text-align: right;
-  color: #00000050;
+  color: currentColor;
 }
 
 .inputUnit {
@@ -39,9 +44,9 @@
   background: none;
   border: none;
   outline: none;
-  
+
   text-align: right;
-  color: #00000050;
+  color: currentColor;
 }
 
 .icon {

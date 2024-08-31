@@ -1,0 +1,15 @@
+.NotFound {
+  margin: 28px auto;
+  width: fit-content;
+  text-align: center;
+}
+
+.image {
+  max-width: 350px;
+  max-height: 225px;
+}
+
+.text {
+  display: inline-block;
+  margin: 10px 0;
+}

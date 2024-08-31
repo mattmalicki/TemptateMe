@@ -1,14 +1,30 @@
 import styles from "./UserWindow.module.css";
 import { CurvedButton } from "../CurvedButton/CurvedButton.jsx";
-import { useDispatch } from "react-redux";
-import { logout } from "../../../redux/auth/operations.js";
 import { ReactComponent as LogoutIcon } from "./icon-logout.svg";
 import { ReactComponent as EditIcon } from "./icon-edit.svg";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { ModalLogout } from "../../Organisms/ModalLogout/ModalLogout.jsx";
+import { ModalEditUser } from "../../Organisms/ModalEditUser/ModalEditUser.jsx";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
 
 const UserWindow = ({ onClose }) => {
-  const dispatch = useDispatch();
+  const [modalLogout, setModalLogout] = useState(false);
+  const [modalEdit, setModalEdit] = useState(false);
+  const { isDark } = useDarkMode();
+
   const close = (event) => {
+    if (event.target.id === "backdrop") {
+      setModalLogout(false);
+      setModalEdit(false);
+      return;
+    }
+    if (
+      event.target.dataset.modal ||
+      event.target.nodeName === "INPUT" ||
+      event.target.nodeName === "BUTTON"
+    ) {
+      return;
+    }
     if (!event.target.dataset.userWindow) {
       onClose();
     }
@@ -22,20 +38,36 @@ const UserWindow = ({ onClose }) => {
     };
   });
 
-  const handleClick = () => {
-    dispatch(logout());
+  const openModalLogout = () => {
+    setModalLogout(true);
+  };
+
+  const closeModalLogout = () => {
+    setModalLogout(false);
+  };
+  const openModalEdit = () => {
+    setModalEdit(true);
+  };
+
+  const closeModalEdit = () => {
+    setModalEdit(false);
   };
   return (
-    <div className={styles.UserWindow} data-user-window="true">
-      <button className={styles.editButton}>
+    <div
+      className={[styles.UserWindow, isDark && styles.isDark].join(" ")}
+      data-user-window="true"
+    >
+      <button className={styles.editButton} onClick={openModalEdit}>
         Edit profile <EditIcon />
       </button>
-      <CurvedButton greenOrBlack="green" size="small" onClick={handleClick}>
+      <CurvedButton greenOrBlack="green" size="small" onClick={openModalLogout}>
         <span>Logout</span>{" "}
         <div className={styles.icon}>
           <LogoutIcon />
         </div>
       </CurvedButton>
+      {modalLogout && <ModalLogout closeModal={closeModalLogout} />}
+      {modalEdit && <ModalEditUser closeModal={closeModalEdit} />}
     </div>
   );
 };

@@ -3,7 +3,6 @@
   width: 100%;
   padding-left: 32px;
   border: 1px solid var(--placeholderText);
-  color: var(--thirdColor);
 
   display: flex;
   flex-wrap: nowrap;
@@ -23,8 +22,8 @@
   border-color: var(--thirdColor);
 }
 
-.dark {
-  color: var(--primaryColor);
+.CurvedInput:focus-within.isDark {
+  border-color: var(--primaryColor);
 }
 
 @media screen and (min-width: 768px) {

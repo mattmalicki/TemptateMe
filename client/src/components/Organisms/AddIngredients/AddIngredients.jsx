@@ -7,6 +7,23 @@ import { useEffect, useState } from "react";
 const AddIngredients = () => {
   const [counter, setCounter] = useState([]);
 
+  function checkLocalStorage() {
+    if (localStorage.getItem("recipeInfo")) {
+      const recipe = JSON.parse(localStorage.getItem("recipeInfo"));
+      createArray(recipe?.ingredients?.length);
+      return;
+    }
+    setCounter([1]);
+  }
+
+  function createArray(length) {
+    const array = [];
+    for (let index = 0; index < length; index++) {
+      array.push(index + 1);
+    }
+    setCounter(array);
+  }
+
   const handleMinus = () => {
     if (counter.length > 1) {
       const copyArray = counter.slice(0, -1);
@@ -28,7 +45,7 @@ const AddIngredients = () => {
   useEffect(() => {}, [counter]);
 
   useEffect(() => {
-    setCounter([1]);
+    checkLocalStorage();
   }, []);
   return (
     <div className={styles.AddIngredients}>

@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 const FavoritesPage = () => {
   const dispatch = useDispatch();
-  const { page } = useRecipes();
+  const { page, pageAmount } = useRecipes();
 
   useEffect(() => {
     dispatch(fetchFavorites(page));
@@ -18,8 +18,8 @@ const FavoritesPage = () => {
   return (
     <div className={styles.Favorites}>
       <PageTitle title="Favorites" />
-      <MyRecipesList />
-      <Pagination />
+      <MyRecipesList isFavorites={true} />
+      {pageAmount > 1 && <Pagination />}
     </div>
   );
 };

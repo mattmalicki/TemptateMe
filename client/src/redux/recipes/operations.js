@@ -14,7 +14,7 @@ const fetchRecipes = createAsyncThunk(
 );
 
 const fetchPopularRecipes = createAsyncThunk(
-  "recipe/fetchMainPage",
+  "recipe/fetchPopularRecipes",
   async (_, thunkAPI) => {
     try {
       const response = await axios.get("/recipes/popular-recipe");
@@ -30,9 +30,7 @@ const fetchRecipesByQuery = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const { query, page, limit } = data;
-      const response = await axios.get(
-        `/recipea/search/?query=${query}page=${page}&limit=${limit}`
-      );
+      const response = await axios.get(`/recipes/search/?query=${query}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -96,15 +94,11 @@ const addRecipe = createAsyncThunk(
   async ({ recipeImage, recipeInfo }, thunkAPI) => {
     try {
       const formData = new FormData();
-      const blobedInfo = new Blob([recipeInfo], {
-        type: "application/json",
+      formData.append("recipeImage", recipeImage);
+      const recipe = await axios.post("/user/ownRecipes", recipeInfo);
+      const response = await axios.post("/user/ownRecipes/image", formData, {
+        headers: { recipeId: recipe.data.recipes._id },
       });
-      const blobedImage = new Blob([recipeImage], {
-        type: "multipart/form-data",
-      });
-      formData.append("recipeImage", blobedImage);
-      formData.append("recipe", blobedInfo);
-      const response = await axios.post("/user/ownRecipes", formData);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

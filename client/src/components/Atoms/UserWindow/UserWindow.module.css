@@ -14,8 +14,18 @@
   border-radius: 8px;
 }
 
+.UserWindow.isDark {
+  background-color: var(--mainBgDark);
+}
+
 .editButton {
   width: 100%;
+  cursor: pointer;
+  color: currentColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .icon {

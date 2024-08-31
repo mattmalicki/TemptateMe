@@ -7,11 +7,17 @@ import { useDispatch } from "react-redux";
 import { addRecipe } from "../../../redux/recipes/operations.js";
 
 import styles from "./AddRecipeForm.module.css";
+import { useDarkMode } from "../../../context/DarkModeContext.js";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isDark } = useDarkMode();
+  const [recipeData, setRecipeData] = useState();
 
-  const handleSubmit = (event) => {
+  const onChange = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     const {
@@ -23,15 +29,21 @@ const AddRecipeForm = () => {
       recipePreparation,
     } = form;
     const ingredientNameEls = document.getElementsByName("ingredientName");
+    const ingredientAmountEls = document.getElementsByName("ingredientAmount");
     const ingredientUnitEls = document.getElementsByName("ingredientUnit");
     const ingredients = [];
+
     for (let i = 0; i < ingredientNameEls.length; i++) {
       ingredients.push({
-        _id: ingredientNameEls[i].dataset.id,
-        measure: ingredientUnitEls[i].dataset.id,
+        id: ingredientNameEls[i].dataset.id,
+        measure: [
+          ingredientAmountEls[i].value,
+          ingredientUnitEls[i].dataset.id,
+        ].join(" "),
       });
     }
-    const recipe = {
+
+    const recipeInfo = {
       title: recipeName.value,
       description: recipeAbout.value,
       category: recipeCategory.value,
@@ -39,27 +51,60 @@ const AddRecipeForm = () => {
       instructions: recipePreparation.value,
       ingredients,
     };
-    dispatch(addRecipe({ recipeImage, recipeInfo: recipe }));
+
+    setRecipeData({ recipeImage, recipeInfo });
+    localStorage.setItem("recipeInfo", JSON.stringify(recipeInfo));
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(addRecipe(recipeData));
+    localStorage.removeItem("recipeInfo");
+    navigate("/recipe");
+  };
+
+  const handleReset = () => {
+    setRecipeData({});
+    localStorage.removeItem("recipeInfo");
+    localStorage.removeItem("recipeImage");
+    navigate(0);
+  };
+
   return (
-    <form className={styles.AddRecipeForm} onSubmit={handleSubmit}>
+    <form
+      className={styles.AddRecipeForm}
+      onSubmit={handleSubmit}
+      onChange={onChange}
+    >
       <div className={styles.ImageAndInfo}>
         <div className={styles.Image}>
           <AddRecipeImage />
         </div>
-        <div className={styles.ImageAndInfo}>
+        <div className={styles.Info}>
           <AddRecipeInfo />
         </div>
       </div>
       <AddIngredients />
       <AddPreparation />
       <div className={styles.AddRecipeButton}>
-        <CurvedButton
-          greenOrBlack={"black"}
-          type="submit"
-          title={"Add recipe"}
-        />
+        {!isDark && (
+          <CurvedButton
+            greenOrBlack={"black"}
+            type="submit"
+            title={"Add recipe"}
+          />
+        )}
+        {isDark && (
+          <CurvedButton
+            greenOrBlack={"green"}
+            type="submit"
+            title={"Add recipe"}
+          />
+        )}
       </div>
+      <button className={styles.reset} type="button" onClick={handleReset}>
+        Reset recipe
+      </button>
     </form>
   );
 };

@@ -4,3 +4,7 @@
   color: var(--titlesColor);
   margin: 100px 0;
 }
+
+.PageTitle.isDark {
+  color: var(--primaryColor);
+}

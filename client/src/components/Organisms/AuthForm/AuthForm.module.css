@@ -16,6 +16,7 @@
 .title {
   font-weight: 600;
   font-size: 24px;
+  color: var(--primaryColor);
 }
 
 .inputContainer {
@@ -27,6 +28,7 @@
 }
 
 .link {
+  color: var(--primaryColor);
   display: block;
   text-align: center;
 }

@@ -28,15 +28,17 @@ const handleFulfilled = (state, action) => {
 };
 
 const isPendingAction = (action) => {
-  return action.type.endsWith("/pending");
+  return action.type.startsWith("recipe/") && action.type.endsWith("/pending");
 };
 
 const isFulfilledAction = (action) => {
-  return action.type.endsWith("/fulfilled");
+  return (
+    action.type.startsWith("recipe/") && action.type.endsWith("/fulfilled")
+  );
 };
 
 const isRejectAction = (action) => {
-  return action.type.endsWith("/rejected");
+  return action.type.startsWith("recipe/") && action.type.endsWith("/rejected");
 };
 
 const recipesSlice = createSlice({
@@ -56,7 +58,6 @@ const recipesSlice = createSlice({
         state.items.push(action.payload.recipes);
       })
       .addCase(updatePage.fulfilled, (state, action) => {
-        clearLoadingError(state);
         state.page = action.payload;
       })
       .addCase(deleteRecipe.fulfilled, (state, action) => {

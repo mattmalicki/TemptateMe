@@ -1,44 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
-
-const isPendingAction = action => {
-  return action.type.endsWith('/pending');
-};
-
-const isRejectAction = action => {
-  return action.type.endsWith('/rejected');
-};
-
-const isFulfilledAction = action => {
-  return action.type.endsWith('/fulfilled');
-};
-
-const handleFulfilled = (state, action) => {
-  state.error = null;
-  state.isLoading = false;
-  state.items = action.payload.ingredients;
-};
-
-const handleReject = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
-};
-
-const handlePending = state => {
-  state.isLoading = true;
-};
+import { createSlice } from "@reduxjs/toolkit";
+import { fetchIngredients } from "./operations";
 
 const ingredientsSlice = createSlice({
-  name: 'ingredients',
+  name: "ingredients",
   initialState: {
     items: [],
     isLoading: false,
     error: null,
   },
-  extraReducers: builder => {
+  extraReducers: (builder) => {
     builder
-      .addMatcher(isFulfilledAction, handleFulfilled)
-      .addMatcher(isPendingAction, handlePending)
-      .addMatcher(isRejectAction, handleReject);
+      .addCase(fetchIngredients.fulfilled, (state, action) => {
+        state.error = null;
+        state.isLoading = false;
+        state.items = action.payload.ingredients;
+      })
+      .addCase(fetchIngredients.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchIngredients.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      });
   },
 });
 
