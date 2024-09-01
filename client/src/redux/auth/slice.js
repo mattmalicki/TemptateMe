@@ -50,7 +50,7 @@ const handleRejected = (state, action) => {
   state.token = null;
   state.isLoggedIn = false;
   state.isRefreshing = false;
-  state.error = action.payload || false;
+  state.error = action?.payload?.response?.data || action?.payload;
 };
 
 const authSlice = createSlice({

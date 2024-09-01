@@ -25,7 +25,7 @@ const register = createAsyncThunk(
       setAuthHeader(response.data.confirmToken);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -36,16 +36,16 @@ const login = createAsyncThunk("auth/login", async (credentails, thunkAPI) => {
     setAuthHeader(response.data.accessToken);
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
 const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await axios.post("user/logout");
+    await axios.post("auth/logout");
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -62,7 +62,7 @@ const refresh = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
     const response = await axios.get("auth/refresh");
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -71,7 +71,7 @@ const deleteUser = createAsyncThunk("auth/delete", async (_, thunkAPI) => {
     await axios.delete("auth/delete");
     clearAuthHeader();
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -88,7 +88,7 @@ const updateUsersAvatar = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -100,7 +100,7 @@ const updateUsersInfo = createAsyncThunk(
       const response = await axios.put("user/edit/info", info);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
