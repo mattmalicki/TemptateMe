@@ -8,7 +8,7 @@ const fetchShoppingList = createAsyncThunk(
       const response = await axios.get("user/shopping");
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -20,7 +20,7 @@ const addProduct = createAsyncThunk(
       const response = await axios.post("user/shopping", product);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -32,7 +32,7 @@ const deleteProduct = createAsyncThunk(
       const response = await axios.delete(`user/shopping/`, product);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

@@ -23,8 +23,8 @@ const AddIngredientName = ({ index }) => {
       ).ingredients;
       const id = ingredientsArray[index - 1].id;
       const test = ingredients.filter((item) => item._id === id)[0];
-      setId(test._id);
-      setValue(test.ttl);
+      setId(test?._id);
+      setValue(test?.ttl);
     }
   }
 

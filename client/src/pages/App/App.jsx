@@ -12,6 +12,7 @@ import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
 import { useDarkMode } from "../../context/DarkModeContext.js";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
 
 // import { HomePage } from "../Home/HomePage.jsx";
 // import { AuthPage } from "../Auth/AuthPage.jsx";
@@ -82,9 +83,15 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
+  const { error } = useAuth();
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
   const { isDark } = useDarkMode();
+
+  useEffect(() => {
+    error &&
+      Notify.failure(error?.resultMessage?.en || "Something went wrong...");
+  }, [error]);
 
   useEffect(() => {
     dispatch(refresh());

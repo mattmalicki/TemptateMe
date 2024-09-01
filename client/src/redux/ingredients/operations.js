@@ -1,26 +1,26 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const fetchIngredients = createAsyncThunk(
-  'ingredients/fetchAll',
+  "ingredients/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('recipes/ingredients/list');
+      const response = await axios.get("recipes/ingredients/list");
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
 
 const fetchIngredientById = createAsyncThunk(
-  'ingredients/fetchByIngredient',
+  "ingredients/fetchByIngredient",
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(`recipes/ingredients/${id}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

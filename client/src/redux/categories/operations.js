@@ -1,14 +1,14 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const fetchAllCategories = createAsyncThunk(
-  'categories/fetchAll',
+  "categories/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('recipes/category-list');
+      const response = await axios.get("recipes/category-list");
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

@@ -22,7 +22,7 @@ export default async (req, res, next) => {
       else if (error.details[0].message.includes("name")) code = "00028";
 
       return res
-        .status(400)
+        .status(401)
         .json(errorHelper(code, req, error.details[0].message));
     }
 

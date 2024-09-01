@@ -8,7 +8,7 @@ const fetchRecipes = createAsyncThunk(
       const response = await axios.get("/recipes/main-page");
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -20,7 +20,7 @@ const fetchPopularRecipes = createAsyncThunk(
       const response = await axios.get("/recipes/popular-recipe");
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -33,7 +33,7 @@ const fetchRecipesByQuery = createAsyncThunk(
       const response = await axios.get(`/recipes/search/?query=${query}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -45,7 +45,7 @@ const fetchFavorites = createAsyncThunk(
       const response = await axios.get(`/recipes/favorites?page=${page}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -57,7 +57,7 @@ const fetchRecipeById = createAsyncThunk(
       const response = await axios.get(`/recipes/${id}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -72,7 +72,7 @@ const fetchRecipesByCategory = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -84,7 +84,7 @@ const fetchRecipesByIngredient = createAsyncThunk(
       const response = await axios.get(`/recipes/ingredients/${ingredientId}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -101,7 +101,7 @@ const addRecipe = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -113,7 +113,7 @@ const deleteRecipe = createAsyncThunk(
       const response = await axios.delete(`/user/ownRecipes/${recipeId}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -125,7 +125,7 @@ const addToFavorites = createAsyncThunk(
       const response = await axios.post(`/recipes/favorites/${recipeId}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -137,7 +137,7 @@ const deleteFromFavorites = createAsyncThunk(
       const response = await axios.delete(`/recipes/favorites/${recipeId}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -160,7 +160,7 @@ const fetchUserRecipes = createAsyncThunk(
       const response = await axios.get(`/user/ownRecipes?page=${page}`);
       return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
