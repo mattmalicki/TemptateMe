@@ -8,41 +8,41 @@ import { getUserById } from "./helpers.js";
 
 async function updateUsersAvatar(req, res, next) {
   try {
-    const id = req.user._id;
-    if (!id)
-      return res.status(401).json({
-        resultMassage: { en: getText("en", "00017") },
-        resultCode: "00017",
-      });
+    // const id = req.user._id;
+    // if (!id)
+    //   return res.status(401).json({
+    //     resultMassage: { en: getText("en", "00017") },
+    //     resultCode: "00017",
+    //   });
 
-    const user = await getUserById(id);
-    if (!user) {
-      return res.status(401).json({
-        resultMassage: { en: getText("en", "00052") },
-        resultCode: "00052",
-      });
-    }
+    // const user = await getUserById(id);
+    // if (!user) {
+    //   return res.status(401).json({
+    //     resultMassage: { en: getText("en", "00052") },
+    //     resultCode: "00052",
+    //   });
+    // }
 
-    if (req.file) {
-      const fileName = req.file.originalname;
+    // if (req.file) {
+    //   const fileName = req.file.originalname;
 
-      const image = await imgbbUploader(
-        imageApiKey,
-        `${tmpDir}${fileName}`
-      ).catch((error) =>
-        res.status(400).json({
-          resultMassage: "Something went wrong",
-          resultCode: "00000",
-          error: error.message,
-        })
-      );
-      user.photoUrl = image.url;
-    }
-    await user.save();
+    //   const image = await imgbbUploader(
+    //     imageApiKey,
+    //     `${tmpDir}${fileName}`
+    //   ).catch((error) =>
+    //     res.status(400).json({
+    //       resultMassage: "Something went wrong",
+    //       resultCode: "00000",
+    //       error: error.message,
+    //     })
+    //   );
+    //   user.photoUrl = image.url;
+    // }
+    // await user.save();
     return res.status(200).json({
       resultMassage: { en: getText("en", "00113") },
       resultCode: "00113",
-      user,
+      // user,
     });
   } catch (error) {
     return next(error);
