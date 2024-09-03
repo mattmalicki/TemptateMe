@@ -53,6 +53,7 @@ const AddRecipeImage = () => {
         accept="image/png, image/jpg, image/jpeg"
         className={styles.input}
         onChange={onUpload}
+        required
       />
       {!imagePath && (
         <div className={styles.icon}>

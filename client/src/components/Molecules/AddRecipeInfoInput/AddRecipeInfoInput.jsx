@@ -95,6 +95,7 @@ const AddRecipeInfoInput = ({
           onChange={onChange}
           value={value}
           data-scroll=""
+          required
         />
         {isTime && "min"}
         {(isCategory || isTime) && (

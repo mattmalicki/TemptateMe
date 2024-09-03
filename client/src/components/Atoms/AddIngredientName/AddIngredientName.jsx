@@ -78,6 +78,7 @@ const AddIngredientName = ({ index }) => {
         value={value}
         data-scroll=""
         data-id={id}
+        required
       />
       <button
         className={styles.icon}

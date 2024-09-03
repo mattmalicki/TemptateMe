@@ -67,6 +67,7 @@ const AddIngredientUnit = ({ index }) => {
         autoComplete="off"
         value={amount}
         onChange={changeAmount}
+        required
       />
       <input
         name="ingredientUnit"
@@ -74,6 +75,7 @@ const AddIngredientUnit = ({ index }) => {
         readOnly="readOnly"
         value={unit}
         data-id={unit}
+        required
       />
       <button
         className={styles.icon}
