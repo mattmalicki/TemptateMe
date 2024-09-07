@@ -6,18 +6,14 @@ import { fetchAllCategories } from "../../redux/categories/operations.js";
 import { useEffect } from "react";
 import { AddRecipeForm } from "../../components/Organisms/AddRecipeForm/AddRecipeForm.jsx";
 import { Helmet } from "react-helmet";
-import useIngredients from "../../hooks/useIngredients.js";
-import useCategories from "../../hooks/useCategories.js";
 
 const AddRecipePage = () => {
-  const { ingredients } = useIngredients();
-  const { categories } = useCategories();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    !ingredients && dispatch(fetchIngredients());
-    !categories && dispatch(fetchAllCategories());
-  }, [ingredients, categories, dispatch]);
+    dispatch(fetchIngredients());
+    dispatch(fetchAllCategories());
+  }, [dispatch]);
   return (
     <div className={styles.AddRecipePage}>
       <Helmet>

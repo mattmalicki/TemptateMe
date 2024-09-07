@@ -5,7 +5,7 @@ const getRecipeByIdFromDb = async (recipeId) => {
   return await Recipe.findById(recipeId);
 };
 
-const getRecipesFromDbQuery = async ({ page = 0, limit = 6, query = "" }) => {
+const getRecipesFromDbQuery = async ({ page = 0, limit = 8, query = "" }) => {
   const recipes = await Recipe.find({
     title: { $regex: `.*${query}.*`, $options: "i" },
   })
@@ -30,7 +30,7 @@ const getFavoritesRecipes = async ({ userId, page = 0, limit = 4 }) => {
   return { recipes, pageAmount: Math.ceil(Number(docNumbers) / limit) };
 };
 
-const getPopularRecipesFromDb = async ({ page = 0, limit = 5 }) => {
+const getPopularRecipesFromDb = async ({ page = 0, limit = 8 }) => {
   const recipes = await Recipe.find({})
     .sort({ favorites: 1 })
     .skip(page * limit)

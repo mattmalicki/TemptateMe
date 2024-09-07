@@ -85,7 +85,6 @@ const NotFoundPage = lazy(() =>
 function App() {
   const { error } = useAuth();
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
   const { isDark } = useDarkMode();
 
   useEffect(() => {
@@ -96,13 +95,7 @@ function App() {
   useEffect(() => {
     dispatch(refresh());
   }, [dispatch]);
-  return isRefreshing ? (
-    <div
-      style={{ width: "100vw", height: "100vh", backgroundColor: "#00000080" }}
-    >
-      <Loader />
-    </div>
-  ) : (
+  return (
     <div className={[styles.App, isDark && styles.isDark].join(" ")}>
       <Helmet>
         <title>Temptate Me</title>
@@ -177,12 +170,7 @@ function App() {
             path="/recipe/*"
             element={<PrivateRoute redirectTo="/" component={<Recipe />} />}
           />
-          <Route
-            path="*"
-            element={
-              <PrivateRoute redirectTo="/" component={<NotFoundPage />} />
-            }
-          />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>

@@ -1,11 +1,12 @@
 .Pagination {
   width: fit-content;
+  max-width: 100%;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   gap: 24px;
-  padding: 12px 28px;
+  padding: 5px 28px;
   border-radius: 26px;
   box-shadow: 0 4px 4px 0 rgba(135, 135, 135, 0.2);
   background-color: #fafafa;
@@ -22,6 +23,10 @@
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 18px;
+  max-width: 100%;
+  overflow-x: scroll;
+  height: 100%;
+  padding: 6px;
 }
 
 .arrows {
@@ -38,9 +43,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 27px;
-  height: 27px;
+  min-width: 27px;
+  max-width: 27px;
+  min-height: 27px;
+  max-height: 27px;
   border-radius: 100%;
+  cursor: pointer;
 }
 
 .number:hover {

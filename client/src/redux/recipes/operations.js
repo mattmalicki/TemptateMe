@@ -15,9 +15,10 @@ const fetchRecipes = createAsyncThunk(
 
 const fetchPopularRecipes = createAsyncThunk(
   "recipe/fetchPopularRecipes",
-  async (_, thunkAPI) => {
+  async (data, thunkAPI) => {
     try {
-      const response = await axios.get("/recipes/popular-recipe");
+      const { page } = data;
+      const response = await axios.get(`/recipes/popular-recipe?page=${page}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -30,7 +31,9 @@ const fetchRecipesByQuery = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const { query, page, limit } = data;
-      const response = await axios.get(`/recipes/search/?query=${query}`);
+      const response = await axios.get(
+        `/recipes/search/?query=${query}&page=${page}`
+      );
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
