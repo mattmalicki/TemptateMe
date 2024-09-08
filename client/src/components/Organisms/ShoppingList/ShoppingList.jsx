@@ -22,8 +22,11 @@ const ShoppingList = () => {
         <ul className={styles.ShoppingList}>
           {shoppingList.map((item) => (
             <ShoppingListItem
-              key={item.id}
-              listItem={ingredients.filter((ing) => ing._id === item._id)[0]}
+              key={item._id}
+              id={item._id}
+              listItem={
+                ingredients.filter((ing) => ing._id === item.ingredientId)[0]
+              }
               measure={item.measure}
               recipeId={item.recipeId}
             />

@@ -2,12 +2,11 @@ import { useDispatch } from "react-redux";
 import styles from "./ShoppingListItem.module.css";
 import { deleteProduct } from "../../../redux/shopping/operations";
 
-const ShoppingListItem = ({ listItem, measure, recipeId }) => {
+const ShoppingListItem = ({ id, listItem, measure }) => {
   const dispatch = useDispatch();
 
   const onClick = () => {
-    console.log({ id: listItem._id, measure, recipeId });
-    dispatch(deleteProduct({ id: listItem._id, measure, recipeId }));
+    dispatch(deleteProduct({ id }));
   };
 
   return (

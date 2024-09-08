@@ -47,7 +47,7 @@ const shoppingList = createSlice({
       .addCase(deleteProduct.fulfilled, (state, action) => {
         clearLoadingError(state);
         const index = state.items.findIndex(
-          (item) => item.id === action.payload.idProduct
+          (item) => String(item._id) === action.payload.idProduct
         );
         state.items.splice(index, 1);
       })

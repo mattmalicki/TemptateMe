@@ -15,7 +15,7 @@ const IngredientsList = ({ ingredientsList }) => {
     if (
       shoppingList
         .filter((item) => item.recipeId === recipes._id)
-        .filter((item) => item._id === ingredientId).length > 0
+        .filter((item) => item.ingredientId === ingredientId).length > 0
     ) {
       return true;
     }

@@ -161,13 +161,13 @@ function App() {
             }
           />
           <Route
-            path="/searchRecipes/*"
+            path="/searchRecipes"
             element={
               <PrivateRoute redirectTo="/" component={<SearchRecipePage />} />
             }
           />
           <Route
-            path="/recipe/*"
+            path="/recipe/:recipeId"
             element={<PrivateRoute redirectTo="/" component={<Recipe />} />}
           />
           <Route path="*" element={<NotFoundPage />} />
