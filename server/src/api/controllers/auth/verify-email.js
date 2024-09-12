@@ -11,41 +11,43 @@ import ipHelper from "../../../utils/helpers/ip-helper.js";
 import { jwtSecretKey } from "../../../config/index.js";
 import pkg from "jsonwebtoken";
 const { verify } = pkg;
+const redirectUrl = "https://temptateme.netlify.app/";
 
 export default async (req, res) => {
-  // const { error } = validateVerifyEmail(req.body);
-  // if (error)
-  //   return res
-  //     .status(400)
-  //     .json(errorHelper('00053', req, error.details[0].message));
   const { confirmCodeToken } = req.params;
+  let title = "Welcome!";
+  let info = "Your email has been confirmed";
 
   try {
     req.user = verify(confirmCodeToken, jwtSecretKey);
   } catch (err) {
-    // return res.status(400).json(errorHelper('00055', req, err.message));
-    return res.redirect("http://localhost:3000/verifyEmail/?status=400");
+    title = "Error";
+    info = err.message;
+    return res.render(email, { redirectUrl, title, info });
   }
 
   const exists = await User.exists({
     _id: req.user._id,
     isActivated: true,
   }).catch((err) => {
-    // return res.status(500).json(errorHelper('00051', req, err.message));
-    return res.redirect("http://localhost:3000/verifyEmail/?status=404");
+    title = "Error";
+    info = err.message;
+    return res.render(email, { redirectUrl, title, info });
   });
 
-  if (!exists) return res.status(400).json(errorHelper("00052", req));
-
-  // if (req.body.code !== req.user.code)
-  //   return res.status(400).json(errorHelper('00054', req));
+  if (!exists) {
+    title = "Error";
+    info = err.message;
+    return res.render(email, { redirectUrl, title, info });
+  }
 
   await User.updateOne(
     { _id: req.user._id },
     { $set: { isVerified: true } }
   ).catch((err) => {
-    // return res.status(500).json(errorHelper('00056', req, err.message));
-    return res.redirect("http://localhost:3000/verifyEmail/?status=500");
+    title = "Error";
+    info = err.message;
+    return res.render(email, { redirectUrl, title, info });
   });
 
   const accessToken = signAccessToken(req.user._id);
@@ -61,16 +63,14 @@ export default async (req, res) => {
     });
     await token.save();
   } catch (err) {
-    // return res.status(500).json(errorHelper('00057', req, err.message));
-    return res.redirect("http://localhost:3000/verifyEmail/?status=500");
+    title = "Error";
+    info = err.message;
+    return res.render(email, { redirectUrl, title, info });
   }
 
   logger("00058", req.user._id, getText("en", "00058"), "Info", req);
-  // return res.render('viewMessage', { message: getText('en', '00058') });
-  return res
-    .status(200)
-    .json({ message: getText("en", "00058") })
-    .redirect("http://localhost:3000/verifyEmail/?status=200");
+
+  return res.render("email", { redirectUrl, title, info });
 };
 
 /**
