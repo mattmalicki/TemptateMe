@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { useAuth } from "../../../hooks";
 import { useDispatch } from "react-redux";
 import {
+  deleteUser,
   updateUsersAvatar,
   updateUsersInfo,
 } from "../../../redux/auth/operations";
@@ -54,6 +55,10 @@ const ModalEditUser = ({ closeModal }) => {
     if (form.name.value !== user.name) {
       dispatch(updateUsersInfo({ name: form.name.value }));
     }
+  };
+
+  const handleDelete = () => {
+    dispatch(deleteUser());
   };
 
   return (
@@ -105,6 +110,9 @@ const ModalEditUser = ({ closeModal }) => {
         </div>
         <RectangleButton title="Save changes" type="submit" />
       </form>
+      <button className={styles.delete} onClick={handleDelete}>
+        Delete user
+      </button>
     </Modal>
   );
 };

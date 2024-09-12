@@ -26,7 +26,7 @@ const SharedLayout = () => {
           </div>
         }
       >
-        {isRefreshing ? (
+        {/* {isRefreshing ? (
           <div
             style={{
               width: "100vw",
@@ -38,7 +38,8 @@ const SharedLayout = () => {
           </div>
         ) : (
           <Outlet />
-        )}
+        )} */}
+        <Outlet />
       </Suspense>
       {isLoggedIn && <Footer />}
     </div>
