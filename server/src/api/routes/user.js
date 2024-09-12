@@ -29,7 +29,7 @@ router.post("/subscribe", auth, newsletter);
 router.delete("/subscribe", auth, stopNewsletter);
 router.get("/shopping", auth, getShoppingList);
 router.post("/shopping", auth, addProduct);
-router.delete("/shopping/", auth, removeProduct);
+router.patch("/shopping", auth, removeProduct);
 router.get("/ownRecipes", auth, getUsersRecipes);
 router.post("/ownRecipes", auth, addRecipe);
 router.post(

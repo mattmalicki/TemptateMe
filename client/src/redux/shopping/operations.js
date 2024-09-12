@@ -27,9 +27,9 @@ const addProduct = createAsyncThunk(
 
 const deleteProduct = createAsyncThunk(
   "shoppingList/deleteProduct",
-  async (product, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const response = await axios.delete(`user/shopping/`, product);
+      const response = await axios.patch(`user/shopping`, id);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

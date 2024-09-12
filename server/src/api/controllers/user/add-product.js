@@ -19,7 +19,8 @@ async function addProduct(req, res, next) {
       });
     }
     const newProduct = {
-      _id: new Types.ObjectId(product.id),
+      _id: new Types.ObjectId(),
+      ingredientId: product.id,
       measure: product.measure,
       recipeId: product.recipeId,
     };

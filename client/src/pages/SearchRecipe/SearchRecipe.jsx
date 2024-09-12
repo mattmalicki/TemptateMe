@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import styles from "./SearchRecipe.module.css";
 import { fetchIngredients } from "../../redux/ingredients/operations.js";
-import { fetchRecipesByQuery } from "../../redux/recipes/operations.js";
+import {
+  fetchPopularRecipes,
+  fetchRecipesByQuery,
+  updatePage,
+} from "../../redux/recipes/operations.js";
 import { useDispatch } from "react-redux";
 import { PageTitle } from "../../components/Atoms/PageTitle/PageTitle.jsx";
 import { CurvedInput } from "../../components/Molecules/CurvedInput/CurvedInput.jsx";
@@ -9,15 +13,13 @@ import { RecipesList } from "../../components/Organisms/RecipesList/RecipesList.
 import useRecipes from "../../hooks/useRecipes.js";
 import { NotFound } from "../../components/Atoms/NotFound/NotFound.jsx";
 import { Helmet } from "react-helmet";
+import { Pagination } from "../../components/Atoms/Pagination/Pagination.jsx";
 
 const SearchRecipePage = () => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
-  const { recipes } = useRecipes();
-
-  useEffect(() => {
-    dispatch(fetchIngredients());
-  }, [dispatch]);
+  const [query, setQuery] = useState("");
+  const { recipes, pageAmount, page } = useRecipes();
 
   const onChange = (event) => {
     const text = event.currentTarget.value;
@@ -27,8 +29,18 @@ const SearchRecipePage = () => {
 
   const onClick = (event) => {
     event.preventDefault();
-    dispatch(fetchRecipesByQuery({ query: text }));
+    setQuery(text);
+    dispatch(updatePage(0));
+    dispatch(fetchRecipesByQuery({ query, page }));
   };
+
+  useEffect(() => {
+    if (query) {
+      dispatch(fetchRecipesByQuery({ query, page }));
+      return;
+    }
+    dispatch(fetchPopularRecipes({ page }));
+  }, [dispatch, page, query]);
 
   return (
     <div className={styles.SearchRecipe}>
@@ -39,7 +51,7 @@ const SearchRecipePage = () => {
       <CurvedInput
         greenOrBlack="green"
         buttonText="Search"
-        placeholderText="Beef"
+        placeholderText="Enter query"
         onChange={onChange}
         onClick={onClick}
         onSubmit={onClick}
@@ -49,6 +61,7 @@ const SearchRecipePage = () => {
       ) : (
         <NotFound title="Try looking for something else..." />
       )}
+      {pageAmount > 1 && <Pagination />}
     </div>
   );
 };

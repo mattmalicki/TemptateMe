@@ -9,7 +9,7 @@ import { useAuth } from "../../hooks/index.js";
 import { Loader } from "../../components/Atoms/Loader/Loader.jsx";
 
 const SharedLayout = () => {
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, isRefreshing } = useAuth();
   return (
     <div>
       {isLoggedIn && <Header />}
@@ -26,7 +26,19 @@ const SharedLayout = () => {
           </div>
         }
       >
-        <Outlet />
+        {isRefreshing ? (
+          <div
+            style={{
+              width: "100vw",
+              height: "100vh",
+              backgroundColor: "#00000080",
+            }}
+          >
+            <Loader />
+          </div>
+        ) : (
+          <Outlet />
+        )}
       </Suspense>
       {isLoggedIn && <Footer />}
     </div>

@@ -2,7 +2,6 @@ import styles from "./AddRecipe.module.css";
 import { PageTitle } from "../../components/Atoms/PageTitle/PageTitle.jsx";
 import { useDispatch } from "react-redux";
 import { fetchIngredients } from "../../redux/ingredients/operations.js";
-import { fetchPopularRecipes } from "../../redux/recipes/operations.js";
 import { fetchAllCategories } from "../../redux/categories/operations.js";
 import { useEffect } from "react";
 import { AddRecipeForm } from "../../components/Organisms/AddRecipeForm/AddRecipeForm.jsx";
@@ -13,7 +12,6 @@ const AddRecipePage = () => {
 
   useEffect(() => {
     dispatch(fetchIngredients());
-    dispatch(fetchPopularRecipes());
     dispatch(fetchAllCategories());
   }, [dispatch]);
   return (
@@ -26,13 +24,6 @@ const AddRecipePage = () => {
         <div className={styles.Recipe}>
           <AddRecipeForm />
         </div>
-        {/* <div className={styles.Addon}>
-          <div className={styles.socials}>
-            <AddRecipeHeader>Follow us</AddRecipeHeader>
-            <Socials />
-          </div>
-          <PopularRecipes />
-        </div> */}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import routes from "./../api/routes/index.js";
 import { logger } from "../utils/index.js";
 import { rateLimiter } from "../api/middlewares/index.js";
 import bodyParser from "body-parser";
+import path from "path";
 
 export default (app) => {
   process.on("uncaughtException", async (error) => {
@@ -22,6 +23,9 @@ export default (app) => {
     logger("00003", "", "Jwtprivatekey is not defined", "Process-Env", "");
     process.exit(1);
   }
+
+  app.set("views", path.join(process.cwd(), "src/views/"));
+  app.set("view engine", "ejs");
 
   app.enable("trust proxy");
   app.use(cors());

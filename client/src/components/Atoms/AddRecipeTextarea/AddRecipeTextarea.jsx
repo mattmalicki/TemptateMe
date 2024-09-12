@@ -30,6 +30,7 @@ const AddRecipeTextarea = () => {
         value={value}
         placeholder="Enter recipe. Use enter to add steps."
         type="textarea"
+        required
       ></textarea>
     </div>
   );
