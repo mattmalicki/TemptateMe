@@ -51,8 +51,7 @@ const AddRecipeForm = () => {
       instructions: recipePreparation.value,
       ingredients,
     };
-
-    setRecipeData({ recipeImage, recipeInfo });
+    setRecipeData({ recipeImage: recipeImage.files[0], recipeInfo });
     localStorage.setItem("recipeInfo", JSON.stringify(recipeInfo));
   };
 

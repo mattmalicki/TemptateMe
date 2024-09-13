@@ -6,7 +6,7 @@ import styles from "./AddRecipeImage.module.css";
 
 const AddRecipeImage = () => {
   const [file, setFile] = useState();
-  const [imagePath, setImageUrl] = useState();
+  const [imagePath, setImagePath] = useState();
 
   function dataUrlToFile(dataurl, filename) {
     const arr = dataurl.split(",");
@@ -34,7 +34,8 @@ const AddRecipeImage = () => {
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      setImageUrl(reader.result);
+      setImagePath(reader.result);
+      localStorage.setItem("recipeImage", reader.result);
     };
 
     reader.readAsDataURL(file);
