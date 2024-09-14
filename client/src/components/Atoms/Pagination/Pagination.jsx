@@ -70,6 +70,7 @@ const Pagination = () => {
 
   useEffect(() => {
     clearPageNumber();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageAmount]);
 
   return (

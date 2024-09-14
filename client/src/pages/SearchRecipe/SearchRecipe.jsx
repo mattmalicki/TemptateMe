@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "./SearchRecipe.module.css";
-import { fetchIngredients } from "../../redux/ingredients/operations.js";
 import {
   fetchPopularRecipes,
   fetchRecipesByQuery,

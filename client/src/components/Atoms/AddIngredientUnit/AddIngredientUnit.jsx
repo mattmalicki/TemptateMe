@@ -47,9 +47,9 @@ const AddIngredientUnit = ({ index }) => {
   function checkLocalStorage() {
     if (localStorage.getItem("recipeInfo")) {
       const { ingredients } = JSON.parse(localStorage.getItem("recipeInfo"));
-      const measure = ingredients[index - 1].measure.split(" ");
-      measure[0].length > 0 ? setAmount(measure[0]) : setAmount(0);
-      measure[1].length > 0 ? setUnit(measure[1]) : setUnit("g");
+      const measure = ingredients[index - 1]?.measure.split(" ") || [];
+      measure[0]?.length > 0 ? setAmount(measure[0]) : setAmount(0);
+      measure[1]?.length > 0 ? setUnit(measure[1]) : setUnit("g");
       return;
     }
   }

@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import { useAuth } from "../../hooks/index";
 import { PrivateRoute } from "../../components/Atoms/PrivateRoute/PrivateRoute";
 import { RestrictedRoute } from "../../components/Atoms/RestrictedRoute/RestrictedRoute";
-import { Loader } from "../../components/Atoms/Loader/Loader.jsx";
 import { Helmet } from "react-helmet";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 
@@ -13,18 +12,6 @@ import styles from "./App.module.css";
 import { refresh } from "../../redux/auth/operations.js";
 import { useDarkMode } from "../../context/DarkModeContext.js";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
-
-// import { HomePage } from "../Home/HomePage.jsx";
-// import { AuthPage } from "../Auth/AuthPage.jsx";
-// import { StartPage } from "../Start/StartPage.jsx";
-// import { FavoritesPage } from "../Favorites/Favorites.jsx";
-// import { AddRecipePage } from "../AddRecipe/AddRecipe.jsx";
-// import { MyRecipesPage } from "../MyRecipes/MyRecipes.jsx";
-// import { ShoppingPage } from "../Shopping/Shopping.jsx";
-// import { CategoriesPage } from "../Categories/CategoriesPage.jsx";
-// import { SearchRecipePage } from "../SearchRecipe/SearchRecipe.jsx";
-// import { Recipe } from "../../components/Templates/Recipe/Recipe.jsx";
-// import { NotFoundPage } from "../NotFound/NotFound.jsx";
 
 const HomePage = lazy(() =>
   import("../Home/HomePage.jsx").then((module) => ({

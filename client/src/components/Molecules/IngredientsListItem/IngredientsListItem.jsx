@@ -17,12 +17,19 @@ const IngredientsListItem = ({ ingredient, measure, isChecked = false }) => {
   const onChange = (event) => {
     if (event.target.checked) {
       dispatch(
-        addProduct({ id: ingredient._id, measure, recipeId: recipes._id })
+        addProduct({
+          id: ingredient._id,
+          measure,
+          recipeId: recipes._id,
+          recipeName: recipes.title,
+        })
       );
       setCheck(true);
     } else {
       dispatch(
-        deleteProduct({ id: ingredient._id, measure, recipeId: recipes._id })
+        deleteProduct({
+          id: ingredient._id,
+        })
       );
       setCheck(false);
     }

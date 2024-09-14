@@ -110,3 +110,11 @@
 .inputName::placeholder {
   color: #ffffff80;
 }
+
+.delete {
+  color: red;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+  padding: 10px 0;
+}
