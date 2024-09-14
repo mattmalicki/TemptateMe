@@ -7,6 +7,7 @@ import { Loader } from "../../Atoms/Loader/Loader.jsx";
 const ShoppingList = () => {
   const { shoppingList, isLoading } = useShopping();
   const { ingredients } = useIngredients();
+
   return isLoading ? (
     <Loader />
   ) : shoppingList.length > 0 ? (

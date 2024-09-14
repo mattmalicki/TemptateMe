@@ -23,6 +23,7 @@ async function addProduct(req, res, next) {
       ingredientId: product.id,
       measure: product.measure,
       recipeId: product.recipeId,
+      recipeName: product.recipeName,
     };
     user.shoppingList.push(newProduct);
     await user.save();
