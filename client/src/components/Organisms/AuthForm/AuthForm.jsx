@@ -4,10 +4,8 @@ import { RectangleInput } from "../../Molecules/RectangleInput/RectangleInput";
 import { RectangleButton } from "../../Atoms/RectangleButton/RectangleButton";
 import { useDispatch } from "react-redux";
 import { register, login } from "../../../redux/auth/operations";
-import useAuth from "../../../hooks/useAuth";
 
 const AuthForm = ({ isRegister }) => {
-  const { error } = useAuth();
   const dispatch = useDispatch();
   const onSubmitRegister = (event) => {
     event.preventDefault();

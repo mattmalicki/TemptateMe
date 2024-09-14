@@ -1,18 +1,31 @@
 .HomeRecipesList {
+  display: flex;
+  flex-wrap: nowrap;
   width: 100%;
   margin-top: 32px;
+  gap: 20px;
+  overflow-x: scroll;
+}
+
+.listItem {
+  min-width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .HomeRecipesList {
-    display: flex;
     flex-wrap: nowrap;
     gap: 32px;
+  }
+  .listItem {
+    min-width: calc(50% - 32px);
   }
 }
 
 @media screen and (min-width: 1024px) {
   .HomeRecipesList {
     gap: 14px;
+  }
+  .listItem {
+    min-width: calc((100% / 4) - 42px);
   }
 }
