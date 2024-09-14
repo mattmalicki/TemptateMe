@@ -9,6 +9,7 @@ const AddIngredients = () => {
 
   function checkLocalStorage() {
     if (localStorage.getItem("recipeInfo")) {
+      console.log("rest");
       const recipe = JSON.parse(localStorage.getItem("recipeInfo"));
       createArray(recipe?.ingredients?.length);
       return;
@@ -28,20 +29,34 @@ const AddIngredients = () => {
     if (counter.length > 1) {
       const copyArray = counter.slice(0, -1);
       setCounter(copyArray);
+      const recipe = JSON.parse(localStorage.getItem("recipeInfo"));
+      const newArray = recipe.ingredients.slice(0, -1);
+      recipe.ingredients = newArray;
+      localStorage.setItem("recipeInfo", JSON.stringify(recipe));
     }
   };
   const handlePlus = () => {
     const copyArray = [...counter];
     copyArray.push(copyArray[copyArray.length - 1] + 1);
     setCounter(copyArray);
+    const recipe = JSON.parse(localStorage.getItem("recipeInfo"));
+    recipe.ingredients.push({ id: null, measure: "0 g" });
+    localStorage.setItem("recipeInfo", JSON.stringify(recipe));
   };
   const handleClose = (event) => {
     const value = event.target.closest("button").dataset.counter;
     if (counter.length > 1) {
       const copyArray = counter.filter((item) => item !== Number(value));
       setCounter(copyArray);
+      const recipe = JSON.parse(localStorage.getItem("recipeInfo"));
+      const newArray = recipe.ingredients.filter(
+        (_, index) => index !== Number(value) - 1
+      );
+      recipe.ingredients = newArray;
+      localStorage.setItem("recipeInfo", JSON.stringify(recipe));
     }
   };
+
   useEffect(() => {}, [counter]);
 
   useEffect(() => {

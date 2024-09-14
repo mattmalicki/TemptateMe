@@ -42,7 +42,6 @@ const AddRecipeForm = () => {
         ].join(" "),
       });
     }
-
     const recipeInfo = {
       title: recipeName.value,
       description: recipeAbout.value,
@@ -51,8 +50,8 @@ const AddRecipeForm = () => {
       instructions: recipePreparation.value,
       ingredients,
     };
-    setRecipeData({ recipeImage: recipeImage.files[0], recipeInfo });
     localStorage.setItem("recipeInfo", JSON.stringify(recipeInfo));
+    setRecipeData({ recipeImage: recipeImage.files[0], recipeInfo });
   };
 
   const handleSubmit = (event) => {
