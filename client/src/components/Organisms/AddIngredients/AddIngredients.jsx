@@ -9,7 +9,6 @@ const AddIngredients = () => {
 
   function checkLocalStorage() {
     if (localStorage.getItem("recipeInfo")) {
-      console.log("rest");
       const recipe = JSON.parse(localStorage.getItem("recipeInfo"));
       createArray(recipe?.ingredients?.length);
       return;

@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchShoppingList } from "../../../redux/shopping/operations.js";
 import { fetchIngredients } from "../../../redux/ingredients/operations.js";
+import { Loader } from "../../Atoms/Loader/Loader.jsx";
 
 const Recipe = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const Recipe = () => {
   }, [dispatch]);
 
   return isLoading ? (
-    <div>TEST</div>
+    <Loader />
   ) : (
     <>
       <RecipeDetails recipe={recipes} />

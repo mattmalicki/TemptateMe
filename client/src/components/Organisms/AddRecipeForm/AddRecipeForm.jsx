@@ -9,13 +9,18 @@ import { addRecipe } from "../../../redux/recipes/operations.js";
 import styles from "./AddRecipeForm.module.css";
 import { useDarkMode } from "../../../context/DarkModeContext.js";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { Loading } from "notiflix/build/notiflix-loading-aio";
+import useRecipes from "../../../hooks/useRecipes.js";
 
 const AddRecipeForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { recipes } = useRecipes();
   const { isDark } = useDarkMode();
-  const [recipeData, setRecipeData] = useState();
+  const [recipeImage, setRecipeImage] = useState();
+  const [recipeInfo, setRecipeInfo] = useState();
 
   const onChange = (event) => {
     event.preventDefault();
@@ -51,22 +56,69 @@ const AddRecipeForm = () => {
       ingredients,
     };
     localStorage.setItem("recipeInfo", JSON.stringify(recipeInfo));
-    setRecipeData({ recipeImage: recipeImage.files[0], recipeInfo });
+    setRecipeInfo(recipeInfo);
+    recipeImage.files[0] && setRecipeImage(recipeImage.files[0]);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addRecipe(recipeData));
-    localStorage.removeItem("recipeInfo");
-    navigate("/recipe");
+    try {
+      Loading.pulse();
+      if (!recipeImage || !recipeInfo) {
+        Notify.failure("Please fill evry informations including image.");
+        return;
+      }
+      dispatch(addRecipe({ recipeImage, recipeInfo }));
+      localStorage.removeItem("recipeInfo");
+      localStorage.removeItem("recipeImage");
+      setTimeout(() => {
+        navigate(`/recipe/${recipes._id}`);
+      }, 1000);
+      return;
+    } catch (err) {
+      Notify.failure("Something went wrong. ");
+      console.log(err);
+      return;
+    } finally {
+      Loading.remove();
+    }
   };
 
+  function dataUrlToFile(dataurl, filename) {
+    const arr = dataurl.split(",");
+    const mime = arr[0].match(/:(.*?);/)[1];
+    const bstr = atob(arr[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, { type: mime });
+  }
+
   const handleReset = () => {
-    setRecipeData({});
+    setRecipeInfo({});
+    setRecipeImage({});
     localStorage.removeItem("recipeInfo");
     localStorage.removeItem("recipeImage");
     navigate(0);
   };
+
+  function checkLocalStorage() {
+    const recipeInfo = JSON.parse(localStorage.getItem("recipeInfo"));
+    const recipeImage = localStorage.getItem("recipeImage");
+    if (recipeInfo) {
+      setRecipeInfo(recipeInfo);
+    }
+    if (recipeImage) {
+      setRecipeImage(dataUrlToFile(recipeImage));
+    }
+  }
+
+  useEffect(() => {
+    checkLocalStorage();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <form
