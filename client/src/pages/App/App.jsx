@@ -9,9 +9,10 @@ import { Helmet } from "react-helmet";
 import { SharedLayout } from "../SharedLayout/SharedLayout.jsx";
 
 import styles from "./App.module.css";
-import { refresh } from "../../redux/auth/operations.js";
+import { login, refresh } from "../../redux/auth/operations.js";
 import { useDarkMode } from "../../context/DarkModeContext.js";
 import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { Confirm } from "notiflix/build/notiflix-confirm-aio";
 
 const HomePage = lazy(() =>
   import("../Home/HomePage.jsx").then((module) => ({
@@ -70,7 +71,7 @@ const NotFoundPage = lazy(() =>
 );
 
 function App() {
-  const { error } = useAuth();
+  const { error, isLoggedIn } = useAuth();
   const dispatch = useDispatch();
   const { isDark } = useDarkMode();
 
@@ -78,6 +79,21 @@ function App() {
     error &&
       Notify.failure(error?.resultMessage?.en || "Something went wrong...");
   }, [error]);
+
+  useEffect(() => {
+    !isLoggedIn &&
+      Confirm.show(
+        "Welcome to TemptateMe!",
+        "We would recommend you to create your own account but you can also use an example one. Do you want that?",
+        "Yes",
+        "No",
+        () => {
+          dispatch(
+            login({ email: "example@example.com", password: "example" })
+          );
+        }
+      );
+  });
 
   useEffect(() => {
     dispatch(refresh());
