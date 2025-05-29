@@ -133,3 +133,5 @@ dist
 *storybook.log
 
 build
+# Local Netlify folder
+.netlify
