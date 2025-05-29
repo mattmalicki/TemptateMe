@@ -4,7 +4,7 @@ import { MenuIcon } from "../../Atoms/MenuIcon/MenuIcon.jsx";
 import { SwitchMode } from "../../Atoms/SwitchMode/SwitchMode.jsx";
 import { UserWindow } from "../../Atoms/UserWindow/UserWindow.jsx";
 import { MobileMenu } from "../../Organisms/MobileMenu/MobileMenu.jsx";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const UserHeader = () => {
   const [openUserWindow, setOpenUserWindow] = useState(false);

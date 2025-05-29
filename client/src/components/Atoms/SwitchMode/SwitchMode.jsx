@@ -7,6 +7,7 @@ const SwitchMode = () => {
   useEffect(() => {
     JSON.parse(localStorage.getItem("isDark-theme")) !== isDark &&
       setDarkMode();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <label className={styles.SwitchMode}>

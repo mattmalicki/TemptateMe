@@ -30,7 +30,7 @@ const fetchRecipesByQuery = createAsyncThunk(
   "recipe/fetchByQuery",
   async (data, thunkAPI) => {
     try {
-      const { query, page, limit } = data;
+      const { query, page } = data;
       const response = await axios.get(
         `/recipes/search/?query=${query}&page=${page}`
       );
